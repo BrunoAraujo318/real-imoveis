@@ -9,17 +9,71 @@
 	<div class="row">
 	<div class="divider"></div>
 	<div class="row">
-		<h5>Funções:</h5>
-		<ul>
-			<li><a href="{{ route('admin.usuarios') }}">Usuários</a></li>
-			<li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
-			<li><a href="{{ route('admin.imovel.tipos') }}">Tipos de Imóveis</a></li>
-			<li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
-			<li><a href="{{ route('admin.imoveis') }}">Imóveis</a></li>
-			<li><a href="{{ route('admin.slides') }}">Slides</a></li>
-			
+		<main>
+	      	<div class="container">
+        		<div class="col s12 m4">
+        			<div class="card">
+			        	<div class="card-image">     	
+	              			<a href="{{ route('admin.usuarios') }}"><img src="{{ asset('img/icone-usuario.jpg') }}"></a>
+				            	<div class="card-action">
+				              		<a href="{{ route('admin.usuarios') }}">Usuários</a>
+				            	</div>
+			        	</div>
+		        	</div>
+        		</div>
+	        	<div class="col s12 m4">
+	        		<div class="card">
+			        	<div class="card-image">
+		              		<a href="{{ route('admin.paginas') }}"><img src="{{ asset('img/icone-pagina.png') }}"></a>
+					            <div class="card-action">
+					              <a href="{{ route('admin.paginas') }}">Páginas</a>
+					            </div>
+			        	</div>
+	        		</div>
+	        	</div>
+	        	<div class="col s12 m4">
+		        	<div class="card">
+				        <div class="card-image">
+		              		 <a href="{{ route('admin.imoveis') }}"><img src="{{ asset('img/icone-imoveis.png') }}"></a>
+					            <div class="card-action">
+					              <a href="{{ route('admin.imoveis') }}">Imóveis</a>
+					            </div>					   
+				        </div>
+		        	</div>
+		        </div>
+		        <div class="col s12 m4">
+		        	<div class="card">
+				        <div class="card-image">
+		              		<a href="{{ route('admin.imovel.tipos') }}"><img src="{{ asset('icone-tipos.png') }}"></a>
+					            <div class="card-action">
+					              <a href="{{ route('admin.imovel.tipos') }}">Tipos de Imóveis</a>
+					            </div>			    
+				        </div>
+		        	</div>
+		        </div>
+		        <div class="col s12 m4">
+		        	<div class="card">
+				        <div class="card-image">
+		              		<a href="{{ route('admin.cidades') }}"><img src="{{ asset('icone-cidades.png') }}"></a>
+					            <div class="card-action">
+					              <a href="{{ route('admin.cidades') }}">Cidades</a>
+					            </div>					   
+				        </div>
+		        	</div>
+		        </div>
+		        <div class="col s12 m4">
+		        	<div class="card">
+				        <div class="card-image">
+		              		<a href="{{ route('admin.slides') }}"><img src="{{ asset('icone-slide.png') }}"></a>
+					            <div class="card-action">
+					              <a href="{{ route('admin.slides') }}">Slides</a>
+					            </div>
+				        </div>
+		        	</div>
+		        </div>
+	    	</div>
+	    </main>
 			<!-- <li><a href="{{ route('admin.papel') }}">Papéis</a></li> -->
-		</ul>
 	</div>
 </div>
 
