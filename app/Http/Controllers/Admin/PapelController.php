@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Papel;
-use App\Permissao;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\Papel;
+use RealImoveis\Permissao;
 
 class PapelController extends Controller
 {

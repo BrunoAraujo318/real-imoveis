@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCidadesTable extends Migration
+class CreateTelefonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +13,10 @@ class CreateCidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cidades', function (Blueprint $table) {
+        Schema::create('telefones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('estado');
-            $table->string('sigla_estado');
-            $table->timestamps();
+            $table->integer('ddd')->comment('Codigo de discagem da região');
+            $table->integer('numero')->comment('Numero de telefone');
         });
     }
 
@@ -28,6 +27,6 @@ class CreateCidadesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cidades');
+        Schema::dropIfExists('telefones');
     }
 }

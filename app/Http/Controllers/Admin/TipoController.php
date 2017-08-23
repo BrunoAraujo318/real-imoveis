@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Tipo;
-use App\Imovel;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\Tipo;
+use RealImoveis\Imovel;
 
 class TipoController extends Controller
 {

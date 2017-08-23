@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace RealImoveis;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pagina extends Model
+class Usuario_Perfil extends Model
 {
     //
 }

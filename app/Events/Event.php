@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace RealImoveis\Events;
 
 abstract class Event
 {

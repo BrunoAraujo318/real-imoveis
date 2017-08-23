@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use RealImoveis\Http\Requests;
+use RealImoveis\Http\Controllers\Controller;
 use Auth;
-use App\User;
-use App\Papel;
+use RealImoveis\User;
+use RealImoveis\Papel;
 
 class UsuarioController extends Controller
 {

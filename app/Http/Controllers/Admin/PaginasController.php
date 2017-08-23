@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Pagina;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\Pagina;
 
 class PaginasController extends Controller
 {

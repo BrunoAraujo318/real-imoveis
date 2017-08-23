@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Usuario;
+namespace RealImoveis\Http\Controllers\Usuario;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\User;
 
 class CadastroPerfilController extends Controller
 {

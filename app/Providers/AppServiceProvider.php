@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace RealImoveis\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

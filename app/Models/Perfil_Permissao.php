@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace RealImoveis;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Slide extends Model
+class Perfil_Permissao extends Model
 {
     //
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Imovel;
-use App\Galeria;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\Imovel;
+use RealImoveis\Galeria;
 
 class GaleriaController extends Controller
 {

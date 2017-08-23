@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateImoveisTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('imoveis', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nome')->comment('Nome do imovel');
+            $table->string('descricao')->comment('Descricao do imovel, informacões referentes ao mesmo');
+            $table->decimal('valor', 12, 2)->comment('Valor monetário referente ao servico');
+            $table->integer('qtd_dormitorio')->comment('Numero de quartos dispostos pelo imóvel');
+            $table->integer('qtd_visualicoes')->comment('Numero de Visualições recebidas pelo anuncio');
+            $table->string('url_video')->comment('Local onde sera inserida a url de um video do youtube');
+            $table->integer('categoria_servico')->comment('Categoria do serviço prestado pelo anunciante(Compra\Venda\aluguel etc...)');  
+
+            $table->integer('imovel_tipo_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do imovel');
+            $table->foreign('imovel_tipo_id')->references('id')->on('imoveis_tipos')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('imoveis');
+    }
+}

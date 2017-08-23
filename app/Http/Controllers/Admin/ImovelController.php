@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Imovel;
-use App\Tipo;
-use App\Cidade;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\Imovel;
+use RealImoveis\Tipo;
+use RealImoveis\Cidade;
 
 class ImovelController extends Controller
 {

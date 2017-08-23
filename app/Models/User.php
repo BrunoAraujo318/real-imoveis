@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace RealImoveis;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

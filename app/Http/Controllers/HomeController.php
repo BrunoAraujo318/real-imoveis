@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace RealImoveis\Http\Controllers;
 
-use App\Http\Requests;
+use RealImoveis\Http\Requests;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

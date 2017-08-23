@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaginasTable extends Migration
+class CreateContratosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +13,8 @@ class CreatePaginasTable extends Migration
      */
     public function up()
     {
-        Schema::create('paginas', function (Blueprint $table) {
+        Schema::create('contratos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
-            $table->string('descricao');
-            $table->string('imagem')->nullable();
-            $table->string('mapa')->nullable();
-            $table->string('email')->nullable();
-            $table->string('tipo');
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreatePaginasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('paginas');
+        Schema::dropIfExists('contratos');
     }
 }

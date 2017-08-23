@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace RealImoveis\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Imovel;
-use App\Slide;
-use App\Tipo;
-use App\Cidade;
+use RealImoveis\Http\Controllers\Controller;
+use RealImoveis\Imovel;
+use RealImoveis\Slide;
+use RealImoveis\Tipo;
+use RealImoveis\Cidade;
 
 class HomeController extends Controller
 {

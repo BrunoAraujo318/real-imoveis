@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -14,13 +15,11 @@ class CreateSlidesTable extends Migration
     {
         Schema::create('slides', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo')->nullable();
-            $table->string('descricao')->nullable();
-            $table->string('imagem');
-            $table->string('link')->nullable();
-            $table->integer('ordem')->nullable();
-            $table->enum('publicado',['sim','nao'])->default('nao');
-            $table->timestamps();
+            $table->string('nome')->comment('Nome do slide');
+            $table->string('descricao')->comment('descrição referente ao slide');
+            $table->string('imagem')->comment('Adicionar a imagem');
+            $table->integer('ordem')->comment('Ordem de apresentção das imagens do slide');
+            
         });
     }
 
@@ -31,6 +30,6 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('slides');
+        Schema::dropIfExists('slides');
     }
 }

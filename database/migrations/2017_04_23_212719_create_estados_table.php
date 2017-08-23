@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissaosTable extends Migration
+class CreateEstadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +13,10 @@ class CreatePermissaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissaos', function (Blueprint $table) {
+        Schema::create('estados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('descricao')->nullable();
-            $table->timestamps();
+            $table->string('nome')->comment('Nome do estado');
+            $table->char('sigla', 2)->comment('Sigla do estado');
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePermissaosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('permissaos');
+        Schema::dropIfExists('estados');
     }
 }
