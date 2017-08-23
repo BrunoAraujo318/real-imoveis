@@ -39,7 +39,7 @@
     @yield('content')
   </main>
 
-  <footer class="page-footer #9e9e9e grey">
+  <footer class="page-footer #536dfe indigo accent-2">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
