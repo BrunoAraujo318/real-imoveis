@@ -22,7 +22,7 @@ class PaginasController extends Controller
         $dados = $request-> all();
         $pagina = Pagina::find($id);
         $pagina->titulo = trim($dados['titulo']);
-        $pagina->titulo = trim($dados['descricao']);
+        $pagina->descricao = trim($dados['descricao']);
         if(isset($dados['email'])){
             $pagina->email = trim($dados['email']);
         }

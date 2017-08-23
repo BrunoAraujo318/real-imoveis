@@ -17,13 +17,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/', ['as'=>'site.home', 'uses'=>'Site\HomeController@index']);
 
-Route::get('/sobre', ['as'=>'site.sobre', function(){
-	return view('site.sobre');
-}]);
+Route::get('/sobre', ['as'=>'site.sobre', 'uses'=>'Site\PaginaController@sobre']);
 
 Route::get('/contato', ['as'=>'site.contato', 'uses'=>'Site\PaginaController@contato']);
-
-Route::get('/contato/locador', ['as'=>'site.contato.locador', 'uses'=>'Site\PaginaController@contatoLocador']);
 
 Route::post('/contato/enviar',['as'=>'site.contato.enviar', 'uses'=>'Site\PaginaController@enviarContato']);
 

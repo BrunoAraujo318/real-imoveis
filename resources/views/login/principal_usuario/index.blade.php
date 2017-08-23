@@ -14,9 +14,19 @@
 	      		<div class="col s12 m4">
 		        	<div class="card">
 				        <div class="card-image">
-		              		 <a href="{{ route('principal.imoveis') }}"><img src="{{ asset('img/icone-residenciais-170x170.png') }}"></a>
-					            <div class="card-action">
+		              		 <a href="{{ route('principal.imoveis') }}"><img src="{{ asset('img/icone-imoveis.png') }}"></a>
+					            <div class="card-action" align="center">
 					              <a href="{{ route('principal.imoveis') }}">Imóveis</a>
+					            </div>					   
+				        </div>
+		        	</div>
+		        </div>
+		        <div class="col s12 m4">
+		        	<div class="card">
+				        <div class="card-image">
+		              		 <a href="#"><img src="{{ asset('img/icone-contrato.jpg') }}"></a>
+					            <div class="card-action" align="center">
+					              <a href="#">Gerar Contratos</a>
 					            </div>					   
 				        </div>
 		        	</div>

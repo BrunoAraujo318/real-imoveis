@@ -22,11 +22,11 @@ class PaginaController extends Controller
     	return view('site.contato',compact('pagina'));
     }
     
-    public function contatoLocador()
+    public function sobre()
     {
-    	$pagina = Pagina::where('tipo','=','contatoLocador')->first();
+    	$pagina = Pagina::where('tipo','=','sobre')->first();
 
-    	return view('site.contato',compact('pagina'));
+    	return view('site.sobre',compact('pagina'));
     }
     public function enviarContato(Request $request)
     {
