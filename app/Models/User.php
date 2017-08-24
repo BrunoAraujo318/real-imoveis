@@ -1,6 +1,6 @@
 <?php
 
-namespace RealImoveis;
+namespace RealImoveis\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace RealImoveis;
+namespace RealImoveis\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

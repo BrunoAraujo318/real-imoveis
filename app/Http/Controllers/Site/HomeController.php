@@ -4,10 +4,10 @@ namespace RealImoveis\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\Imovel;
-use RealImoveis\Slide;
-use RealImoveis\Tipo;
-use RealImoveis\Cidade;
+use RealImoveis\Models\Imovel;
+use RealImoveis\Models\Slide;
+use RealImoveis\Models\Tipo;
+use RealImoveis\Models\Cidade;
 
 class HomeController extends Controller
 {

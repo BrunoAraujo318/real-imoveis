@@ -1,25 +1,24 @@
 <?php
 
-namespace RealImoveis;
+namespace RealImoveis\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Imagen extends Model
-{	
-
+class ImovelTipo extends Model
+{
 	/**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'imagens';
+    protected $table = 'imoveis_tipos';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nome', 'url', 'descricao', 'imovel_id', 'ordem', 'visualizacao'];
+    protected $fillable = ['nome'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -29,12 +28,12 @@ class Imagen extends Model
     public $timestamps = false;
 
     /**
-     * Retorna o Imovel da Imagem.
+     * Retorna o Imovel relacionado com o Tipo de Imovel.
      * 
      * @return Imovel
      */
     public function imovel()
     {
-    	return $this->belongsTo(Imovel::class);
+    	return $this->hasMany(Imovel::class);
     }
 }
