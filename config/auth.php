@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => RealImoveis\User::class,
+            'model' => RealImoveis\Models\Usuario::class,
         ],
 
         // 'users' => [
