@@ -4,7 +4,7 @@ namespace RealImoveis\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Slide extends Model
+class Pagina extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,6 +12,6 @@ class Slide extends Model
      * @var array
      */
     protected $fillable = [
-        'nome', 'descricao', 'imagem', 'ordem'
+        'titulo', 'descricao', 'imagem', 'ordem', 'email', 'tipo', 'sobre'
     ];
 }

@@ -4,30 +4,52 @@ namespace RealImoveis\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\Pagina;
+use RealImoveis\Models\Pagina;
 
 class PaginaController extends Controller
 {
+    /**
+     * Renderizar a interface de sobre dos Imoveis.
+     * 
+     * @return view
+     */
     public function sobreImovel()
     {
-    	$pagina = Pagina::where('tipo','=','imovel')->first();
+    	$pagina = null; //Pagina::where('tipo','=','imovel')->first();
 
-    	return view('site.imovel',compact('pagina'));
+    	return view('site.imovel', compact('pagina'));
     }
 
-     public function contato()
+    /**
+     * Renderiza a interface de Contato.
+     * 
+     * @return view
+     */
+    public function contato()
     {
-    	$pagina = Pagina::where('tipo','=','contato')->first();
+    	$pagina = null;//Pagina::where('tipo','=','contato')->first();
 
-    	return view('site.contato',compact('pagina'));
+    	return view('site.contato', compact('pagina'));
     }
     
+    /**
+     * Renderiza a interface de Sobre.
+     * 
+     * @return view
+     */
     public function sobre()
     {
-    	$pagina = Pagina::where('tipo','=','sobre')->first();
+    	$pagina = null; // Pagina::where('tipo','=','sobre')->first();
 
-    	return view('site.sobre',compact('pagina'));
+    	return view('site.sobre', compact('pagina'));
     }
+
+    /**
+     * Envia o e-mail para contato.
+     * 
+     * @param  Request $request
+     * @return view
+     */
     public function enviarContato(Request $request)
     {
     	$pagina = Pagina::where('tipo', '=', 'contato')->first();
