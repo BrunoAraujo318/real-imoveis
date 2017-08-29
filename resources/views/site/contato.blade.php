@@ -31,7 +31,6 @@
                 </div>
                 <button class="btn blue">Enviar</button>            
             </form>
-            
         </div>
     </div>
 </div>
