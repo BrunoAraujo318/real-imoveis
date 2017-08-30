@@ -1,12 +1,13 @@
 <div class="row">
 	<form action="{{ route('site.busca') }}">
-		<div class="input-field col s6 m4">
-			<select name="condominio">
-				<option {{ isset($busca['condominio']) && $busca['condominio'] == 'todos' ? 'selected' : ''}} value="todos">Todos</option>
-				<option {{ isset($busca['condominio']) && $busca['condominio'] == 'sim' ? 'selected' : ''}} value="sim">Sim</option>
-				<option {{ isset($busca['condominio']) && $busca['condominio'] == 'nao' ? 'selected' : ''}} value="nao">Não</option>
+		<div class="input-field col s12 m4">
+			<select name="valor">
+				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 0 ? 'selected' : ''}} value="0">Todas as Categoria e Servicoes</option>
+				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 1 ? 'selected' : ''}} value="1">Compra</option>
+				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 2 ? 'selected' : ''}} value="2">Aluguel</option>
+				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 3 ? 'selected' : ''}} value="3">Venda</option>
 			</select>
-			<label>Condomínio</label>
+			<label>Preços</label>
 		</div>
 		<div class="input-field col s6 m4">
 			<select name="tipo_id">
@@ -35,15 +36,15 @@
 				<option {{ isset($busca['valor']) && $busca['valor'] == 4 ? 'selected' : ''}} value="4">De R$1.500,00 até R$2.000,00</option>
 				<option {{ isset($busca['valor']) && $busca['valor'] == 5 ? 'selected' : ''}} value="5">Acima de R$2.000,00</option>
 			</select>
-			<label>Preços Mensais</label>
+			<label>Preços</label>
 		</div>
 		<div class="input-field col s6 m3">
 			<select name="dormitorios">
-				<option {{ isset($busca['dormiorios']) && $busca['dormiorios'] == 0 ? 'selected' : ''}} value="0">Independente da Quantidade</option>
-				<option {{ isset($busca['dormiorios']) && $busca['dormiorios'] == 1 ? 'selected' : ''}} value="1">1</option>
-				<option {{ isset($busca['dormiorios']) && $busca['dormiorios'] == 2 ? 'selected' : ''}} value="2">2</option>
-				<option {{ isset($busca['dormiorios']) && $busca['dormiorios'] == 3 ? 'selected' : ''}} value="3">3</option>
-				<option {{ isset($busca['dormiorios']) && $busca['dormiorios'] == 4 ? 'selected' : ''}} value="4">Mais</option>
+				<option {{ isset($busca['qtd_dormitorio']) && $busca['qtd_dormitorio'] == 0 ? 'selected' : ''}} value="0">Independente da Quantidade</option>
+				<option {{ isset($busca['qtd_dormitorio']) && $busca['qtd_dormitorio'] == 1 ? 'selected' : ''}} value="1">1</option>
+				<option {{ isset($busca['qtd_dormitorio']) && $busca['qtd_dormitorio'] == 2 ? 'selected' : ''}} value="2">2</option>
+				<option {{ isset($busca['qtd_dormitorio']) && $busca['qtd_dormitorio'] == 3 ? 'selected' : ''}} value="3">3</option>
+				<option {{ isset($busca['qtd_dormitorio']) && $busca['qtd_dormitorio'] == 4 ? 'selected' : ''}} value="4">Mais</option>
 			</select>
 			<label>Dormitórios</label>
 		</div>
