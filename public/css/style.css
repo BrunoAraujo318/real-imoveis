@@ -17,3 +17,15 @@
   .pagination li.active{
     background-color: #424242;
   }
+
+  footer{
+     background-color: #253455 !important;
+  }
+
+  .nav-wrapper{
+    background-color: #ffffff;
+  }
+
+  #letra a{
+    color: #000000 !important;
+  }

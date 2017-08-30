@@ -1,6 +1,6 @@
 <nav>
-    <div class="nav-wrapper #000000 black">
-        <div class="container">
+    <div class="nav-wrapper">
+        <div id="letra" class="container">
           <a href="{{ route('login') }}" class="brand-logo">Login</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
