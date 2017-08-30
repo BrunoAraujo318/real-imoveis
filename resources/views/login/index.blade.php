@@ -11,7 +11,6 @@
 			@include('login._form')
 			<button type="submit" class="btn blue">Entrar</button>
 		</form>
-		<a class="btn deep-orange darken-1" href="{{ route('principal.cadastro') }}">Cadastrar-se</a>
 </div>
 
 @endsection

@@ -27,5 +27,9 @@
   }
 
   #letra a{
-    color: #000000 !important;
+    color: #000000;
+  }
+
+  #cadastrar{
+    color: #bbdefb !important;
   }
