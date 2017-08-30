@@ -26,12 +26,12 @@
 				</tr>
 			</thead>
 			<tbody>
-			@foreach($registros as $registro)
+			@foreach($tipos as $tipo)
 				<tr>
-					<td>{{ $registro->titulo }}</td>
+					<td>{{ $tipo->nome }}</td>
 					<td>
-						<a class="btn blue" href="{{ route('admin.imovel.tipos.editar', $registro->id) }}">Editar</a>
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imovel.tipos.deletar', $registro->id) }}'}">Deletar</a>
+						<a class="btn blue" href="{{ route('admin.imovel.tipos.editar', $tipo->id) }}">Editar</a>
+						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imovel.tipos.deletar', $tipo->id) }}'}">Deletar</a>
 					</td>
 				</tr>
 			@endforeach
