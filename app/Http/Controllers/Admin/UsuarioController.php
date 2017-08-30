@@ -12,12 +12,13 @@ use RealImoveis\Papel;
 
 class UsuarioController extends Controller
 {
-    public function login(Request $request){
+    public function login(Request $request)
+    {
     	$dados = $request->all();
 
-    	if(Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']])){
+    	if (Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']])){
 
-            if($dados['email'] == 'admin@mail.com'){
+            if ($dados['email'] == 'admin@mail.com') {
         		\Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
         		return redirect()->route('admin.principal');
             } else{
@@ -28,7 +29,6 @@ class UsuarioController extends Controller
     	
         \Session::flash('mensagem', ['msg'=>'Confira seus Dados!', 'class'=>'red white-text']);
     	return redirect()->route('login');
-
     }
 
     public function sair(){
@@ -99,35 +99,5 @@ class UsuarioController extends Controller
         User::find($id)->delete();
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('admin.usuarios');
-    }
-
-    public function papel($id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
-        $papel = Papel::all();
-        return view('login.principal_adm.usuarios.papel', compact('usuario','papel'));
-    }
-
-    public function salvarPapel(Request $request, $id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
-        $dados = $request->all();
-        $papel = Papel::find($dados['papel_id']);
-        $usuario->adicionaPapel();
-        return redirect()->back();
-    }
-
-    public function removerPapel($id, $papel_id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
-        $papel = Papel::find($papel_id);
-        $usuario->removePapel($papel);
-        return redirect()->back();
     }
 }

@@ -2,9 +2,9 @@
 
 namespace RealImoveis\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustPermission;
 
-class Permissao extends Model
+class Permissao extends EntrustPermission
 {
     //
 }

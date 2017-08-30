@@ -20,6 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('cpf')->comment('define o CPF');
             $table->date('nascimento')->comment('Data de nascimento');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

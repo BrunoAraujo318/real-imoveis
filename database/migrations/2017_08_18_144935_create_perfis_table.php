@@ -14,8 +14,10 @@ class CreatePerfisTable extends Migration
     public function up()
     {
         Schema::create('perfis', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome')->comment('Nome do perfil');
+            $table->increments('id')->unsigned();
+            $table->string('name')->unique();
+            $table->string('display_name')->nullable();
+            $table->string('description')->nullable();
         });
     }
 
