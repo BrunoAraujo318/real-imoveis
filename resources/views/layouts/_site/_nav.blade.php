@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav-wrapper #000000 black">
+  <div id="letra" class="nav-wrapper">
       <div class="container">
         <a href="{{ route('site.home') }}" class="brand-logo">Real Imóveis</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>

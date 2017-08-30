@@ -1,7 +1,7 @@
 <nav>
-    <div class="nav-wrapper #000000 black">
+    <div id="letra" class="nav-wrapper">
         <div class="container">
-          <a href="{{ route('admin.principal') }}" class="brand-logo">Sistema ADM</a>
+          <a href="{{ route('admin.principal') }}" class="brand-logo">Real Imóveis</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a target="_blanck" href="{{ route('site.home') }}">Home</a></li>
