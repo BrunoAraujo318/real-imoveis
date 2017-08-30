@@ -12,16 +12,22 @@ use RealImoveis\Papel;
 
 class UsuarioController extends Controller
 {
+    /**
+     * Autentica o usuario no sistema.
+     * 
+     * @param Request $request
+     */
     public function login(Request $request)
     {
     	$dados = $request->all();
 
-    	if (Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']])){
+        $autenticado = Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']]);
 
-            if ($dados['email'] == 'admin@mail.com') {
+        if ($autenticado) {
+            if (Auth::user()->hasRole('admin')) {
         		\Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
         		return redirect()->route('admin.principal');
-            } else{
+            } else {
                 \Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
                 return redirect()->route('usuario.principal');
             }

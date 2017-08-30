@@ -31,15 +31,15 @@ class PerfisSeeds extends Seeder
         DB::table('usuarios_perfis')->insert([
             [
                 'usuario_id' => 1,
-                'perfil_id' => 2
+                'perfil_id' => 1
             ],
             [
                 'usuario_id' => 2,
-                'perfil_id' => 2
+                'perfil_id' => 1
             ],
             [
                 'usuario_id' => 3,
-                'perfil_id' => 2
+                'perfil_id' => 1
             ],
         ]);
     }
