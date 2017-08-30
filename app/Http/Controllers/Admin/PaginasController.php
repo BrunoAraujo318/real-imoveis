@@ -4,23 +4,45 @@ namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\Pagina;
+use RealImoveis\Models\Pagina;
 
 class PaginasController extends Controller
 {
+    private $paginaModel;
+
+    /**
+     * Inicializas as dependencias da classe.
+     */
+    public function __construct()
+    {
+        $this->paginaModel = new Pagina();
+    }
+
+    /**
+     * Renderiza a interface de paginas.
+     */
     public function index(){
-    	$paginas = Pagina::all();
+    	$paginas = $this->paginaModel->all();
+
     	return view('login.principal_adm.paginas.index', compact('paginas'));
     }
 
-    public function editar($id){
-    	$pagina = Pagina::find($id);
+    /**
+     * Renderiza a interface de edição.
+     * 
+     * @param  integer $id
+     */
+    public function editar($id)
+    {
+    	$pagina = $this->paginaModel->find($id);
+
     	return view('login.principal_adm.paginas.editar', compact('pagina'));
     }
 
     public function atualizar(Request $request, $id){
         $dados = $request-> all();
-        $pagina = Pagina::find($id);
+        
+        $pagina = $this->paginaModel->find($id);
         $pagina->titulo = trim($dados['titulo']);
         $pagina->descricao = trim($dados['descricao']);
         if(isset($dados['email'])){

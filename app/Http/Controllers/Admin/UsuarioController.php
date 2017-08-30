@@ -7,20 +7,37 @@ use Illuminate\Http\Request;
 use RealImoveis\Http\Requests;
 use RealImoveis\Http\Controllers\Controller;
 use Auth;
-use RealImoveis\User;
-use RealImoveis\Papel;
+use RealImoveis\Models\Usuario;
+use RealImoveis\Models\Perfil;
 
 class UsuarioController extends Controller
 {
-    public function login(Request $request){
+    private $usuarioModel;
+
+    /**
+     * Inicializas as dependencias da classe.
+     */
+    public function __construct()
+    {
+        $this->usuarioModel = new Usuario();
+    }
+
+    /**
+     * Autentica o usuario no sistema.
+     * 
+     * @param Request $request
+     */
+    public function login(Request $request)
+    {
     	$dados = $request->all();
 
-    	if(Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']])){
+        $autenticado = Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']]);
 
-            if($dados['email'] == 'admin@mail.com'){
+        if ($autenticado) {
+            if (Auth::user()->hasRole('admin')) {
         		\Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
         		return redirect()->route('admin.principal');
-            } else{
+            } else {
                 \Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
                 return redirect()->route('usuario.principal');
             }
@@ -28,58 +45,64 @@ class UsuarioController extends Controller
     	
         \Session::flash('mensagem', ['msg'=>'Confira seus Dados!', 'class'=>'red white-text']);
     	return redirect()->route('login');
-
     }
 
-    public function sair(){
+    /**
+     * Finaliza a sessão e sair do sistema.
+     */
+    public function sair()
+    {
         Auth::logout();
         return redirect()->route('login');
     }
 
-    public function lista(){
-       // if(auth()->user()->can('usuario_listar')){
-            $usuarios = User::all();
-            return view('login.principal_adm.usuarios.lista_usuarios', compact('usuarios'));
-        //}else {
-            //return redirect()->route('admin.principal');
-        //}
+    /**
+     * Lista todos os usuarios cadastrados.
+     */
+    public function lista()
+    {
+        $usuarios = $this->usuarioModel->all();
+
+        return view('login.principal_adm.usuarios.lista_usuarios', compact('usuarios'));
     }
 
-    public function adicionar(){
-        //if(!auth()->user()->can('usuario_adicionar')){            
-            //return redirect()->route('admin.principal');
-        //}
+
+    /**
+     * Renderiza a interface de cadastro de usuario.
+     */
+    public function adicionar()
+    {
         return view('login.principal_adm.usuarios.adicionar_usuarios');
     }
 
-    public function salvar(Request $request){
-        //if(!auth()->user()->can('usuario_adicionar')){            
-          //  return redirect()->route('admin.principal');
-        //}
+    /**
+     * Salva um novo usuario na base de dados.
+     * 
+     * @param  Request $request
+     */
+    public function salvar(Request $request)
+    {
         $dados = $request->all();
-        $usuarios = new User();
+        $usuarios = new Usuario();
         $usuarios->name = $dados['name'];
         $usuarios->email = $dados['email'];
         $usuarios->password = bcrypt($dados['password']);
         $usuarios->save();
+
         \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
         return redirect()->route('admin.usuarios');
     }
 
-    public function editar($id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
+    public function editar($id)
+    {
+        $usuario = $this->usuarioModel->find($id);
         return view('login.principal_adm.usuarios.editar_usuarios', compact('usuario'));
     }
 
     public function atualizar(Request $request, $id){
-        // if(!auth()->user()->can('usuario_editar')){            
-           // return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
+        $usuario = $this->usuarioModel->find($id);
         $dados = $request->all();
+
         if(isset($dados['password']) && strlen($dados['password']) > 5 ){
             $dados['password'] = bcrypt($dados['password']);
         }else{
@@ -92,42 +115,11 @@ class UsuarioController extends Controller
         return redirect()->route('admin.usuarios');
     }
 
-    public function deletar($id){
-        //if(!auth()->user()->can('usuario_deletar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        User::find($id)->delete();
+    public function deletar($id)
+    {
+        $this->usuarioModel->find($id)->delete();
+        
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('admin.usuarios');
-    }
-
-    public function papel($id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
-        $papel = Papel::all();
-        return view('login.principal_adm.usuarios.papel', compact('usuario','papel'));
-    }
-
-    public function salvarPapel(Request $request, $id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
-        $dados = $request->all();
-        $papel = Papel::find($dados['papel_id']);
-        $usuario->adicionaPapel();
-        return redirect()->back();
-    }
-
-    public function removerPapel($id, $papel_id){
-        //if(!auth()->user()->can('usuario_editar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-        $usuario = User::find($id);
-        $papel = Papel::find($papel_id);
-        $usuario->removePapel($papel);
-        return redirect()->back();
     }
 }

@@ -15,7 +15,7 @@ class UsuariosSeeds extends Seeder
         DB::table('usuarios')->insert([
             [
                 'nome' => 'Allan Turing',
-                'email' => 'allan_admin@mail.com',
+                'email' => 'allangcruz@gmail.com',
                 'cpf' => "111.111.111-11",
                 'nascimento' => '14/07/1994',
                 'password' => bcrypt(123456)

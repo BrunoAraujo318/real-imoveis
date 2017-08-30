@@ -68,6 +68,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => RealImoveis\Models\Usuario::class,
+            'table' => 'usuarios',
         ],
 
         // 'users' => [

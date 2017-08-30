@@ -2,9 +2,9 @@
 
 namespace RealImoveis\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustRole;
 
-class Perfis extends Model
+class Perfis extends EntrustRole
 {
     //
 }
