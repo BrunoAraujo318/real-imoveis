@@ -71,6 +71,16 @@
 				        </div>
 		        	</div>
 		        </div>
+		        <div class="col s12 m4">
+		        	<div class="card">
+				        <div class="card-image">
+		              		<a href="#"><img src="{{ asset('img/icone-contrato.jpg') }}"></a>
+					            <div class="card-action">
+					              <a href="#">Gerar Contato</a>
+					            </div>
+				        </div>
+		        	</div>
+		        </div>
 	    	</div>
 	    </main>
 			<!-- <li><a href="{{ route('admin.papel') }}">Papéis</a></li> -->
