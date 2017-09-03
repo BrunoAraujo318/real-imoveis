@@ -5,23 +5,12 @@
 	<label>Ordem</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="titulo" class="validate" value="{{ isset($registro->titulo) ? $registro->titulo : '' }}">
+	<input type="text" name="nome" class="validate" value="{{ isset($registro->nome) ? $registro->nome : '' }}">
 	<label>Título</label>
 </div>
 <div class="input-field col s12">
 	<input type="text" name="descricao" class="validate" value="{{ isset($registro->descricao) ? $registro->descricao : '' }}">
 	<label>Descrição</label>
-</div>
-<div class="input-field col s12">
-	<input type="text" name="link" class="validate" value="{{ isset($registro->link) ? $registro->link : '' }}">
-	<label>Link</label>
-</div>
-<div class="input-field col s12">
-	<select name="publicado">
-		<option value="sim" {{(isset($registro->publicado) && $registro->publicado == 'sim' ? 'selected' : '')}}">Sim</option>
-		<option value="nao" {{(isset($registro->publicado) && $registro->publicado == 'nao' ? 'selected' : '')}}">Não</option>
-	</select>
-	<label>Publicado</label>
 </div>
 <div class="row">
 	<div class="file-field input-field col m6 s12">

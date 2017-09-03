@@ -24,7 +24,6 @@
 						<th>Ordem</th>
 						<th>Título</th>					
 						<th>Descrição</th>
-						<th>Publicado</th>
 						<th>Imagem</th>				
 						<th>Ação</th>
 					</tr>
@@ -33,9 +32,8 @@
 				@foreach($registros as $registro)
 					<tr>
 						<td>{{ $registro->ordem }}</td>
-						<td>{{ $registro->titulo }}</td>
+						<td>{{ $registro->nome }}</td>
 						<td>{{ $registro->descricao }}</td>
-						<td>{{ $registro->publicado }}</td>
 						<td><img width="100" src="{{asset($registro->imagem)}}"></td>
 						<td>
 							<a class="btn blue" href="{{ route('admin.slides.editar', $registro->id) }}">Editar</a>
