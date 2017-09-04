@@ -4,18 +4,18 @@ namespace RealImoveis\Http\Controllers\Usuario;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\User;
+use RealImoveis\Models\Usuario;
 
 class CadastroPerfilController extends Controller
 {
 	public function index(){
-		$usuarios = User::all();
+		$usuarios = Usuario::all();
        	return view('cadastro.index', compact('usuarios'));
 	}
 
     public function salvar(Request $request){
         $dados = $request->all();
-        $usuarios = new User();
+        $usuarios = new Usuario();
         $usuarios->name = $dados['name'];
         $usuarios->email = $dados['email'];
         $usuarios->password = bcrypt($dados['password']);
@@ -33,17 +33,17 @@ class CadastroPerfilController extends Controller
     }
 
     public function editarAdm($id){
-        $registro = User::find($id);
+        $registro = Usuario::find($id);
         return view('login.principal_adm.perfil.editar_perfil', compact('registro'));
     }
 
     public function editarUser($id){
-        $registro = User::find($id);
+        $registro = Usuario::find($id);
         return view('login.principal_usuario.perfil.editar_perfil', compact('registro'));
     }
 
     public function atualizarAdm(Request $request, $id){
-        $usuario = User::find($id);
+        $usuario = Usuario::find($id);
         $dados = $request->all();
         if(isset($dados['password']) && strlen($dados['password']) > 5 ){
             $dados['password'] = bcrypt($dados['password']);
@@ -58,7 +58,7 @@ class CadastroPerfilController extends Controller
     }
 
        public function atualizarUser(Request $request, $id){
-        $usuario = User::find($id);
+        $usuario = Usuario::find($id);
         $dados = $request->all();
         if(isset($dados['password']) && strlen($dados['password']) > 5 ){
             $dados['password'] = bcrypt($dados['password']);
@@ -73,13 +73,13 @@ class CadastroPerfilController extends Controller
     }
 
     public function deletarAdm($id){
-        User::find($id)->delete();
+        Usuario::find($id)->delete();
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('login');
     }
 
     public function deletarUser($id){
-        User::find($id)->delete();
+        Usuario::find($id)->delete();
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('login');
     }

@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
             $table->string('email')->unique()->comment('define o e-mail');
             $table->string('cpf')->comment('define o CPF');
             $table->date('nascimento')->comment('Data de nascimento');
-            $table->string('password');
+            $table->string('senha');
             $table->rememberToken();
             $table->timestamps();
         });

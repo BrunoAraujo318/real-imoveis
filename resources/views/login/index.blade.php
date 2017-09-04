@@ -9,7 +9,7 @@
 		<form action="{{ route('login') }}" method="post">
 			{{ csrf_field() }}
 			@include('login._form')
-			<button type="submit" class="btn blue">Entrar</button>
+			<button id="button" type="submit" class="btn #ffd740 amber accent-2">Entrar</button>
 		</form>
 </div>
 

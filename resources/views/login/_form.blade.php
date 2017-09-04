@@ -3,6 +3,6 @@
 	<label>E-mail</label>
 </div>
 <div class="input-field">
-	<input type="password" name="password" class="validate">
+	<input type="password" name="senha" class="validate">
 	<label>Senha</label>
 </div>

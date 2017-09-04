@@ -28,8 +28,14 @@
 
   #letra a{
     color: #000000;
+    font-weight: 900;
   }
 
   #cadastrar{
-    color: #bbdefb !important;
+    color: #FFD700 !important;
+    font-weight: 900;
+  }
+
+  #button{
+    color: #191970;
   }

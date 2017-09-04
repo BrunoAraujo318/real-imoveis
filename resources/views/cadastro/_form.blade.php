@@ -1,5 +1,5 @@
 <div class="input-field">
-	<input type="text" name="name" class="validate" value="{{ isset($usuario->name) ? $usuario->name : '' }}">
+	<input type="text" name="nome" class="validate" value="{{ isset($usuario->nome) ? $usuario->nome : '' }}">
 	<label>Nome</label>
 </div>
 <div class="input-field">
@@ -7,6 +7,14 @@
 	<label>E-mail</label>
 </div>
 <div class="input-field">
-	<input type="password" name="password" class="validate">
+	<input type="text" name="cpf" class="validate" value="{{ isset($usuario->cpf) ? $usuario->cpf : '' }}">
+	<label>CPF</label>
+</div>
+<div class="input-field">
+	<input type="text" name="nascimento" class="validate" value="{{ isset($usuario->nascimento) ? $usuario->nascimento : '' }}">
+	<label>Data de Nascimento</label>
+</div>
+<div class="input-field">
+	<input type="password" name="senha" class="validate">
 	<label>Senha</label>
 </div>
