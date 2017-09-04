@@ -8,10 +8,10 @@
             @if(Auth::guest())
               <li><a href="{{ route('login') }}">Login</a></li>
             @else
-              <li><a class="dropdown-button" href="#" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-button" href="#" data-activates="dropdown1">{{ Auth::user()->nome }}<i class="material-icons right">arrow_drop_down</i></a></li>
               <li>
                 <ul id="dropdown1" class="dropdown-content">
-                  <li><a href="{{ route('admin.principal') }}">{{ Auth::user()->name }}</a></li>
+                  <li><a href="{{ route('admin.principal') }}">{{ Auth::user()->nome }}</a></li>
                   <li><a href="{{ route('admin.perfil') }}">Perfil</a></li>
                 </ul>
               </li>
@@ -23,14 +23,14 @@
             @if(Auth::guest())
               <li><a href="{{ route('login') }}">Login</a></li>
             @else
-              <li><a class="dropdown-button" href="{{ route('admin.principal') }}" data-activates="dropdown2">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-button" href="{{ route('admin.principal') }}" data-activates="dropdown2">{{ Auth::user()->nome }}<i class="material-icons right">arrow_drop_down</i></a></li>
               <ul id="dropdown2" class="dropdown-content">
-                <li><a href="{{ route('admin.principal') }}">{{ Auth::user()->name }}</a></li>
+                <li><a href="{{ route('admin.principal') }}">{{ Auth::user()->nome }}</a></li>
                 <li><a href="{{ route('admin.perfil') }}">Perfil</a></li>
               </ul>
               <li><a href="{{ route('admin.login.sair') }}">Sair</a></li>
             @endif
           </ul>
-          </div>
+        </div>
     </div>
 </nav>

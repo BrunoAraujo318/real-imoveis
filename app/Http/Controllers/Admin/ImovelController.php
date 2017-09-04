@@ -4,9 +4,9 @@ namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\Imovel;
-use RealImoveis\Tipo;
-use RealImoveis\Cidade;
+use RealImoveis\Models\Imovel;
+use RealImoveis\Models\ImovelTipo;
+use RealImoveis\Models\Cidade;
 
 class ImovelController extends Controller
 {
@@ -21,13 +21,13 @@ class ImovelController extends Controller
     }
 
     public function adicionarAdm(){
-    	$tipos = Tipo::all();
+    	$tipos = ImovelTipo::all();
     	$cidades = Cidade::all();
     	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'cidades'));
     }
 
     public function adicionarUser(){
-    	$tipos = Tipo::all();
+    	$tipos = ImovelTipo::all();
     	$cidades = Cidade::all();
         return view('login.principal_usuario.imoveis.adicionar_imoveis', compact('tipos', 'cidades'));
     }
@@ -102,14 +102,14 @@ class ImovelController extends Controller
 
     public function editarAdm($id){
         $registro = Imovel::find($id);
-        $tipos = Tipo::all();
+        $tipos = ImovelTipo::all();
     	$cidades = Cidade::all();
         return view('login.principal_adm.imoveis.editar_imoveis', compact('registro', 'tipos', 'cidades'));
     }
 
     public function editarUser($id){
         $registro = Imovel::find($id);
-        $tipos = Tipo::all();
+        $tipos = ImovelTipo::all();
     	$cidades = Cidade::all();
         return view('login.principal_usuario.imoveis.editar_imoveis', compact('registro', 'tipos', 'cidades'));    
     }

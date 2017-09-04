@@ -15,11 +15,11 @@ class CreateSlidesTable extends Migration
     {
         Schema::create('slides', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome')->comment('Nome do slide');
-            $table->string('descricao')->comment('descrição referente ao slide');
+            $table->string('nome')->nullable()->comment('Nome do slide');
+            $table->string('descricao')->nullable()->comment('Descrição referente ao slide');
             $table->string('imagem')->comment('Adicionar a imagem');
-            $table->integer('ordem')->comment('Ordem de apresentção das imagens do slide');
-            
+            $table->integer('ordem')->nullable()->comment('Ordem de apresentção das imagens do slide');
+            $table->timestamps();
         });
     }
 

@@ -4,7 +4,7 @@ namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\Slide;
+use RealImoveis\Models\Slide;
 
 class SlideController extends Controller
 {
