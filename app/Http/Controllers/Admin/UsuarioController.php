@@ -3,8 +3,7 @@
 namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
-use RealImoveis\Http\Requests;
+use RealImoveis\Http\Requests\UsuarioRequest;
 use RealImoveis\Http\Controllers\Controller;
 use Auth;
 use RealImoveis\Models\Usuario;
@@ -53,6 +52,7 @@ class UsuarioController extends Controller
     public function sair()
     {
         Auth::logout();
+
         return redirect()->route('login');
     }
 
@@ -78,13 +78,11 @@ class UsuarioController extends Controller
     /**
      * Salva um novo usuario na base de dados.
      * 
-     * @param  Request $request
+     * @param UsuarioRequest $request
      */
-    public function salvar(Request $request)
+    public function salvar(UsuarioRequest $request)
     {
         $dados = $request->all();
-
-        dd($dados);
 
         $usuarios = new Usuario($dados);
         $usuarios->password = bcrypt($dados['password']);
@@ -94,19 +92,32 @@ class UsuarioController extends Controller
         return redirect()->route('admin.usuarios');
     }
 
+    /**
+     * Renderiza a interface, com os dados do usuario.
+     * 
+     * @param $id
+     */
     public function editar($id)
     {
         $usuario = $this->usuarioModel->find($id);
+
         return view('login.principal_adm.usuarios.editar_usuarios', compact('usuario'));
     }
 
-    public function atualizar(Request $request, $id){
+    /**
+     * Atualiza os dado do usuario.
+     * 
+     * @param Request $request
+     * @param $id     
+     */
+    public function atualizar(Request $request, $id)
+    {
         $usuario = $this->usuarioModel->find($id);
         $dados = $request->all();
 
         if(isset($dados['password']) && strlen($dados['password']) > 5 ){
             $dados['password'] = bcrypt($dados['password']);
-        }else{
+        } else {
             unset($dados['password']);
         }
 
@@ -116,6 +127,11 @@ class UsuarioController extends Controller
         return redirect()->route('admin.usuarios');
     }
 
+    /**
+     * Remove um usuario, conforme $id informado.
+     * 
+     * @param $id
+     */
     public function deletar($id)
     {
         $this->usuarioModel->find($id)->delete();

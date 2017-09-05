@@ -14,31 +14,20 @@ class Usuario extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['nome', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
     
-    public function Telefone()
+    /**
+     * Retorna so telefones referente ao usuario.
+     */
+    public function telefone()
     {
     	return $this->hasMany('RealImoveis\Telefone','telefones');
-    }
-
-    public function Aquisicao()
-    {
-    	return $this->hasMany('RealImoveis\Aquisicao','aquisicoes');
-    }
-
-    public function Avaliacao()
-    {
-    	return $this->hasMany('RealImoveis\Avaliacao','avaliacoes');
     }
 }
