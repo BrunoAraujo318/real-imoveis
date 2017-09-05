@@ -23,13 +23,15 @@ class ImovelController extends Controller
     public function adicionarAdm(){
     	$tipos = ImovelTipo::all();
     	$cidades = Cidade::all();
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'cidades'));
+        $registros = Imovel::all();
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'cidades', 'registros'));
     }
 
     public function adicionarUser(){
     	$tipos = ImovelTipo::all();
     	$cidades = Cidade::all();
-        return view('login.principal_usuario.imoveis.adicionar_imoveis', compact('tipos', 'cidades'));
+        $registros = Imovel::all();
+        return view('login.principal_usuario.imoveis.adicionar_imoveis', compact('tipos', 'cidades', 'registros'));
     }
 
     public function salvarAdm(Request $request){

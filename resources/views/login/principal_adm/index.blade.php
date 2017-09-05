@@ -54,16 +54,6 @@
 		        <div class="col s12 m4">
 		        	<div class="card">
 				        <div class="card-image">
-		              		<a href="{{ route('admin.cidades') }}"><img src="{{ asset('img/icone-cidades.png') }}"></a>
-					            <div class="card-action">
-					              <a href="{{ route('admin.cidades') }}">Cidades</a>
-					            </div>					   
-				        </div>
-		        	</div>
-		        </div>
-		        <div class="col s12 m4">
-		        	<div class="card">
-				        <div class="card-image">
 		              		<a href="{{ route('admin.slides') }}"><img src="{{ asset('img/icone-slide.png') }}"></a>
 					            <div class="card-action">
 					              <a href="{{ route('admin.slides') }}">Slides</a>
@@ -74,13 +64,23 @@
 		        <div class="col s12 m4">
 		        	<div class="card">
 				        <div class="card-image">
-		              		<a href="#"><img src="{{ asset('img/icone-contrato.jpg') }}"></a>
+		              		<a href="#"><img src="{{ asset('img/icon-contratos.png') }}"></a>
 					            <div class="card-action">
 					              <a href="#">Gerar Contato</a>
 					            </div>
 				        </div>
 		        	</div>
 		        </div>
+		        <div class="col s12 m4">
+        			<div class="card">
+			        	<div class="card-image">     	
+	              			<a href="#"><img src="{{ asset('img/icone-perfil.png') }}"></a>
+				            	<div class="card-action">
+				              		<a href="#">Gerenciar Perfil</a>
+				            	</div>
+			        	</div>
+		        	</div>
+        		</div>
 	    	</div>
 	    </main>
 			<!-- <li><a href="{{ route('admin.papel') }}">Papéis</a></li> -->

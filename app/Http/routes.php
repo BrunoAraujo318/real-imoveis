@@ -88,36 +88,17 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::put('/admin/imoveis/atualizar/{id}',['as'=>'admin.imoveis.atualizar', 'uses'=>'Admin\ImovelController@atualizarAdm']);
 	Route::get('/admin/imoveis/deletar/{id}', ['as'=>'admin.imoveis.deletar', 'uses'=>'Admin\ImovelController@deletarAdm']);
 
-	Route::get('/principal/imoveis',['as'=>'principal.imoveis', 'uses'=>'Admin\ImovelController@listaUser']);
-	Route::get('/principal/imoveis/adicionar',['as'=>'principal.imoveis.adicionar', 'uses'=>'Admin\ImovelController@adicionarUser']);
-	Route::post('/principal/imoveis/salvar',['as'=>'principal.imoveis.salvar', 'uses'=>'Admin\ImovelController@salvarUser']);
-	Route::get('/principal/imoveis/editar/{id}',['as'=>'principal.imoveis.editar', 'uses'=>'Admin\ImovelController@editarUser']);
-	Route::put('/principal/imoveis/atualizar/{id}',['as'=>'principal.imoveis.atualizar', 'uses'=>'Admin\ImovelController@atualizarUser']);
-	Route::get('/principal/imoveis/deletar/{id}', ['as'=>'principal.imoveis.deletar', 'uses'=>'Admin\ImovelController@deletarUser']);
-
-	Route::get('/admin/galeria/{id}',['as'=>'admin.galeria', 'uses'=>'Admin\GaleriaController@listaAdm']);
-	Route::get('/admin/galeria/adicionar/{id}',['as'=>'admin.galeria.adicionar', 'uses'=>'Admin\GaleriaController@adicionarAdm']);
-	Route::post('/admin/galeria/salvar/{id}',['as'=>'admin.galeria.salvar', 'uses'=>'Admin\GaleriaController@salvarAdm']);
-	Route::get('/admin/galeria/editar/{id}',['as'=>'admin.galeria.editar', 'uses'=>'Admin\GaleriaController@editarAdm']);
-	Route::put('/admin/galeria/atualizar/{id}',['as'=>'admin.galeria.atualizar', 'uses'=>'Admin\GaleriaController@atualizarAdm']);
-	Route::get('/admin/galeria/deletar/{id}', ['as'=>'admin.galeria.deletar', 'uses'=>'Admin\GaleriaController@deletarAdm']);
-
-	Route::get('/principal/galeria/{id}',['as'=>'principal.galeria', 'uses'=>'Admin\GaleriaController@listaUser']);
-	Route::get('/principal/galeria/adicionar/{id}',['as'=>'principal.galeria.adicionar', 'uses'=>'Admin\GaleriaController@adicionarUser']);
-	Route::post('/principal/galeria/salvar/{id}',['as'=>'principal.galeria.salvar', 'uses'=>'Admin\GaleriaController@salvarUser']);
-	Route::get('/principal/galeria/editar/{id}',['as'=>'principal.galeria.editar', 'uses'=>'Admin\GaleriaController@editarUser']);
-	Route::put('/principal/galeria/atualizar/{id}',['as'=>'principal.galeria.atualizar', 'uses'=>'Admin\GaleriaController@atualizarUser']);
-	Route::get('/principal/galeria/deletar/{id}', ['as'=>'principal.galeria.deletar', 'uses'=>'Admin\GaleriaController@deletarUser']);
+	Route::get('/admin/galeria',['as'=>'admin.galeria', 'uses'=>'Admin\GaleriaController@listaAdm']);
+	Route::get('/admin/galeria/adicionar',['as'=>'admin.galeria.adicionar', 'uses'=>'Admin\GaleriaController@adicionarAdm']);
+	Route::post('/admin/galeria/salvar',['as'=>'admin.galeria.salvar', 'uses'=>'Admin\GaleriaController@salvarAdm']);
+	Route::get('/admin/galeria/editar',['as'=>'admin.galeria.editar', 'uses'=>'Admin\GaleriaController@editarAdm']);
+	Route::put('/admin/galeria/atualizar',['as'=>'admin.galeria.atualizar', 'uses'=>'Admin\GaleriaController@atualizarAdm']);
+	Route::get('/admin/galeria/deletar', ['as'=>'admin.galeria.deletar', 'uses'=>'Admin\GaleriaController@deletarAdm']);
 	
 	Route::get('/admin/perfil/',['as'=>'admin.perfil', 'uses'=>'Usuario\CadastroPerfilController@indexAdm']);
 	Route::get('/admin/perfil/editar/{id}',['as'=>'admin.perfil.editar', 'uses'=>'Usuario\CadastroPerfilController@editarAdm']);
 	Route::put('/admin/perfil/atualizar/{id}',['as'=>'admin.perfil.atualizar', 'uses'=>'Usuario\CadastroPerfilController@atualizarAdm']);
 	Route::get('/admin/perfil/deletar/{id}', ['as'=>'admin.perfil.deletar', 'uses'=>'Usuario\CadastroPerfilController@deletarAdm']);
-
-	Route::get('/principal/perfil/',['as'=>'principal.perfil', 'uses'=>'Usuario\CadastroPerfilController@indexUser']);
-	Route::get('/principal/perfil/editar/{id}',['as'=>'principal.perfil.editar', 'uses'=>'Usuario\CadastroPerfilController@editarUser']);
-	Route::put('/principal/perfil/atualizar/{id}',['as'=>'principal.perfil.atualizar', 'uses'=>'Usuario\CadastroPerfilController@atualizarUser']);
-	Route::get('/principal/perfil/deletar/{id}', ['as'=>'principal.perfil.deletar', 'uses'=>'Usuario\CadastroPerfilController@deletarUser']);
 
 	Route::get('/admin/slides',['as'=>'admin.slides', 'uses'=>'Admin\SlideController@listaAdm']);
 	Route::get('/admin/slides/adicionar',['as'=>'admin.slides.adicionar', 'uses'=>'Admin\SlideController@adicionarAdm']);

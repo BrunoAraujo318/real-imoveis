@@ -22,25 +22,22 @@
 				<thead>
 					<tr>
 						<th>Título</th>					
-						<th>Condominio</th>
-						<th>Cidade</th>				
+						<th>Descrição</th>					
+						<th>Categoria e Serviços</th>			
 						<th>Valor</th>
-						<th>Imagem</th>
-						<th>Publicado</th>			
+						<th>Imagem</th>		
 						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
 				@foreach($registros as $registro)
 					<tr>
-						<td>{{ $registro->titulo }}</td>
-						<td>{{ $registro->condominio }}</td>
-						<td>{{ $registro->cidade->nome }}</td>
+						<td>{{ $registro->nome }}</td>
+						<td>{{ $registro->descricao }}</td>
+						<td>{{ $registro->categoria_sevico }}</td>
 						<td>R$ {{ number_format($registro->valor,2,",",".") }}</td>
 						<td><img width="100" src="{{asset($registro->imagem)}}"></td>
-						<td>{{ $registro->publicar }}</td>
 						<td>
-							<a class="btn green" href="{{ route('admin.galeria', $registro->id) }}">Galeria</a>
 							<a class="btn blue" href="{{ route('admin.imoveis.editar', $registro->id) }}">Editar</a>
 							<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imoveis.deletar', $registro->id) }}'}">Deletar</a>
 						</td>
