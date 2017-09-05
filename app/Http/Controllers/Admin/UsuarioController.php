@@ -31,7 +31,7 @@ class UsuarioController extends Controller
     {
     	$dados = $request->all();
 
-        $autenticado = Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']]);
+        $autenticado = Auth::attempt(['email' => $dados['email'], 'password' => $dados['senha']]);
 
         if ($autenticado) {
             if (Auth::user()->hasRole('admin')) {
@@ -83,9 +83,10 @@ class UsuarioController extends Controller
     public function salvar(Request $request)
     {
         $dados = $request->all();
-        $usuarios = new Usuario();
-        $usuarios->name = $dados['name'];
-        $usuarios->email = $dados['email'];
+
+        dd($dados);
+
+        $usuarios = new Usuario($dados);
         $usuarios->password = bcrypt($dados['password']);
         $usuarios->save();
 

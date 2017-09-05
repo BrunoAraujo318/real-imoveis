@@ -1,5 +1,5 @@
 <div class="input-field">
-	<input type="text" name="name" class="validate" value="{{ isset($usuario->name) ? $usuario->name : '' }}">
+	<input type="text" name="nome" class="validate" value="{{ isset($usuario->name) ? $usuario->nome : '' }}">
 	<label>Nome</label>
 </div>
 <div class="input-field">
