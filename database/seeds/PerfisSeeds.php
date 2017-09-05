@@ -41,6 +41,14 @@ class PerfisSeeds extends Seeder
                 'usuario_id' => 3,
                 'perfil_id' => 1
             ],
+            [
+                'usuario_id' => 4,
+                'perfil_id' => 1
+            ],
+            [
+                'usuario_id' => 5,
+                'perfil_id' => 1
+            ],
         ]);
     }
 }
