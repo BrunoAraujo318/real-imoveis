@@ -31,7 +31,7 @@
 			@foreach($usuarios as $usuario)
 				<tr>
 					<td>{{ $usuario->id }}</td>
-					<td>{{ $usuario->name }}</td>
+					<td>{{ $usuario->nome }}</td>
 					<td>{{ $usuario->email }}</td>
 					<td>
 						<a class="btn blue" href="{{ route('admin.usuarios.editar', $usuario->id) }}">Editar</a>
