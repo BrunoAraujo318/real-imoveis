@@ -22,6 +22,7 @@
 		<form action="{{ route('admin.imoveis.salvar') }}" method="post" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			@include('login.principal_adm.imoveis._form')
+			<a class="btn green" href="{{ route('admin.galeria', $registro->id) }}">Galeria</a>
 			<button class="btn blue">Salvar</button>
 		</form>
 	</div>
