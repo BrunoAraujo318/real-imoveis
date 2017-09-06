@@ -74,9 +74,9 @@
 		        <div class="col s12 m3">
         			<div class="card">
 			        	<div class="card-image">     	
-	              			<a href="#"><img src="{{ asset('img/icone-perfil.png') }}"></a>
+	              			<a href="{{ route('admin.papel') }}"><img src="{{ asset('img/icone-perfil.png') }}"></a>
 				            	<div class="card-action">
-				              		<a href="#">Gerenciar Perfil</a>
+				              		<a href="{{ route('admin.papel') }}">Gerenciar Perfil</a>
 				            	</div>
 			        	</div>
 		        	</div>

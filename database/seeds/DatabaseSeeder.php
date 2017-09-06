@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PaginasSeeds::class);
         $this->call(PermissoesSeeds::class);
         $this->call(PerfisSeeds::class);
+        $this->call(SlideSeeds::class);
     }
 }

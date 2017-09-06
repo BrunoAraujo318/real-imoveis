@@ -5,6 +5,7 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a target="_blanck" href="{{ route('site.home') }}">Home</a></li>
+            <li><a target="_blanck" href="{{ route('admin.principal') }}">Menu Principal</a></li>
             @if(Auth::guest())
               <li><a href="{{ route('login') }}">Login</a></li>
             @else
@@ -20,6 +21,7 @@
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a target="_blanck" href="{{ route('site.home') }}">Home</a></li>
+            <li><a target="_blanck" href="{{ route('admin.principal') }}">Menu Principal</a></li>
             @if(Auth::guest())
               <li><a href="{{ route('login') }}">Login</a></li>
             @else

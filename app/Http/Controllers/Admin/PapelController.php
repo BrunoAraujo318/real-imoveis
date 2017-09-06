@@ -4,64 +4,87 @@ namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
-use RealImoveis\Papel;
-use RealImoveis\Permissao;
+use RealImoveis\Models\Perfis;
+use RealImoveis\Models\Permissao;
 
 class PapelController extends Controller
 {
-    public function listaAdm(){
-        //if(!auth()->user()->can('papel_listar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-    	$registros = Papel::all();
-    	return view('login.principal_adm.papel.lista_papeis', compact('registros'));
+    private $perfilModel;
+    private $permissaoModel;
+
+    /**
+     * Inicializas as dependencias da classe.
+     */
+    public function __construct()
+    {
+        $this->perfilModel = new Perfis();
+        $this->permissaoModel = new Permissao();
     }
 
-    public function adicionarAdm(){
-        //if(!auth()->user()->can('papel_adicionar')){            
-          // return redirect()->route('admin.principal');
-        //}
+    /**
+     * Listagem de perfil.
+     * 
+     * @return view
+     */
+    public function listaAdm()
+    {
+    	$papeis = $this->perfilModel->all();
+
+    	return view('login.principal_adm.papel.lista_papeis', compact('papeis'));
+    }
+
+    /**
+     * Renderiza a interface de papeis.
+     */
+    public function adicionarAdm()
+    {
     	return view('login.principal_adm.papel.adicionar_papeis');
     }
 
-    public function salvarAdm(Request $request){
-        //if(!auth()->user()->can('papel_adicionar')){            
-          //  return redirect()->route('admin.principal');
-        //}
-    	Papel::create($request->all());
+    /**
+     * Salva um novo papel.
+     * 
+     * @param  Request $request
+     */
+    public function salvarAdm(Request $request)
+    {
+    	$this->perfilModel->create($request->all());
+
     	return redirect()->route('admin.papel');
     }
 
-    public function editarAdm($id){
-        //if(!auth()->user()->can('papel_editar')){            
-          //  return redirect()->route('admin.principal');
-        }
-    	//if(Papel::find($id)->nome == "admin"){
-    		//return redirect()->route('admin.papel');
-    	//}
-    	$registro = Papel::find($id);
-    	return view('login.principal_adm.papel.editar_papeis', compact('registro'));
+    /**
+     * Renderiza a interface, de edição de papel.
+     * 
+     * @param $id
+     */
+    public function editarAdm($id)
+    {
+    	$papeis = $this->perfilModel->find($id);
+
+    	return view('login.principal_adm.papel.editar_papeis', compact('papeis'));
     }
 
-    public function atualizarAdm(Request $request, $id){
-        if(!auth()->user()->can('papel_editar')){            
-            return redirect()->route('admin.principal');
-        }
-    	if(Papel::find($id)->nome == "admin"){
+    public function atualizarAdm(Request $request, $id)
+    {
+    	if ($this->perfilModel->find($id)->nome == "admin") {
     		return redirect()->route('admin.papel');
     	}
-    	Papel::find($id)->update($request->all());
+
+    	$this->perfilModel->find($id)->update($request->all());
+
     	return redirect()->route('admin.papel');
     }
 
-    public function deletarAdm($id){
-        if(!auth()->user()->can('papel_deletar')){            
-            return redirect()->route('admin.principal');
-        }
-    	if(Papel::find($id)->nome == "admin"){
-    		return redirect()->route('admin.papel');
-    	}
-    	Papel::find($id)->delete();
+    /**
+     * Remove um papel.
+     * 
+     * @param $id
+     */
+    public function deletarAdm($id)
+    {
+        $this->perfilModel->destroy($id);
+
     	return redirect()->route('admin.papel');
     }
 
@@ -84,13 +107,16 @@ class PapelController extends Controller
         return redirect()->back();
     }
 
-    public function removerPermissao($id, $id_permissao){
-        if(!auth()->user()->can('papel_editar')){            
-            return redirect()->route('admin.principal');
-        }
-        $papel = Papel::find($id);
-        $permissao = Permissao::find($id_permissao);
-        $papel->removerPermissao($permissao);
+    /**
+     * Excluir papel.
+     * 
+     * @param $id
+     * @param $id_permissao
+     */
+    public function removerPermissao($id, $id_permissao)
+    {
+        $papel = $this->perfilModel->find($id);
+
         return redirect()->back();
     }
 }
