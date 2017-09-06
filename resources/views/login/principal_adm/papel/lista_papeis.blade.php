@@ -27,19 +27,19 @@
 				</tr>
 			</thead>
 			<tbody>
-			@foreach($registros as $registro)
+			@foreach($papeis as $papel)
 				<tr>
-					<td>{{ $registro->nome }}</td>
-					<td>{{ $registro->descricao }}</td>
+					<td>{{ $papel->name }}</td>
+					<td>{{ $papel->description }}</td>
 					<td>
-						@if($registro->nome != 'admin')
-						<a class="btn blue" href="{{ route('admin.papel.editar', $registro->id) }}">Editar</a>
+						@if($papel->name != 'admin')
+						<a class="btn blue" href="{{ route('admin.papel.editar', $papel->id) }}">Editar</a>
 						@else
 						<a class="btn blue disabled">Editar</a>
 						@endif
-						<a class="btn blue" href="{{ route('admin.papel.permissao', $registro->id) }}">Permissão</a>
-						@if($registro->nome != 'admin')
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.papel.deletar', $registro->id) }}'}">Deletar</a>
+						<a class="btn blue" href="{{ route('admin.papel.permissao', $papel->id) }}">Permissão</a>
+						@if($papel->name != 'admin')
+						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.papel.deletar', $papel->id) }}'}">Deletar</a>
 						@else
 						<a class="btn blue disabled">Deletar</a>
 						@endif

@@ -30,7 +30,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{ Auth::user()->name }}</td>
+					<td>{{ Auth::user()->nome }}</td>
 					<td>{{ Auth::user()->email }}</td>
 					<td>
 						<a class="btn blue" href="{{ route('admin.perfil.editar', Auth::user()->id) }}">Editar Perfil</a>
