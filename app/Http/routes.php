@@ -63,9 +63,7 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('/admin/paginas',['as'=>'admin.paginas', 'uses'=>'Admin\PaginasController@index']);
 	Route::get('/admin/paginas/editar/{id}',['as'=>'admin.paginas.editar', 'uses'=>'Admin\PaginasController@editar']);
 	Route::put('/admin/paginas/atualizar/{id}',['as'=>'admin.paginas.atualizar', 'uses'=>'Admin\PaginasController@atualizar']);
-	Route::get('/admin/perfil',['as'=>'admin.perfil', function(){
-		return view('login.principal_adm.perfil');
-	}]);
+	
 
 	Route::get('/admin/imovel/tipos',['as'=>'admin.imovel.tipos', 'uses'=>'Admin\TipoController@listaAdm']);
 	Route::get('/admin/imovel/tipos/adicionar',['as'=>'admin.imovel.tipos.adicionar', 'uses'=>'Admin\TipoController@adicionarAdm']);
@@ -88,13 +86,8 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::put('/admin/imoveis/atualizar/{id}',['as'=>'admin.imoveis.atualizar', 'uses'=>'Admin\ImovelController@atualizarAdm']);
 	Route::get('/admin/imoveis/deletar/{id}', ['as'=>'admin.imoveis.deletar', 'uses'=>'Admin\ImovelController@deletarAdm']);
 
-	Route::get('/admin/galeria',['as'=>'admin.galeria', 'uses'=>'Admin\GaleriaController@listaAdm']);
-	Route::get('/admin/galeria/adicionar',['as'=>'admin.galeria.adicionar', 'uses'=>'Admin\GaleriaController@adicionarAdm']);
-	Route::post('/admin/galeria/salvar',['as'=>'admin.galeria.salvar', 'uses'=>'Admin\GaleriaController@salvarAdm']);
-	Route::get('/admin/galeria/editar',['as'=>'admin.galeria.editar', 'uses'=>'Admin\GaleriaController@editarAdm']);
-	Route::put('/admin/galeria/atualizar',['as'=>'admin.galeria.atualizar', 'uses'=>'Admin\GaleriaController@atualizarAdm']);
-	Route::get('/admin/galeria/deletar', ['as'=>'admin.galeria.deletar', 'uses'=>'Admin\GaleriaController@deletarAdm']);
-	
+	Route::get('/admin/galeria',['as'=>'admin.galeria', 'uses'=>'Admin\GaleriaController@galeria']);
+
 	Route::get('/admin/perfil/',['as'=>'admin.perfil', 'uses'=>'Usuario\CadastroPerfilController@indexAdm']);
 	Route::get('/admin/perfil/editar/{id}',['as'=>'admin.perfil.editar', 'uses'=>'Usuario\CadastroPerfilController@editarAdm']);
 	Route::put('/admin/perfil/atualizar/{id}',['as'=>'admin.perfil.atualizar', 'uses'=>'Usuario\CadastroPerfilController@atualizarAdm']);

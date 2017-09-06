@@ -11,7 +11,7 @@
 	<div class="row">
 		<main>
 	      	<div class="container">
-        		<div class="col s12 m4">
+        		<div class="col s12 m3">
         			<div class="card">
 			        	<div class="card-image">     	
 	              			<a href="{{ route('admin.usuarios') }}"><img src="{{ asset('img/icone-usuario.jpg') }}"></a>
@@ -21,7 +21,7 @@
 			        	</div>
 		        	</div>
         		</div>
-	        	<div class="col s12 m4">
+	        	<div class="col s12 m3">
 	        		<div class="card">
 			        	<div class="card-image">
 		              		<a href="{{ route('admin.paginas') }}"><img src="{{ asset('img/icone-pagina.png') }}"></a>
@@ -31,7 +31,7 @@
 			        	</div>
 	        		</div>
 	        	</div>
-	        	<div class="col s12 m4">
+	        	<div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
 		              		 <a href="{{ route('admin.imoveis') }}"><img src="{{ asset('img/icone-imoveis.png') }}"></a>
@@ -41,17 +41,7 @@
 				        </div>
 		        	</div>
 		        </div>
-		        <div class="col s12 m4">
-		        	<div class="card">
-				        <div class="card-image">
-		              		<a href="{{ route('admin.imovel.tipos') }}"><img src="{{ asset('img/icone-tipos.png') }}"></a>
-					            <div class="card-action">
-					              <a href="{{ route('admin.imovel.tipos') }}">Tipos de Imóveis</a>
-					            </div>			    
-				        </div>
-		        	</div>
-		        </div>
-		        <div class="col s12 m4">
+		        <div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
 		              		<a href="{{ route('admin.slides') }}"><img src="{{ asset('img/icone-slide.png') }}"></a>
@@ -61,7 +51,17 @@
 				        </div>
 		        	</div>
 		        </div>
-		        <div class="col s12 m4">
+		        <div class="col s12 m3">
+		        	<div class="card">
+				        <div class="card-image">
+		              		<a href="{{ route('admin.imovel.tipos') }}"><img src="{{ asset('img/icone-tipos.png') }}"></a>
+					            <div class="card-action">
+					              <a href="{{ route('admin.imovel.tipos') }}">Tipos de Imóveis</a>
+					            </div>			    
+				        </div>
+		        	</div>
+		        </div>
+		        <div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
 		              		<a href="#"><img src="{{ asset('img/icon-contratos.png') }}"></a>
@@ -71,7 +71,7 @@
 				        </div>
 		        	</div>
 		        </div>
-		        <div class="col s12 m4">
+		        <div class="col s12 m3">
         			<div class="card">
 			        	<div class="card-image">     	
 	              			<a href="#"><img src="{{ asset('img/icone-perfil.png') }}"></a>
