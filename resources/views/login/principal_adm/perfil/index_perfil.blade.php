@@ -23,7 +23,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Nome</th>
+					<th>nome</th>
 					<th>E-mail</th>
 					<th>Ações</th>
 				</tr>
