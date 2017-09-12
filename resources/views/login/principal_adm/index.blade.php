@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-	<h3 class="center">Perfil Administrador</h3>
+	<h3 class="center">Perfil {{$nomePerfil}}</h3>
 	<div class="row">
 	<div class="divider"></div>
 	<div class="row">

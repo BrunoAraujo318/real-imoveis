@@ -18,6 +18,8 @@ class UsuariosSeeds extends Seeder
                 'email' => 'allangcruz@gmail.com',
                 'cpf' => "111.111.111-11",
                 'nascimento' => '1994-07-14',
+                'endereco' => 'Rua Teste',
+                'contato' => '9 9999-9999',                
                 'password' => bcrypt(123456)
             ],
             [
@@ -25,6 +27,8 @@ class UsuariosSeeds extends Seeder
                 'email' => 'karinahellen@live.com',
                 'cpf' => "222.222.222-22",
                 'nascimento' => '1995-09-03',
+                'endereco' => 'Rua Teste',
+                'contato' => '9 9999-9999',
                 'password' => bcrypt(123456)
             ],
             [
@@ -32,6 +36,8 @@ class UsuariosSeeds extends Seeder
                 'email' => 'bruno_brito318@hotmail.com',
                 'cpf' => "333.333.333-33",
                 'nascimento' => '1994-11-08',
+                'endereco' => 'Rua Teste',
+                'contato' => '9 9999-9999',
                 'password' => bcrypt(123456)
             ],
             [
@@ -39,6 +45,8 @@ class UsuariosSeeds extends Seeder
                 'email' => 'elson314@gmail.com',
                 'cpf' => "444.444.444-44",
                 'nascimento' => '1976-05-09',
+                'endereco' => 'Rua Teste',
+                'contato' => '9 9999-9999',
                 'password' => bcrypt(123456)
             ],
             [
@@ -46,6 +54,17 @@ class UsuariosSeeds extends Seeder
                 'email' => 'saviofg1@hotmail.com',
                 'cpf' => "555.555.555-55",
                 'nascimento' => '1994-08-29',
+                'endereco' => 'Rua Teste',
+                'contato' => '9 9999-9999',
+                'password' => bcrypt(123456)
+            ],
+            [
+                'nome' => 'Jose Figueiredo',
+                'email' => 'jose@hotmail.com',
+                'cpf' => "555.555.555-55",
+                'nascimento' => '1994-08-29',
+                'endereco' => 'Rua Teste',
+                'contato' => '9 9999-9999',
                 'password' => bcrypt(123456)
             ]
         ]); 

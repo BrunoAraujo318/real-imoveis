@@ -41,8 +41,9 @@ Route::group(['middleware'=>'auth'], function(){
 	
 	Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
 
-	Route::get('/admin/principal',['as'=>'admin.principal', function(){
-		return view('login.principal_adm.index');
+	Route::get('/admin/principal',['as'=>'admin.principal', function() {
+		$perfil = Auth::user()->roles;
+		return view('login.principal_adm.index', ['nomePerfil' => $perfil[0]->display_name]);
 	}]);
 
 	Route::get('/principal',['as'=>'usuario.principal', function(){

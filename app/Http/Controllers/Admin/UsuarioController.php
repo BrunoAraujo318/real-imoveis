@@ -33,13 +33,8 @@ class UsuarioController extends Controller
         $autenticado = Auth::attempt(['email' => $dados['email'], 'password' => $dados['senha']]);
 
         if ($autenticado) {
-            if (Auth::user()->hasRole('admin')) {
-        		\Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
-        		return redirect()->route('admin.principal');
-            } else {
-                \Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
-                return redirect()->route('usuario.principal');
-            }
+    		\Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
+    		return redirect()->route('admin.principal');
     	} 
     	
         \Session::flash('mensagem', ['msg'=>'Confira seus Dados!', 'class'=>'red white-text']);
