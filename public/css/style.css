@@ -39,3 +39,8 @@
   #button{
     color: #191970;
   }
+
+  #fonte a{
+    color: #4169E1 !important;
+    font-size: smaller;
+  }
