@@ -26,7 +26,7 @@ class PapelController extends Controller
      * 
      * @return view
      */
-    public function listaAdm()
+    public function lista()
     {
     	$papeis = $this->perfilModel->all();
 
@@ -36,7 +36,7 @@ class PapelController extends Controller
     /**
      * Renderiza a interface de papeis.
      */
-    public function adicionarAdm()
+    public function adicionar()
     {
     	return view('login.principal_adm.papel.adicionar_papeis');
     }
@@ -46,7 +46,7 @@ class PapelController extends Controller
      * 
      * @param  Request $request
      */
-    public function salvarAdm(Request $request)
+    public function salvar(Request $request)
     {
     	$this->perfilModel->create($request->all());
 
@@ -58,14 +58,14 @@ class PapelController extends Controller
      * 
      * @param $id
      */
-    public function editarAdm($id)
+    public function editar($id)
     {
     	$papeis = $this->perfilModel->find($id);
 
     	return view('login.principal_adm.papel.editar_papeis', compact('papeis'));
     }
 
-    public function atualizarAdm(Request $request, $id)
+    public function atualizar(Request $request, $id)
     {
     	if ($this->perfilModel->find($id)->nome == "admin") {
     		return redirect()->route('admin.papel');
@@ -81,7 +81,7 @@ class PapelController extends Controller
      * 
      * @param $id
      */
-    public function deletarAdm($id)
+    public function deletar($id)
     {
         $this->perfilModel->destroy($id);
 

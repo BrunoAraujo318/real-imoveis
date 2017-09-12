@@ -33,7 +33,7 @@ Route::get('/login',['as'=>'login', function(){
 
 Route::post('/login',['as'=>'login', 'uses'=>'Admin\UsuarioController@login']);
 
-Route::get('/cadastro',['as'=>'principal.cadastro', 'uses'=>'Usuario\CadastroPerfilController@index']);
+Route::get('/cadastro',['as'=>'principal.cadastro', 'uses'=>'Usuario\CadastroPerfilController@indexCadastro']);
 
 Route::post('/cadastro/salvar',['as'=>'principal.cadastro.salvar', 'uses'=>'Usuario\CadastroPerfilController@salvar']);
 
@@ -44,10 +44,6 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('/admin/principal',['as'=>'admin.principal', function() {
 		$perfil = Auth::user()->roles;
 		return view('login.principal_adm.index', ['nomePerfil' => $perfil[0]->display_name]);
-	}]);
-
-	Route::get('/principal',['as'=>'usuario.principal', function(){
-		return view('login.principal_usuario.index');
 	}]);
 
 	Route::get('/admin/usuarios',['as'=>'admin.usuarios', 'uses'=>'Admin\UsuarioController@lista']);
@@ -66,40 +62,31 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::put('/admin/paginas/atualizar/{id}',['as'=>'admin.paginas.atualizar', 'uses'=>'Admin\PaginasController@atualizar']);
 	
 
-	Route::get('/admin/imovel/tipos',['as'=>'admin.imovel.tipos', 'uses'=>'Admin\TipoController@listaAdm']);
-	Route::get('/admin/imovel/tipos/adicionar',['as'=>'admin.imovel.tipos.adicionar', 'uses'=>'Admin\TipoController@adicionarAdm']);
-	Route::post('/admin/imovel/tipos/salvar',['as'=>'admin.imovel.tipos.salvar', 'uses'=>'Admin\TipoController@salvarAdm']);
-	Route::get('/admin/imovel/tipos/editar/{id}',['as'=>'admin.imovel.tipos.editar', 'uses'=>'Admin\TipoController@editarAdm']);
-	Route::put('/admin/imovel/tipos/atualizar/{id}',['as'=>'admin.imovel.tipos.atualizar', 'uses'=>'Admin\TipoController@atualizarAdm']);
-	Route::get('/admin/imovel/tipos/deletar/{id}', ['as'=>'admin.imovel.tipos.deletar', 'uses'=>'Admin\TipoController@deletarAdm']);
+	Route::get('/admin/imovel/tipos',['as'=>'admin.imovel.tipos', 'uses'=>'Admin\TipoController@lista']);
+	Route::get('/admin/imovel/tipos/adicionar',['as'=>'admin.imovel.tipos.adicionar', 'uses'=>'Admin\TipoController@adicionar']);
+	Route::post('/admin/imovel/tipos/salvar',['as'=>'admin.imovel.tipos.salvar', 'uses'=>'Admin\TipoController@salvar']);
+	Route::get('/admin/imovel/tipos/editar/{id}',['as'=>'admin.imovel.tipos.editar', 'uses'=>'Admin\TipoController@editar']);
+	Route::put('/admin/imovel/tipos/atualizar/{id}',['as'=>'admin.imovel.tipos.atualizar', 'uses'=>'Admin\TipoController@atualizar']);
+	Route::get('/admin/imovel/tipos/deletar/{id}', ['as'=>'admin.imovel.tipos.deletar', 'uses'=>'Admin\TipoController@deletar']);
 
-	Route::get('/admin/cidades',['as'=>'admin.cidades', 'uses'=>'Admin\CidadeController@listaAdm']);
-	Route::get('/admin/cidades/adicionar',['as'=>'admin.cidades.adicionar', 'uses'=>'Admin\CidadeController@adicionarAdm']);
-	Route::post('/admin/cidades/salvar',['as'=>'admin.cidades.salvar', 'uses'=>'Admin\CidadeController@salvarAdm']);
-	Route::get('/admin/cidades/editar/{id}',['as'=>'admin.cidades.editar', 'uses'=>'Admin\CidadeController@editarAdm']);
-	Route::put('/admin/cidades/atualizar/{id}',['as'=>'admin.cidades.atualizar', 'uses'=>'Admin\CidadeController@atualizarAdm']);
-	Route::get('/admin/cidades/deletar/{id}', ['as'=>'admin.cidades.deletar', 'uses'=>'Admin\CidadeController@deletarAdm']);
+	Route::get('/admin/imoveis',['as'=>'admin.imoveis', 'uses'=>'Admin\ImovelController@lista']);
+	Route::get('/admin/imoveis/adicionar',['as'=>'admin.imoveis.adicionar', 'uses'=>'Admin\ImovelController@adicionar']);
+	Route::post('/admin/imoveis/salvar',['as'=>'admin.imoveis.salvar', 'uses'=>'Admin\ImovelController@salvar']);
+	Route::get('/admin/imoveis/editar/{id}',['as'=>'admin.imoveis.editar', 'uses'=>'Admin\ImovelController@editar']);
+	Route::put('/admin/imoveis/atualizar/{id}',['as'=>'admin.imoveis.atualizar', 'uses'=>'Admin\ImovelController@atualizar']);
+	Route::get('/admin/imoveis/deletar/{id}', ['as'=>'admin.imoveis.deletar', 'uses'=>'Admin\ImovelController@deletar']);
 
-	Route::get('/admin/imoveis',['as'=>'admin.imoveis', 'uses'=>'Admin\ImovelController@listaAdm']);
-	Route::get('/admin/imoveis/adicionar',['as'=>'admin.imoveis.adicionar', 'uses'=>'Admin\ImovelController@adicionarAdm']);
-	Route::post('/admin/imoveis/salvar',['as'=>'admin.imoveis.salvar', 'uses'=>'Admin\ImovelController@salvarAdm']);
-	Route::get('/admin/imoveis/editar/{id}',['as'=>'admin.imoveis.editar', 'uses'=>'Admin\ImovelController@editarAdm']);
-	Route::put('/admin/imoveis/atualizar/{id}',['as'=>'admin.imoveis.atualizar', 'uses'=>'Admin\ImovelController@atualizarAdm']);
-	Route::get('/admin/imoveis/deletar/{id}', ['as'=>'admin.imoveis.deletar', 'uses'=>'Admin\ImovelController@deletarAdm']);
+	Route::get('/admin/perfil/',['as'=>'admin.perfil', 'uses'=>'Usuario\CadastroPerfilController@indexPerfil']);
+	Route::get('/admin/perfil/editar/{id}',['as'=>'admin.perfil.editar', 'uses'=>'Usuario\CadastroPerfilController@editar']);
+	Route::put('/admin/perfil/atualizar/{id}',['as'=>'admin.perfil.atualizar', 'uses'=>'Usuario\CadastroPerfilController@atualizar']);
+	Route::get('/admin/perfil/deletar/{id}', ['as'=>'admin.perfil.deletar', 'uses'=>'Usuario\CadastroPerfilController@deletar']);
 
-	Route::get('/admin/galeria',['as'=>'admin.galeria', 'uses'=>'Admin\GaleriaController@galeria']);
-
-	Route::get('/admin/perfil/',['as'=>'admin.perfil', 'uses'=>'Usuario\CadastroPerfilController@indexAdm']);
-	Route::get('/admin/perfil/editar/{id}',['as'=>'admin.perfil.editar', 'uses'=>'Usuario\CadastroPerfilController@editarAdm']);
-	Route::put('/admin/perfil/atualizar/{id}',['as'=>'admin.perfil.atualizar', 'uses'=>'Usuario\CadastroPerfilController@atualizarAdm']);
-	Route::get('/admin/perfil/deletar/{id}', ['as'=>'admin.perfil.deletar', 'uses'=>'Usuario\CadastroPerfilController@deletarAdm']);
-
-	Route::get('/admin/slides',['as'=>'admin.slides', 'uses'=>'Admin\SlideController@listaAdm']);
-	Route::get('/admin/slides/adicionar',['as'=>'admin.slides.adicionar', 'uses'=>'Admin\SlideController@adicionarAdm']);
-	Route::post('/admin/slides/salvar',['as'=>'admin.slides.salvar', 'uses'=>'Admin\SlideController@salvarAdm']);
-	Route::get('/admin/slides/editar/{id}',['as'=>'admin.slides.editar', 'uses'=>'Admin\SlideController@editarAdm']);
-	Route::put('/admin/slides/atualizar/{id}',['as'=>'admin.slides.atualizar', 'uses'=>'Admin\SlideController@atualizarAdm']);
-	Route::get('/admin/slides/deletar/{id}', ['as'=>'admin.slides.deletar', 'uses'=>'Admin\SlideController@deletarAdm']);
+	Route::get('/admin/slides',['as'=>'admin.slides', 'uses'=>'Admin\SlideController@lista']);
+	Route::get('/admin/slides/adicionar',['as'=>'admin.slides.adicionar', 'uses'=>'Admin\SlideController@adicionar']);
+	Route::post('/admin/slides/salvar',['as'=>'admin.slides.salvar', 'uses'=>'Admin\SlideController@salvar']);
+	Route::get('/admin/slides/editar/{id}',['as'=>'admin.slides.editar', 'uses'=>'Admin\SlideController@editar']);
+	Route::put('/admin/slides/atualizar/{id}',['as'=>'admin.slides.atualizar', 'uses'=>'Admin\SlideController@atualizar']);
+	Route::get('/admin/slides/deletar/{id}', ['as'=>'admin.slides.deletar', 'uses'=>'Admin\SlideController@deletar']);
 
 	Route::get('/admin/papel',['as'=>'admin.papel', 'uses'=>'Admin\PapelController@listaAdm']);
 	Route::get('/admin/papel/adicionar',['as'=>'admin.papel.adicionar', 'uses'=>'Admin\PapelController@adicionarAdm']);

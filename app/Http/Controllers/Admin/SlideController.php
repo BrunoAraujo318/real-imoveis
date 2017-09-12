@@ -8,16 +8,16 @@ use RealImoveis\Models\Slide;
 
 class SlideController extends Controller
 {
-    public function listaAdm(){
+    public function lista(){
        $registros = Slide::orderBy('ordem')->get();
        return view('login.principal_adm.slides.lista_slides', compact('registros'));
     }
 
-    public function adicionarAdm(){
+    public function adicionar(){
     	return view('login.principal_adm.slides.adicionar_slides');
     }
 
-    public function salvarAdm(Request $request){
+    public function salvar(Request $request){
         if(Slide::count()){
         	$slides = Slide::orderBy('ordem','desc')->first();
         	$ordemAtual = $slides->ordem;
@@ -43,12 +43,12 @@ class SlideController extends Controller
     	return redirect()->route('admin.slides');
     }
 
-    public function editarAdm($id){
+    public function editar($id){
         $registro = Slide::find($id);
         return view('login.principal_adm.slides.editar_slides', compact('registro'));
     }
 
-    public function atualizarAdm(Request $request, $id){
+    public function atualizar(Request $request, $id){
         $registro = Slide::find($id);
         $dados = $request->all();
         $registro->titulo = $dados['titulo'];
@@ -71,7 +71,7 @@ class SlideController extends Controller
         return redirect()->route('admin.slides');
     }
 
-    public function deletarAdm($id){
+    public function deletar($id){
         $slide = Slide::find($id);
         $slide->delete();
         \Session::flash('mensagem',['msg'=>'Registro deletado com Sucesso!','class'=>'green white-text']);
