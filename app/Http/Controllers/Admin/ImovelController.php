@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
 use RealImoveis\Models\Imovel;
 use RealImoveis\Models\ImovelTipo;
-use RealImoveis\Models\Cidade;
+//use RealImoveis\Models\Cidade;
+use RealImoveis\Models\Imagem;
 
 class ImovelController extends Controller
 {
@@ -17,9 +18,9 @@ class ImovelController extends Controller
 
     public function adicionar(){
     	$tipos = ImovelTipo::all();
-    	$cidades = Cidade::all();
         $registros = Imovel::all();
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'cidades', 'registros'));
+        $imagens = Imagem::all();
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'registros', 'imagens'));
     }
 
 
@@ -34,13 +35,12 @@ class ImovelController extends Controller
         $registro->qtd_visualicoes = 0;
         $registro->url_video = $dados['url_video'];
         $registro->endereco_id = $dados['endereco_id'];
-        $registro->visualizacoes = 0;
-        $registro->cidade_id = $dados['cidade_id'];
+        //$registro->cidade_id = $dados['cidade_id'];
         $registro->tipo_id = $dados['tipo_id'];
         $file = $request->file('imagem');
         if($file){
             $rand = rand(11111,99999);
-            $diretorio = "img/imoveis/".str_slug($dados['titulo'],'_')."/";
+            $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio, $nomeArquivo);
@@ -54,33 +54,26 @@ class ImovelController extends Controller
     public function editar($id){
         $registro = Imovel::find($id);
         $tipos = ImovelTipo::all();
-    	$cidades = Cidade::all();
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('registro', 'tipos', 'cidades'));
+        $imagens = Imagem::all();
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('registro', 'tipos', 'imagens'));
     }
 
     public function atualizar(Request $request, $id){
         $registro = Imovel::find($id);
         $dados = $request->all();
-        $registro->titulo = $dados['titulo'];
+        $registro->nome = $dados['nome'];
         $registro->descricao = $dados['descricao'];
-        $registro->condominio = $dados['condominio'];
-        $registro->endereco = $dados['endereco'];
-        $registro->cep = $dados['cep'];
+        $registro->categoria_servico = $dados['categoria_servico'];
+        $registro->endereco_id = $dados['endereco_id'];
+        $registro->url_video = $dados['url_video'];
         $registro->valor = $dados['valor'];
-        $registro->dormitorios = $dados['dormitorios'];
-        $registro->detalhes = $dados['detalhes'];
-        $registro->publicar = $dados['publicar'];
-        if(isset($dados['mapa']) && trim($dados['mapa']) != ""){
-        	$registro->mapa = trim($dados['mapa']);
-        }else {
-        	$registro->mapa = null;
-        }
-        $registro->cidade_id = $dados['cidade_id'];
+        $registro->qtd_dormitorio = $dados['qtd_dormitorio'];
+        //$registro->cidade_id = $dados['cidade_id'];
         $registro->tipo_id = $dados['tipo_id'];
         $file = $request->file('imagem');
         if($file){
             $rand = rand(11111,99999);
-            $diretorio = "img/imoveis/".str_slug($dados['titulo'],'_')."/";
+            $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio, $nomeArquivo);
