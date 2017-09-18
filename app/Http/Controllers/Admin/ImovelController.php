@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use RealImoveis\Http\Controllers\Controller;
 use RealImoveis\Models\Imovel;
 use RealImoveis\Models\ImovelTipo;
-//use RealImoveis\Models\Cidade;
+use RealImoveis\Models\Cidade;
+use RealImoveis\Models\Endereco;
 use RealImoveis\Models\Imagem;
 
 class ImovelController extends Controller
@@ -20,7 +21,9 @@ class ImovelController extends Controller
     	$tipos = ImovelTipo::all();
         $registros = Imovel::all();
         $imagens = Imagem::all();
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'registros', 'imagens'));
+        $enderecos = Endereco::all();
+        $cidades = Cidade::all();
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'registros', 'imagens', 'enderecos','cidades'));
     }
 
 
@@ -35,16 +38,16 @@ class ImovelController extends Controller
         $registro->qtd_visualicoes = 0;
         $registro->url_video = $dados['url_video'];
         $registro->endereco_id = $dados['endereco_id'];
-        //$registro->cidade_id = $dados['cidade_id'];
+        $registro->cidade_id = $dados['cidade_id'];
         $registro->tipo_id = $dados['tipo_id'];
-        $file = $request->file('imagem');
+        $file = $request->file('imagem_id');
         if($file){
             $rand = rand(11111,99999);
             $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio, $nomeArquivo);
-            $registro->imagem = $diretorio.'/'.$nomeArquivo;
+            $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
         }
         $registro->save();
         \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
@@ -55,7 +58,9 @@ class ImovelController extends Controller
         $registro = Imovel::find($id);
         $tipos = ImovelTipo::all();
         $imagens = Imagem::all();
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('registro', 'tipos', 'imagens'));
+        $enderecos = Endereco::all();
+        $cidades = Cidade::all();
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('registro', 'tipos', 'imagens','enderecos','cidades'));
     }
 
     public function atualizar(Request $request, $id){
@@ -68,16 +73,16 @@ class ImovelController extends Controller
         $registro->url_video = $dados['url_video'];
         $registro->valor = $dados['valor'];
         $registro->qtd_dormitorio = $dados['qtd_dormitorio'];
-        //$registro->cidade_id = $dados['cidade_id'];
+        $registro->cidade_id = $dados['cidade_id'];
         $registro->tipo_id = $dados['tipo_id'];
-        $file = $request->file('imagem');
+        $file = $request->file('imagem_id');
         if($file){
             $rand = rand(11111,99999);
             $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio, $nomeArquivo);
-            $registro->imagem = $diretorio.'/'.$nomeArquivo;
+            $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
         }
         $registro ->update();
         \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
