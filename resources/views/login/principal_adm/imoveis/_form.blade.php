@@ -39,11 +39,11 @@
 </div>
 
 <div class="input-field col s12">
-	<input type="text" name="nome" class="validate" value="{{ isset($registro->nome) ? $registro->nome : '' }}">
+	<input type="text" name="nome" class="validate" value="{{ isset($imagem->nome) ? $imagem->nome : '' }}">
 	<label>Título</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="descricao" class="validate" value="{{ isset($registro->descricao) ? $registro->descricao : '' }}">
+	<input type="text" name="descricao" class="validate" value="{{ isset($imagem->descricao) ? $imagem->descricao : '' }}">
 	<label>Descrição</label>
 </div>
 
@@ -58,7 +58,7 @@
 		</div>		
 	</div>
 	<div class="col m6 s12">
-		<img width="120" src="{{ asset($registro->imagem_principal) }}">
+		<img width="120" src="{{ asset($imagem->imagem_principal) }}">
 	</div>
 </div>
 
