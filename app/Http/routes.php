@@ -38,7 +38,7 @@ Route::get('/cadastro',['as'=>'principal.cadastro', 'uses'=>'Usuario\CadastroPer
 Route::post('/cadastro/salvar',['as'=>'principal.cadastro.salvar', 'uses'=>'Usuario\CadastroPerfilController@salvar']);
 
 Route::group(['middleware'=>'auth'], function(){
-	
+
 	Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
 
 	Route::get('/admin/principal',['as'=>'admin.principal', function() {
@@ -88,12 +88,12 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::put('/admin/slides/atualizar/{id}',['as'=>'admin.slides.atualizar', 'uses'=>'Admin\SlideController@atualizar']);
 	Route::get('/admin/slides/deletar/{id}', ['as'=>'admin.slides.deletar', 'uses'=>'Admin\SlideController@deletar']);
 
-	Route::get('/admin/papel',['as'=>'admin.papel', 'uses'=>'Admin\PapelController@listaAdm']);
-	Route::get('/admin/papel/adicionar',['as'=>'admin.papel.adicionar', 'uses'=>'Admin\PapelController@adicionarAdm']);
-	Route::post('/admin/papel/salvar',['as'=>'admin.papel.salvar', 'uses'=>'Admin\PapelController@salvarAdm']);
-	Route::get('/admin/papel/editar/{id}',['as'=>'admin.papel.editar', 'uses'=>'Admin\PapelController@editarAdm']);
-	Route::put('/admin/papel/atualizar/{id}',['as'=>'admin.papel.atualizar', 'uses'=>'Admin\PapelController@atualizarAdm']);
-	Route::get('/admin/papel/deletar/{id}', ['as'=>'admin.papel.deletar', 'uses'=>'Admin\PapelController@deletarAdm']);
+	Route::get('/admin/papel',['as'=>'admin.papel', 'uses'=>'Admin\PapelController@listar']);
+	Route::get('/admin/papel/adicionar',['as'=>'admin.papel.adicionar', 'uses'=>'Admin\PapelController@adicionar']);
+	Route::post('/admin/papel/salvar',['as'=>'admin.papel.salvar', 'uses'=>'Admin\PapelController@salvar']);
+	Route::get('/admin/papel/editar/{id}',['as'=>'admin.papel.editar', 'uses'=>'Admin\PapelController@editar']);
+	Route::put('/admin/papel/atualizar/{id}',['as'=>'admin.papel.atualizar', 'uses'=>'Admin\PapelController@atualizar']);
+	Route::get('/admin/papel/deletar/{id}', ['as'=>'admin.papel.deletar', 'uses'=>'Admin\PapelController@deletar']);
 
 	Route::get('/admin/papel/permissao/{id}',['as'=>'admin.papel.permissao', 'uses'=>'Admin\PapelController@permissao']);
 	Route::post('/admin/papel/permissao/salvar/{id}',['as'=>'admin.papel.permissao.salvar', 'uses'=>'Admin\PapelController@salvarPermissao']);

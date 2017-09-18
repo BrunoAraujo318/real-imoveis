@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PerfisSeeds::class);
         $this->call(SlideSeeds::class);
         $this->call(ImoveisTiposSeeds::class);
+        $this->call(EstadosSeeds::class);
+        $this->call(CidadesSeeds::class);
     }
 }
