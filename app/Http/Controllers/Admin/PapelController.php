@@ -26,7 +26,7 @@ class PapelController extends Controller
      * 
      * @return view
      */
-    public function lista()
+    public function listar()
     {
     	$papeis = $this->perfilModel->all();
 

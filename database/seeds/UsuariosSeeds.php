@@ -11,7 +11,7 @@ class UsuariosSeeds extends Seeder
      */
      public function run()
     {
-        
+
         DB::table('usuarios')->insert([
             [
                 'nome' => 'Allan Turing',
@@ -19,7 +19,7 @@ class UsuariosSeeds extends Seeder
                 'cpf' => "111.111.111-11",
                 'nascimento' => '1994-07-14',
                 'endereco' => 'Rua Teste',
-                'contato' => '9 9999-9999',                
+                'contato' => '9 9999-9999',
                 'password' => bcrypt(123456)
             ],
             [
@@ -67,6 +67,6 @@ class UsuariosSeeds extends Seeder
                 'contato' => '9 9999-9999',
                 'password' => bcrypt(123456)
             ]
-        ]); 
+        ]);
     }
 }
