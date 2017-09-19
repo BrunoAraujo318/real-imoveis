@@ -23,7 +23,7 @@ class Imovel extends Model
 
     /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
-     * 
+     *
      * @return Imovel
      */
     public function aquisicao()
@@ -33,7 +33,7 @@ class Imovel extends Model
 
     /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
-     * 
+     *
      * @return Imovel
      */
     public function avaliacao()
@@ -43,7 +43,7 @@ class Imovel extends Model
 
     /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
-     * 
+     *
      * @return Imovel
      */
     public function tipo()
@@ -53,11 +53,21 @@ class Imovel extends Model
 
     /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
-     * 
+     *
      * @return Imovel
      */
     public function imagens()
     {
         return $this->haMany('RealImoveis\Imagen','imagens');
     }
-}   
+
+    /**
+     * Retorna os Endereços referente ao Imovel.
+     *
+     * @return Endereco
+     */
+    public function endereco()
+    {
+        return $this->belongsToMany(Endereco::class, 'imoveis_enderecos', 'imovel_id', 'endereco_id');
+    }
+}

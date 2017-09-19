@@ -27,31 +27,51 @@ class ImovelController extends Controller
     }
 
 
-    public function salvar(Request $request){
-        $dados = $request->all();
-        $registro = new Imovel();
-        $registro->nome = $dados['nome'];
-        $registro->descricao = $dados['descricao'];
-        $registro->categoria_servico = $dados['categoria_servico'];
-        $registro->qtd_dormitorio = $dados['qtd_dormitorio'];
-        $registro->valor = $dados['valor'];
-        $registro->qtd_visualicoes = 0;
-        $registro->url_video = $dados['url_video'];
-        $registro->endereco_id = $dados['endereco_id'];
-        $registro->cidade_id = $dados['cidade_id'];
-        $registro->tipo_id = $dados['tipo_id'];
-        $file = $request->file('imagem_id');
-        if($file){
-            $rand = rand(11111,99999);
-            $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
-            $ext = $file->guessClientExtension();
-            $nomeArquivo = "_img_".$rand.".".$ext;
-            $file->move($diretorio, $nomeArquivo);
-            $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
+    public function salvar(Request $request)
+    {
+
+       $this->beginTransaction();
+
+        try {
+
+            // Salva o imovel
+            $imovel = new Imovel($request->get('imovel'));
+            $imovel->save();
+
+            // endereço
+            $endereco = new Endereco($request->get('endereco'));
+            $endereco->save();
+
+            // salvar a relação entre o endereço e imovel
+            $imovel->endereco()->sync([$endereco->id]);
+
+            // imagens
+            $imagens = new Imagem();
+
+            // upload das imagens
+            //dd([$endereco, $imovel]);
+
+
+            /*
+            $file = $request->file('imagem_id');
+            if($file){
+                $rand = rand(11111,99999);
+                $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
+                $ext = $file->guessClientExtension();
+                $nomeArquivo = "_img_".$rand.".".$ext;
+                $file->move($diretorio, $nomeArquivo);
+                $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
+            }
+            $registro->save();
+            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            return redirect()->route('admin.imoveis');
+            */
+            //$this->rollBack();
+            $this->commit();
+        } catch (\Exception $e) {
+            $this->rollBack();
+            throw $e;
         }
-        $registro->save();
-        \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-    	return redirect()->route('admin.imoveis');
     }
 
     public function editar($id){

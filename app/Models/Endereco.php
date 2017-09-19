@@ -29,11 +29,21 @@ class Endereco extends Model
 
     /**
      * Retorna o Cidade da Aquisição
-     * 
+     *
      * @return Cidade
      */
     public function cidade()
     {
     	return $this->belongsTo(Cidade::class);
+    }
+
+    /**
+     * Retorna o Imovel referente ao Endereço.
+     *
+     * @return Imovel
+     */
+    public function imovel()
+    {
+        return $this->belongsToMany(Imovel::class, 'imoveis_enderecos', 'endereco_id', 'imovel_id');
     }
 }

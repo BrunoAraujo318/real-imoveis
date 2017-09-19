@@ -5,7 +5,7 @@ namespace RealImoveis\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Imagem extends Model
-{	
+{
 
 	/**
      * The table associated with the model.
@@ -30,7 +30,7 @@ class Imagem extends Model
 
     /**
      * Retorna o Imovel da Imagem.
-     * 
+     *
      * @return Imovel
      */
     public function imovel()

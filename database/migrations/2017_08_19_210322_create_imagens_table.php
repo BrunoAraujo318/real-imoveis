@@ -16,8 +16,7 @@ class CreateImagensTable extends Migration
         Schema::create('imagens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome')->comment('Nome da imagem');
-            $table->string('imagem_principal')->comment('Link da imagem');
-            $table->string('imagens')->comment('Link da imagem');
+            $table->string('imagem')->comment('Link da imagem');
             $table->string('descricao')->comment('descriçao da imagem');
 
             $table->integer('imovel_id')->unsigned()->comment('Identificador da chave estrangeira do imovel');

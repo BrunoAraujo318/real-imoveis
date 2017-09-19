@@ -21,7 +21,8 @@ class CreateImoveisTable extends Migration
             $table->integer('qtd_dormitorio')->comment('Numero de quartos dispostos pelo imóvel');
             $table->integer('qtd_visualicoes')->comment('Numero de Visualições recebidas pelo anuncio');
             $table->string('url_video')->comment('Local onde sera inserida a url de um video do youtube');
-            $table->integer('categoria_servico')->comment('Categoria do serviço prestado pelo anunciante(Compra\Venda\aluguel etc...)');  
+            $table->integer('categoria_servico')->comment('Categoria do serviço prestado pelo anunciante(Compra\Venda\aluguel etc...)');
+            $table->string('imagem')->comment('Imagem principal do imovel');
 
             $table->integer('imovel_tipo_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do imovel');
             $table->foreign('imovel_tipo_id')->references('id')->on('imoveis_tipos')->onUpdate('cascade')->onDelete('cascade');
