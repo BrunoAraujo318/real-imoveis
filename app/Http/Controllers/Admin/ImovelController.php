@@ -12,25 +12,46 @@ use RealImoveis\Models\Imagem;
 
 class ImovelController extends Controller
 {
-     public function lista(){
-       $registros = Imovel::all();
-       return view('login.principal_adm.imoveis.lista_imoveis', compact('registros'));
+    /**
+     * Contruct of Class.
+     */
+    public function __construct()
+    {
+        $this->imovel = new Imovel();
     }
 
-    public function adicionar(){
+    /**
+     * Lista os imoveis.
+     */
+    public function lista()
+    {
+       $imoveis = $this->imovel->all();
+
+       return view('login.principal_adm.imoveis.lista_imoveis', compact('imoveis'));
+    }
+
+    /**
+     * Renderiza a interface de adicionar imovel.
+     */
+    public function adicionar()
+    {
     	$tipos = ImovelTipo::all();
-        $registros = Imovel::all();
+        $imoveis = Imovel::all();
         $imagens = Imagem::all();
         $enderecos = Endereco::all();
-        $cidades = Cidade::all();
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'registros', 'imagens', 'enderecos','cidades'));
+
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'imoveis', 'imagens', 'enderecos'));
     }
 
-
+    /**
+     * Salva os dados de Imóveis e suas dependencias
+     *
+     * @param  Request $request
+     */
     public function salvar(Request $request)
     {
-
-       $this->beginTransaction();
+        dd($request->all());
+        $this->beginTransaction();
 
         try {
 
@@ -47,10 +68,6 @@ class ImovelController extends Controller
 
             // imagens
             $imagens = new Imagem();
-
-            // upload das imagens
-            //dd([$endereco, $imovel]);
-
 
             /*
             $file = $request->file('imagem_id');
