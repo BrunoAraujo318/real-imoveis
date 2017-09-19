@@ -26,9 +26,18 @@ class ImovelController extends Controller
     	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'registros', 'imagens', 'enderecos','cidades'));
     }
 
-
-    public function salvar(Request $request){
+    /**
+     * Salva os dados de Imóveis e suas dependencias 
+     * 
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function salvar(Request $request)
+    {
         $dados = $request->all();
+
+        dd($dados);
+        /*
         $registro = new Imovel();
         $registro->nome = $dados['nome'];
         $registro->descricao = $dados['descricao'];
@@ -52,6 +61,7 @@ class ImovelController extends Controller
         $registro->save();
         \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
     	return redirect()->route('admin.imoveis');
+        */
     }
 
     public function editar($id){
