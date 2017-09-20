@@ -124,6 +124,12 @@ class ImovelController extends Controller
         return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens','enderecos'));
     }
 
+    /**
+     * Altereação de dados de imoveis.
+     *
+     * @param interger $id
+     * @return view
+     */
     public function atualizar(Request $request, $id)
     {
         $registro = Imovel::find($id);

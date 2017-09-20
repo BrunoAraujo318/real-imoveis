@@ -37,7 +37,7 @@ Route::get('/cadastro',['as'=>'principal.cadastro', 'uses'=>'Usuario\CadastroPer
 
 Route::post('/cadastro/salvar',['as'=>'principal.cadastro.salvar', 'uses'=>'Usuario\CadastroPerfilController@salvar']);
 
-Route::group([/*'middleware'=>'auth'*/], function(){
+Route::group(['middleware'=>'auth'], function(){
 
 	Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
 
