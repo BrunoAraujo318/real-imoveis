@@ -57,6 +57,11 @@ class ImovelController extends Controller
 
             // Salva o imovel
             $imovel = new Imovel($request->get('imovel'));
+
+            if ($request->hasFile('imagem')) {
+                $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
+            }
+
             $imovel->save();
 
             // endereço
@@ -66,28 +71,51 @@ class ImovelController extends Controller
             // salvar a relação entre o endereço e imovel
             $imovel->endereco()->sync([$endereco->id]);
 
+            if ($request->hasFile('imagens')) {
+                $imagens = $request->hasFile('imagens');
+                foreach ($imagens as $index => $imagem) {
+                    $newImagem = new Imagem();
+                    $newImagem->nome = $imagem->getClientOriginalName();
+                    $newImagem->imovel_id = $imovel->id;
+                    $newImagem->imovel_id = $index;
+                }
+            }
+
             // imagens
             $imagens = new Imagem();
 
-            /*
-            $file = $request->file('imagem_id');
-            if($file){
-                $rand = rand(11111,99999);
-                $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
-                $ext = $file->guessClientExtension();
-                $nomeArquivo = "_img_".$rand.".".$ext;
-                $file->move($diretorio, $nomeArquivo);
-                $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
-            }
-            $registro->save();
-            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            return redirect()->route('admin.imoveis');
-            */
-            //$this->rollBack();
             $this->commit();
+            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            //return redirect()->route('admin.imoveis');
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;
+        }
+    }
+
+    /**
+     * Realiza upload de acordo com parametros informados
+     *
+     * @return void
+     */
+    private function uploadImagens($registro, $imagem, $destino)
+    {
+        $imagens = [];
+
+        if (! is_array($imagem)) {
+            array_push($imagens, $imagem);
+        } else {
+            $imagens = $imagem;
+        }
+
+        if (! empty($imagens)) {
+            foreach ($imagens as $imagem) {
+                $rand = date('Ymdhis');
+                $ext = $imagem->guessClientExtension();
+                $nomeArquivo = "_img_".$rand.".".$ext;
+                $imagem->move($destino, $nomeArquivo);
+                $registro->imagem = $destino.$nomeArquivo;
+            }
         }
     }
 
