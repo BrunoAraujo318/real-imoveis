@@ -7,12 +7,15 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/materialize/dist/css/materialize.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-
     <title>Real Imóveis</title>
-
+    <script type="text/javascript">
+    var getPath = function (url) {
+      url = url || '';
     
+      return "{{ asset('') }}"+url;
+    }
+    </script>
 </head>
 <body id="app-layout">
 
@@ -59,6 +62,7 @@
   <script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
   <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
   <script src="{{asset('js/init.js')}}"></script>
+  <script src="{{asset('js/real-imovel.js')}}"></script>
 
 </body>
 </html>

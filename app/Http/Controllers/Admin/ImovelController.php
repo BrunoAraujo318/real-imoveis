@@ -3,10 +3,12 @@
 namespace RealImoveis\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use RealImoveis\Http\Requests\ImovelRequest;
 use RealImoveis\Http\Controllers\Controller;
 use RealImoveis\Models\Imovel;
 use RealImoveis\Models\ImovelTipo;
 use RealImoveis\Models\Cidade;
+use RealImoveis\Models\Estado;
 use RealImoveis\Models\Endereco;
 use RealImoveis\Models\Imagem;
 
@@ -36,11 +38,9 @@ class ImovelController extends Controller
     public function adicionar()
     {
     	$tipos = ImovelTipo::all();
-        $imoveis = Imovel::all();
-        $imagens = Imagem::all();
-        $enderecos = Endereco::all();
+        $estados = Estado::all();
 
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'imoveis', 'imagens', 'enderecos'));
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados'));
     }
 
     /**
@@ -48,7 +48,7 @@ class ImovelController extends Controller
      *
      * @param Request $request
      */
-    public function salvar(Request $request)
+    public function salvar(ImovelRequest $request)
     {
         $this->beginTransaction();
 

@@ -31,6 +31,9 @@ Route::get('/login',['as'=>'login', function(){
 	return view('login.index');
 }]);
 
+// retorna as cidades conforme estado informado
+Route::get('cidades/{estadoId}', ['as' => 'cidades.getCidades', 'uses'=>'CidadeController@getCidades']);
+
 Route::post('/login',['as'=>'login', 'uses'=>'Admin\UsuarioController@login']);
 
 Route::get('/cadastro',['as'=>'principal.cadastro', 'uses'=>'Usuario\CadastroPerfilController@indexCadastro']);
