@@ -24,7 +24,7 @@ class ImovelRequest extends Request
     public function rules()
     {
         return [
-            'imovel.nome' => 'required,max:100'
+            'imovel.nome' => 'required'
         ];
     }
 }
