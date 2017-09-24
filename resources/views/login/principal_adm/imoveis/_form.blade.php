@@ -17,7 +17,7 @@
 	<label>Categoria e Serviço</label>
 </div>
 <div class="input-field col s12">
-	<select name="imovel_tipo_id">
+	<select name="imovel[imovel_tipo_id]">
 	@foreach($tipos as $tipo)
 		<option value="{{ $tipo->id }}" {{(isset($imovel->imovel_tipo_id) && $imovel->imovel_tipo_id == $tipo->id ? 'selected' : '')}}">{{ $tipo->nome }}</option>
 	@endforeach
@@ -25,37 +25,37 @@
 	<label>Tipo de Imóvel</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="valor" class="validate" value="{{ isset($imovel->valor) ? $imovel->valor : '' }}">
+	<input type="text" name="imovel[valor]" class="validate" value="{{ isset($imovel->valor) ? $imovel->valor : '' }}">
 	<label>Valor (Ex: 345.90)</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="qtd_dormitorio" class="validate" value="{{ isset($imovel->qtd_dormitorio) ? $imovel->qtd_dormitorio : '' }}">
+	<input type="text" name="imovel[qtd_dormitorio]" class="validate" value="{{ isset($imovel->qtd_dormitorio) ? $imovel->qtd_dormitorio : '' }}">
 	<label>Dormitorios (Ex: 3)</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="url_video" class="validate" value="{{ isset($imovel->url_video) ? $imovel->url_video : '' }}">
+	<input type="text" name="imovel[url_video]" class="validate" value="{{ isset($imovel->url_video) ? $imovel->url_video : '' }}">
 	<label>URL do Vídeo</label>
 </div>
 
 <h4>Endereço</h4>
 <div class="input-field col s12">
-	<input type="text" name="logradouro" class="validate" value="{{ isset($endereco->logradouro) ? $endereco->logradouro : '' }}">
+	<input type="text" name="endereco[logradouro]" class="validate" value="{{ isset($endereco->logradouro) ? $endereco->logradouro : '' }}">
 	<label>Logradouro</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="numero" class="validate" value="{{ isset($endereco->numero) ? $endereco->numero : '' }}">
+	<input type="text" name="endereco[numero]" class="validate" value="{{ isset($endereco->numero) ? $endereco->numero : '' }}">
 	<label>Número</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="complemento" class="validate" value="{{ isset($endereco->complemento) ? $endereco->complemento : '' }}">
+	<input type="text" name="endereco[complemento]" class="validate" value="{{ isset($endereco->complemento) ? $endereco->complemento : '' }}">
 	<label>Complemento</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="cep" class="validate" value="{{ isset($endereco->cep) ? $endereco->cep : '' }}">
+	<input type="text" name="endereco[cep]" class="validate" value="{{ isset($endereco->cep) ? $endereco->cep : '' }}">
 	<label>CEP</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="bairro" class="validate" value="{{ isset($endereco->bairro) ? $endereco->bairro : '' }}">
+	<input type="text" name="endereco[bairro]" class="validate" value="{{ isset($endereco->bairro) ? $endereco->bairro : '' }}">
 	<label>Bairro</label>
 </div>
 <div class="input-field col s6">
@@ -79,7 +79,7 @@
 	<div class="file-field input-field col m6 s12">
 		<div class="btn">
 		<span>Imagem</span>
-			<input type="file" name="imagem">
+			<input type="file" name="imovel[imagem]">
 		</div>
 		<div class="file-path-wrapper">
 			<input type="text" class="file-path validade">

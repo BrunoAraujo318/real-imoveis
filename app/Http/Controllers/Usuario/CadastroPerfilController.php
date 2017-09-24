@@ -24,7 +24,7 @@ class CadastroPerfilController extends Controller
         return redirect()->route('login');
     }
 
-    public function indexPerfil(){       
+    public function indexPerfil(){
         return view('login.principal_adm.perfil.index_perfil');
     }
 
