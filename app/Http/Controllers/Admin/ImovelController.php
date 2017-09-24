@@ -39,8 +39,10 @@ class ImovelController extends Controller
     {
     	$tipos = ImovelTipo::all();
         $estados = Estado::all();
+        $imovel = new Imovel();
+        $endereco = new Endereco();
 
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados'));
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'imovel', 'endereco'));
     }
 
     /**
@@ -50,6 +52,7 @@ class ImovelController extends Controller
      */
     public function salvar(ImovelRequest $request)
     {
+        dd($request->all());
         $this->beginTransaction();
 
         try {

@@ -4,10 +4,12 @@
 var realImovel = (function () {
 
 	/**
-	 * Inicializa o modulo
+	 * Inicializa o modulo.
 	 */
 	var iniciar = function () {
 		adicionarMascaras();
+		loadAjax();
+		closeLoadAjax();
 	}
 
 	/**
@@ -61,7 +63,32 @@ var realImovel = (function () {
 		// mascara de telefone
 		$('.phone_with_ddd').mask('(00) 00000-0000');
 
+		// mascara de cep
+		$('.cep').mask('00.000-000');
+
+		// mascara de dinheiro
+		$('.money').mask("#.##0,00", {reverse: true});
+
 	}
+
+	/**
+	 * Exibe o load quando ajax for disparado.
+	 */
+	var loadAjax = function() {
+		$(document).ajaxStart(function() {
+			$.LoadingOverlay("show");
+            $('.btn-disabled').attr({'disabled':'enabled'});
+		});
+	};
+
+	/**
+	 * Oculta load quando ajax finalizar.
+	 */
+	var closeLoadAjax = function() {
+		$(document).ajaxComplete(function() {
+            $.LoadingOverlay("hide");
+        });
+	};
 
 	/**
 	 * Retorna api publica.

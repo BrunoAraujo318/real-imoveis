@@ -15,7 +15,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Editar Usuários</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">

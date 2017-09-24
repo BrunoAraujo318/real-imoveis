@@ -61,6 +61,7 @@
 
   <script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
   <script src="{{asset('lib/jquery-mask/jquery.mask.min.js')}}"></script>
+  <script src="{{asset('lib/jquery-loading-overlay/src/loadingoverlay.min.js')}}"></script>
   <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
   <script src="{{asset('js/init.js')}}"></script>
   <script src="{{asset('js/real-imovel.js')}}"></script>

@@ -27,7 +27,9 @@ class PerfisSeeds extends Seeder
             ],
         ]);
 
-
+        /**
+         * Adicionar a permissao para os usurios da seed
+         */
         DB::table('usuarios_perfis')->insert([
             [
                 'usuario_id' => 1,
@@ -49,7 +51,10 @@ class PerfisSeeds extends Seeder
                 'usuario_id' => 5,
                 'perfil_id' => 1
             ],
-            
+            [
+                'usuario_id' => 6,
+                'perfil_id' => 2
+            ],
         ]);
     }
 }

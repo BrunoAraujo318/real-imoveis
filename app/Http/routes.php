@@ -27,7 +27,14 @@ Route::get('/imovel/{id}/{titulo?}', ['as'=>'site.imovel', 'uses'=>'Site\ImovelC
 
 Route::get('/busca', ['as'=>'site.busca', 'uses'=>'Site\HomeController@busca']);
 
-Route::get('/login',['as'=>'login', function(){
+Route::get('/login',['as' => 'login', function(){
+	// verifica se o usuario esta autenticado
+	$usuario = $perfil = Auth::user();
+
+	if (! empty($usuario)) {
+		return redirect()->route('admin.principal');
+	}
+
 	return view('login.index');
 }]);
 
@@ -44,7 +51,7 @@ Route::group(['middleware'=>'auth'], function(){
 
 	Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
 
-	Route::get('/admin/principal',['as'=>'admin.principal', function() {
+	Route::get('/admin/principal',['as' => 'admin.principal', function() {
 		$perfil = Auth::user()->roles;
 		return view('login.principal_adm.index', ['nomePerfil' => $perfil[0]->display_name]);
 	}]);

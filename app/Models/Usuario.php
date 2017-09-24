@@ -4,6 +4,7 @@ namespace RealImoveis\Models;
 
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use \Carbon\Carbon;
 
 class Usuario extends Authenticatable
 {
@@ -24,10 +25,43 @@ class Usuario extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['nascimento'];
+
+    /**
      * Retorna so telefones referente ao usuario.
      */
     public function telefone()
     {
     	return $this->hasMany('RealImoveis\Telefone','telefones');
+    }
+
+    /**
+     * Retorna os Endereços referente ao Usuario.
+     *
+     * @return Endereco
+     */
+    public function endereco()
+    {
+        return $this->belongsToMany(Endereco::class, 'usuarios_enderecos', 'usuario_id', 'endereco_id');
+    }
+
+    /**
+     * Retorna o nomes dos perfils que o usuario esta relacionado.
+     *
+     * @return string
+     */
+    public function getNomesPerfis()
+    {
+        $nameRoles = [];
+
+        foreach($this->roles as $role){
+            $nameRoles[] = $role->display_name;
+        }
+
+        return implode($nameRoles, ', ');
     }
 }

@@ -16,6 +16,11 @@
 		    </div>
 	  	</nav>
 	</div>
+	<div class="row">
+		<div class="right">
+			<a class="btn blue" href="{{ route('admin.imoveis.adicionar') }}">Adicionar Imóveis</a>
+		</div>
+	</div>
 	<div class="divider"></div>
 	<div class="row">
 			<table>
@@ -45,12 +50,6 @@
 				@endforeach
 				</tbody>
 			</table>
-	</div>
-	<div class="divider"></div>
-	<div class="row">
-		<div class="right">
-			<a class="btn blue" href="{{ route('admin.imoveis.adicionar') }}">Adicionar Imóveis</a>
-		</div>
 	</div>
 </div>
 @endsection
