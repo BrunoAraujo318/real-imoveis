@@ -23,7 +23,7 @@ class CreateImagensTable extends Migration
             $table->foreign('imovel_id')->references('id')->on('imoveis')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('ordem')->comment('Ordem da imagem');
-            $table->integer('visualizacao')->comment('Quantidade de visualição da imagem');
+            $table->integer('visualizacao')->default(0)->comment('Quantidade de visualição da imagem');
         });
     }
 

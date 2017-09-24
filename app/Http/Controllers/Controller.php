@@ -37,6 +37,4 @@ class Controller extends BaseController
     {
         DB::rollBack();
     }
-
-
 }

@@ -14,32 +14,32 @@
 		        <a class="breadcrumb black-text text-lighten-3">Imóveis</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
 			<table>
 				<thead>
 					<tr>
-						<th>Título</th>					
-						<th>Descrição</th>					
-						<th>Categoria e Serviços</th>			
+						<th>Título</th>
+						<th>Descrição</th>
+						<th>Categoria e Serviços</th>
 						<th>Valor</th>
-						<th>Imagem</th>		
+						<th>Imagem</th>
 						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($registros as $registro)
+				@foreach($imoveis as $imovel)
 					<tr>
-						<td>{{ $registro->nome }}</td>
-						<td>{{ $registro->descricao }}</td>
-						<td>{{ $registro->categoria_sevico }}</td>
-						<td>R$ {{ number_format($registro->valor,2,",",".") }}</td>
-						<td><img width="100" src="{{asset($registro->imagem)}}"></td>
+						<td>{{ $imovel->nome }}</td>
+						<td>{{ $imovel->descricao }}</td>
+						<td>{{ $imovel->categoria_sevico }}</td>
+						<td>R$ {{ number_format($imovel->valor,2,",",".") }}</td>
+						<td><img width="100" src="{{asset($imovel->imagem)}}"></td>
 						<td>
-							<a class="btn blue" href="{{ route('admin.imoveis.editar', $registro->id) }}">Editar</a>
-							<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imoveis.deletar', $registro->id) }}'}">Deletar</a>
+							<a class="btn blue" href="{{ route('admin.imoveis.editar', $imovel->id) }}">Editar</a>
+							<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imoveis.deletar', $imovel->id) }}'}">Deletar</a>
 						</td>
 					</tr>
 				@endforeach
