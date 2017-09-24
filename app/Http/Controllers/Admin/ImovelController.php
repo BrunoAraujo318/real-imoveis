@@ -87,9 +87,8 @@ class ImovelController extends Controller
             }
 
             $this->commit();
-            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            //return redirect()->route('admin.imoveis');
-            return response(['msg' => 'Sucesso']);
+            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            return redirect()->route('admin.imoveis');
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;

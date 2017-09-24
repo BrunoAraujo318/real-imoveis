@@ -41,7 +41,7 @@
 <h4>Endereço</h4>
 <div class="input-field col s6">
 	@php $estadoId = old('endereco.estado_id', $endereco->estado_id) @endphp
-	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id', endereco->cidade_id) }}">
+	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id', $endereco->cidade_id) }}">
 	<select id="estado_id" name="endereco[estado_id]" class="validate @if($errors->has('endereco.estado_id')) invalid @endif" onchange="realImovel.getCidades(this);">
 		<option value="">Selecione...</option>
 		@foreach($estados as $estado)
