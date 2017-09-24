@@ -7,7 +7,7 @@ var realImovel = (function () {
 	 * Inicializa o modulo
 	 */
 	var iniciar = function () {
-
+		adicionarMascaras();
 	}
 
 	/**
@@ -46,6 +46,21 @@ var realImovel = (function () {
 		});
 
 		return html;
+	}
+
+	/**
+	 * Adiciona mascaras de acordo com os elementos e suas classes.
+	 */
+	var adicionarMascaras = function () {
+		// mascara de datas
+		$('.date').mask('00/00/0000');
+
+		// mascara de cpf
+		$('.cpf').mask('000.000.000-00', {reverse: true});
+
+		// mascara de telefone
+		$('.phone_with_ddd').mask('(00) 00000-0000');
+
 	}
 
 	/**

@@ -1,0 +1,22 @@
+{
+  "name": "real-imoveis",
+  "description": "Sistema de gerenciamento e imovel",
+  "main": "",
+  "authors": [
+    "Allan Gonçalves da Cruz <allangcruz@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BrunoAraujo318/real-imoveis",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.7"
+  }
+}
