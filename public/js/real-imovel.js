@@ -10,28 +10,42 @@ var realImovel = (function () {
 		adicionarMascaras();
 		loadAjax();
 		closeLoadAjax();
+		getCidades('#estado_id', function() {
+			var cidadeId = $('#cidade_hide_id').val();
+			$('#cidade_id').val();
+			$('select').material_select();
+		});
 	}
 
 	/**
 	 * Retorna as cidades conforme estadoId informado.
 	 *
 	 * @param estadoId
+	 * @param callback
 	 */
-	var getCidades = function (estadoId) {
-		$.ajax({
-		  	url: getPath('cidades/'+$(estadoId).val()),
-		  	method: 'get',
-		  	dataType : 'json',
-		  	success: function (response) {
-		  		var cidades = templateCidade(response.data);
+	var getCidades = function (estadoId, callback) {
+		var id = $(estadoId).val();
 
-		  		$('#cidade_id').html(cidades);
-		  		$('select').material_select();
-		  	},
-		  	error: function (response) {
-		  		console.log(response);
-		  	}
-		});
+		if (id != '') {
+			$.ajax({
+				url: getPath('cidades/'+id),
+				method: 'get',
+				dataType : 'json',
+				success: function (response) {
+					var cidades = templateCidade(response.data);
+
+					$('#cidade_id').html(cidades);
+					$('select').material_select();
+
+					if (callback != undefined) {
+						callback();
+					}
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+		}
 	}
 
 	/**

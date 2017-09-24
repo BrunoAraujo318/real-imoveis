@@ -41,19 +41,20 @@
 <h4>Endereço</h4>
 <div class="input-field col s6">
 	@php $estadoId = old('endereco.estado_id', $endereco->estado_id) @endphp
+	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id', endereco->cidade_id) }}">
 	<select id="estado_id" name="endereco[estado_id]" class="validate @if($errors->has('endereco.estado_id')) invalid @endif" onchange="realImovel.getCidades(this);">
-		<option>Selecione...</option>
+		<option value="">Selecione...</option>
 		@foreach($estados as $estado)
 			<option value="{{ $estado->id }}" {{ $estadoId == $estado->id ? 'selected' : '' }} >{{ $estado->nome }}</option>
 		@endforeach
 	</select>
-	<label class="teste" @if($errors->has('endereco.estado_id')) data-error="{{$errors->first('endereco.estado_id')}}" @endif >Estado</label>
+	<label @if($errors->has('endereco.estado_id')) data-error="{{$errors->first('endereco.estado_id')}}" @endif >Estado</label>
 </div>
 <div class="input-field col s6">
-	<select id="cidade_id" name="endereco[cidade_id]">
-		<option>Selecione...</option>
+	<select id="cidade_id" name="endereco[cidade_id]" class="validate @if($errors->has('endereco.cidade_id')) invalid @endif">
+		<option value="">Selecione...</option>
 	</select>
-	<label>Cidade</label>
+	<label @if($errors->has('endereco.cidade_id')) data-error="{{$errors->first('endereco.cidade_id')}}" @endif >Cidade</label>
 </div>
 <div class="input-field col s6">
 	<input type="text" name="endereco[logradouro]" maxlength="50" class="validate @if($errors->has('endereco.logradouro')) invalid @endif" value="{{ old('imovel.logradouro', $endereco->logradouro) }}" />

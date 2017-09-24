@@ -52,7 +52,6 @@ class ImovelController extends Controller
      */
     public function salvar(ImovelRequest $request)
     {
-        dd($request->all());
         $this->beginTransaction();
 
         try {
