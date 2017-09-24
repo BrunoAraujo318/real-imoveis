@@ -1,20 +1,35 @@
 <div class="input-field">
-	<input type="text" name="nome" class="validate" value="{{ isset($usuario->nome) ? $usuario->nome : '' }}">
-	<label>Nome</label>
+	<input type="text" name="nome" maxlength="100" class="validate @if($errors->has('nome')) invalid @endif" value="{{old('nome')}}">
+	<label @if($errors->has('nome')) data-error="{{$errors->first('nome')}}" @endif>
+		Nome
+	</label>
 </div>
+
 <div class="input-field">
-	<input type="email" name="email" class="validate" value="{{ isset($usuario->email) ? $usuario->email : '' }}">
-	<label>E-mail</label>
+	<input type="text" name="nascimento" maxlength="10" class="date validate @if($errors->has('nascimento')) invalid @endif" value="{{old('nascimento')}}">
+	<label @if($errors->has('nascimento')) data-error="{{$errors->first('nascimento')}}" @endif>
+		Nascimento
+	</label>
 </div>
+
 <div class="input-field">
-	<input type="text" name="cpf" class="validate" value="{{ isset($usuario->cpf) ? $usuario->cpf : '' }}">
-	<label>CPF</label>
+	<input type="text" name="cpf" maxlength="14" class="cpf validate @if($errors->has('cpf')) invalid @endif" value="{{old('cpf')}}" />
+	<label @if($errors->has('cpf')) data-error="{{$errors->first('cpf')}}" @endif>
+		CPF
+	</label>
 </div>
+
 <div class="input-field">
-	<input type="text" name="nascimento" class="validate" value="{{ isset($usuario->nascimento) ? $usuario->nascimento : '' }}">
-	<label>Data de Nascimento</label>
+	<input type="email" name="email" maxlength="80" class="validate @if($errors->has('email')) invalid @endif" value="{{old('email')}}" />
+	<label @if($errors->has('email')) data-error="{{$errors->first('email')}}" @endif>
+		E-mail
+	</label>
 </div>
+
 <div class="input-field">
-	<input type="password" name="senha" class="validate">
-	<label>Senha</label>
+	<input type="password" maxlength="12" name="password" class="validate @if($errors->has('password')) invalid @endif" />
+	<label @if($errors->has('password')) data-error="{{$errors->first('password')}}" @endif>
+		Senha
+	</label>
 </div>
+<br><br>

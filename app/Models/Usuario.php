@@ -8,13 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Usuario extends Authenticatable
 {
     use EntrustUserTrait;
-    
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nome', 'email', 'password', 'endereco', 'contato'];
+    protected $fillable = ['nome', 'email', 'password', 'nascimento', 'cpf'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -22,7 +22,7 @@ class Usuario extends Authenticatable
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-    
+
     /**
      * Retorna so telefones referente ao usuario.
      */
