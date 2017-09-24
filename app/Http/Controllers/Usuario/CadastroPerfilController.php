@@ -16,7 +16,11 @@ class CadastroPerfilController extends Controller
     public function salvar(Request $request){
         $dados = $request->all();
         $usuarios = new Usuario();
-        $usuarios->name = $dados['name'];
+        $usuarios->nome = $dados['nome'];
+        $usuarios->nascimento = $dados['nascimento'];
+        $usuarios->cpf = $dados['cpf'];
+        $usuarios->endereco = $dados['endereco'];
+        $usuarios->contato = $dados['contato'];
         $usuarios->email = $dados['email'];
         $usuarios->password = bcrypt($dados['password']);
         $usuarios->save();
