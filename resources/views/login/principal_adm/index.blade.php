@@ -21,7 +21,7 @@
 				        </div>
 		        	</div>
 		        </div>
-		        @if (Auth::user()->hasRole('admin') ||Auth::user()->can('user.index'))
+		        @if (Auth::user()->hasRole('admin'))
         		<div class="col s12 m3">
         			<div class="card">
 			        	<div class="card-image">
@@ -33,7 +33,7 @@
 		        	</div>
         		</div>
         		@endif
-        		@if (Auth::user()->hasRole('admin') ||Auth::user()->can('user.index'))
+        		@if (Auth::user()->hasRole('admin'))
 	        	<div class="col s12 m3">
 	        		<div class="card">
 			        	<div class="card-image">
@@ -45,7 +45,7 @@
 	        		</div>
 	        	</div>
 	        	@endif
-	        	@if (Auth::user()->hasRole('admin') ||Auth::user()->can('user.index'))
+	        	@if (Auth::user()->hasRole('admin'))
 		        <div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
@@ -67,7 +67,7 @@
 				        </div>
 		        	</div>
 		        </div>
-		        @if (Auth::user()->hasRole('admin') ||Auth::user()->can('user.index'))
+		        @if (Auth::user()->hasRole('admin'))
 		        <div class="col s12 m3">
         			<div class="card">
 			        	<div class="card-image">
@@ -79,7 +79,7 @@
 		        	</div>
         		</div>
         		@endif
-        		@if (Auth::user()->hasRole('admin') ||Auth::user()->can('user.index'))
+        		@if (Auth::user()->hasRole('admin'))
         		<div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">

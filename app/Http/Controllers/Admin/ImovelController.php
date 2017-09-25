@@ -119,10 +119,10 @@ class ImovelController extends Controller
     {
         $imovel = Imovel::find($id);
         $tipos = ImovelTipo::all();
-        $imagens = Imagem::all();
-        $enderecos = Endereco::all();
+        $endereco = new Endereco();
+        $estados = Estado::all();
 
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens','enderecos'));
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados'));
     }
 
     /**
@@ -133,27 +133,14 @@ class ImovelController extends Controller
      */
     public function atualizar(Request $request, $id)
     {
-        $registro = Imovel::find($id);
-        $dados = $request->all();
-        $registro->nome = $dados['nome'];
-        $registro->descricao = $dados['descricao'];
-        $registro->categoria_servico = $dados['categoria_servico'];
-        $registro->endereco_id = $dados['endereco_id'];
-        $registro->url_video = $dados['url_video'];
-        $registro->valor = $dados['valor'];
-        $registro->qtd_dormitorio = $dados['qtd_dormitorio'];
-        $registro->cidade_id = $dados['cidade_id'];
-        $registro->tipo_id = $dados['tipo_id'];
-        $file = $request->file('imagem_id');
-        if($file){
-            $rand = rand(11111,99999);
-            $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
-            $ext = $file->guessClientExtension();
-            $nomeArquivo = "_img_".$rand.".".$ext;
-            $file->move($diretorio, $nomeArquivo);
-            $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
-        }
-        $registro ->update();
+        // TODO refatorar
+
+        // Atualizar Imovel
+
+        // Atualizar endereço
+
+        // Atualizar imagens
+
         \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
         return redirect()->route('admin.imoveis');
     }
@@ -168,7 +155,7 @@ class ImovelController extends Controller
     {
         Imovel::find($id)->delete();
 
-        // TODO ao excluir o imovel antes tem que excluir as dependencias referente a ele
+        // TODO ao excluir o imovel antes tem que excluir as dependencias referente ao imovel
 
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('admin.imoveis');
