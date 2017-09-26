@@ -6,24 +6,31 @@ use Illuminate\Http\Request;
 use RealImoveis\Http\Requests\UsuarioRequest;
 use RealImoveis\Http\Controllers\Controller;
 use Auth;
+use \Carbon\Carbon;
 use RealImoveis\Models\Usuario;
-use RealImoveis\Models\Perfil;
+use RealImoveis\Models\Perfis;
+use RealImoveis\Models\Estado;
+use RealImoveis\Models\Endereco;
 
 class UsuarioController extends Controller
 {
     private $usuarioModel;
+    private $estadoModel;
+    private $perfilModel;
 
     /**
      * Inicializas as dependencias da classe.
      */
     public function __construct()
     {
+        $this->estadoModel = new Estado();
+        $this->perfilModel = new Perfis();
         $this->usuarioModel = new Usuario();
     }
 
     /**
      * Autentica o usuario no sistema.
-     * 
+     *
      * @param Request $request
      */
     public function login(Request $request)
@@ -35,8 +42,8 @@ class UsuarioController extends Controller
         if ($autenticado) {
     		\Session::flash('mensagem', ['msg'=>'Login realizado com Sucesso!', 'class'=>'green white-text']);
     		return redirect()->route('admin.principal');
-    	} 
-    	
+    	}
+
         \Session::flash('mensagem', ['msg'=>'Confira seus Dados!', 'class'=>'red white-text']);
     	return redirect()->route('login');
     }
@@ -67,12 +74,19 @@ class UsuarioController extends Controller
      */
     public function adicionar()
     {
-        return view('login.principal_adm.usuarios.adicionar_usuarios');
+        $usuario = new Usuario();
+        $endereco = new Endereco();
+        $usuario->nascimento = Carbon::now();
+        $estados = $this->estadoModel->all();
+
+        $perfis = $this->perfilModel->all();
+
+        return view('login.principal_adm.usuarios.adicionar_usuarios', compact('usuario', 'endereco', 'perfis', 'estados'));
     }
 
     /**
      * Salva um novo usuario na base de dados.
-     * 
+     *
      * @param UsuarioRequest $request
      */
     public function salvar(UsuarioRequest $request)
@@ -89,21 +103,28 @@ class UsuarioController extends Controller
 
     /**
      * Renderiza a interface, com os dados do usuario.
-     * 
+     *
      * @param $id
      */
     public function editar($id)
     {
+        $perfis = $this->perfilModel->all();
+        $estados = $this->estadoModel->all();
         $usuario = $this->usuarioModel->find($id);
+        $endereco = new Endereco();
 
-        return view('login.principal_adm.usuarios.editar_usuarios', compact('usuario'));
+        if (! $usuario->endereco->isEmpty()) {
+            $endereco = $usuario->endereco;
+        }
+
+        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'perfis', 'usuario', 'endereco'));
     }
 
     /**
      * Atualiza os dado do usuario.
-     * 
+     *
      * @param Request $request
-     * @param $id     
+     * @param $id
      */
     public function atualizar(Request $request, $id)
     {

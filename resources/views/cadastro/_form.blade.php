@@ -1,52 +1,35 @@
 <div class="input-field">
-	<input type="text" name="nome" class="validate @if($errors->has('nome')) invalid @endif" 
-		value="{{ isset($usuario->nome) ? $usuario->nome : '' }}{{old('nome')}}">
+	<input type="text" name="nome" maxlength="100" class="validate @if($errors->has('nome')) invalid @endif" value="{{old('nome')}}">
 	<label @if($errors->has('nome')) data-error="{{$errors->first('nome')}}" @endif>
 		Nome
 	</label>
 </div>
 
 <div class="input-field">
-	<input type="date" name="nascimento" class="validate @if($errors->has('nascimento')) invalid @endif" 
-		value="{{ isset($usuario->nascimento) ? $usuario->nascimento : '' }}{{old('nascimento')}}">
+	<input type="text" name="nascimento" maxlength="10" class="date validate @if($errors->has('nascimento')) invalid @endif" value="{{old('nascimento')}}">
 	<label @if($errors->has('nascimento')) data-error="{{$errors->first('nascimento')}}" @endif>
-		
+		Nascimento
 	</label>
 </div>
 
 <div class="input-field">
-	<input type="text" name="cpf" class="validate @if($errors->has('cpf')) invalid @endif" 
-		value="{{ isset($usuario->cpf) ? $usuario->cpf : '' }}{{old('cpf')}}" />
+	<input type="text" name="cpf" maxlength="14" class="cpf validate @if($errors->has('cpf')) invalid @endif" value="{{old('cpf')}}" />
 	<label @if($errors->has('cpf')) data-error="{{$errors->first('cpf')}}" @endif>
 		CPF
 	</label>
 </div>
 
 <div class="input-field">
-	<input type="text" name="endereco" class="validate @if($errors->has('endereco')) invalid @endif" 
-		value="{{ isset($usuario->endereco) ? $usuario->endereco : '' }}{{old('endereco')}}">
-	<label @if($errors->has('endereco')) data-error="{{$errors->first('endereco')}}" @endif>
-		Endereço
-	</label>
-</div>
-
-<div class="input-field">
-	<input type="text" name="contato" class="validate @if($errors->has('contato')) invalid @endif" 
-		value="{{ isset($usuario->contato) ? $usuario->contato : '' }}{{old('contato')}}">
-	<label @if($errors->has('contato')) data-error="{{$errors->first('contato')}}" @endif>
-		Telefone
-	</label>
-</div>
-
-<div class="input-field">
-	<input type="email" name="email" class="validate @if($errors->has('email')) invalid @endif" 
-		value="{{ isset($usuario->email) ? $usuario->email : '' }}{{old('email')}}" />
+	<input type="email" name="email" maxlength="80" class="validate @if($errors->has('email')) invalid @endif" value="{{old('email')}}" />
 	<label @if($errors->has('email')) data-error="{{$errors->first('email')}}" @endif>
 		E-mail
 	</label>
 </div>
 
 <div class="input-field">
-	<input type="password" name="password" class="validate">
-	<label>Senha</label>
+	<input type="password" maxlength="12" name="password" class="validate @if($errors->has('password')) invalid @endif" />
+	<label @if($errors->has('password')) data-error="{{$errors->first('password')}}" @endif>
+		Senha
+	</label>
 </div>
+<br><br>

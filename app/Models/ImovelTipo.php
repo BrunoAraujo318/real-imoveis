@@ -29,7 +29,7 @@ class ImovelTipo extends Model
 
     /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
-     * 
+     *
      * @return Imovel
      */
     public function imovel()

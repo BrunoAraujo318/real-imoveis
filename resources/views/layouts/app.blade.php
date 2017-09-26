@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8">    
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--Import Google Icon Font-->
@@ -12,7 +12,7 @@
     <script type="text/javascript">
     var getPath = function (url) {
       url = url || '';
-    
+
       return "{{ asset('') }}"+url;
     }
     </script>
@@ -20,20 +20,20 @@
 <body id="app-layout">
 
   <main>
-  @if(Session::has('mensagem'))
-    <div class="container">
-      <div class="row">
-        <div class="card {{ Session::get('mensagem')['class'] }}">
-          <div align="center" class="card-content">
-            {{Session::get('mensagem')['msg']}}
+    @if(Session::has('mensagem'))
+      <div class="container">
+        <div class="row">
+          <div class="card {{ Session::get('mensagem')['class'] }}">
+            <div align="center" class="card-content">
+              {{Session::get('mensagem')['msg']}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  @endif
+    @endif
     @yield('content')
   </main>
-  
+
   <footer class="page-footer">
     <div class="container">
       <div class="row">
@@ -60,9 +60,20 @@
   </footer>
 
   <script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
+  <script src="{{asset('lib/jquery-mask/jquery.mask.min.js')}}"></script>
+  <script src="{{asset('lib/jquery-loading-overlay/src/loadingoverlay.min.js')}}"></script>
   <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
   <script src="{{asset('js/init.js')}}"></script>
   <script src="{{asset('js/real-imovel.js')}}"></script>
+  <script>
+    // executando quando a tela terminar de carregar
+    $(function(){
+      realImovel.iniciar();
+    });
+  </script>
+
+  @yield('js')
+
 
 </body>
 </html>

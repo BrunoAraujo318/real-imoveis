@@ -27,7 +27,14 @@ Route::get('/imovel/{id}/{titulo?}', ['as'=>'site.imovel', 'uses'=>'Site\ImovelC
 
 Route::get('/busca', ['as'=>'site.busca', 'uses'=>'Site\HomeController@busca']);
 
-Route::get('/login',['as'=>'login', function(){
+Route::get('/login',['as' => 'login', function(){
+	// verifica se o usuario esta autenticado
+	$usuario = $perfil = Auth::user();
+
+	if (! empty($usuario)) {
+		return redirect()->route('admin.principal');
+	}
+
 	return view('login.index');
 }]);
 
@@ -38,13 +45,13 @@ Route::post('/login',['as'=>'login', 'uses'=>'Admin\UsuarioController@login']);
 
 Route::get('/cadastro',['as'=>'principal.cadastro', 'uses'=>'Usuario\CadastroPerfilController@indexCadastro']);
 
-Route::post('/cadastro/salvar',['as'=>'principal.cadastro.salvar', 'uses'=>'Usuario\CadastroPerfilController@salvar']);
+Route::post('/cadastro/salvar',['as' => 'principal.cadastro.salvar', 'uses' => 'Usuario\CadastroPerfilController@salvar']);
 
 Route::group(['middleware'=>'auth'], function(){
 
 	Route::get('/admin/login/sair',['as'=>'admin.login.sair', 'uses'=>'Admin\UsuarioController@sair']);
 
-	Route::get('/admin/principal',['as'=>'admin.principal', function() {
+	Route::get('/admin/principal',['as' => 'admin.principal', function() {
 		$perfil = Auth::user()->roles;
 		return view('login.principal_adm.index', ['nomePerfil' => $perfil[0]->display_name]);
 	}]);
@@ -59,11 +66,11 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('/admin/usuarios/papel/{id}',['as'=>'admin.usuarios.papel', 'uses'=>'Admin\UsuarioController@papel']);
 	Route::post('/admin/usuarios/papel/salvar/{id}',['as'=>'admin.usuarios.papel.salvar', 'uses'=>'Admin\UsuarioController@salvarPapel']);
 	Route::get('/admin/usuarios/papel/remover/{id}', ['as'=>'admin.usuarios.papel.remover', 'uses'=>'Admin\UsuarioController@removerPapel']);
-	
+
 	Route::get('/admin/paginas',['as'=>'admin.paginas', 'uses'=>'Admin\PaginasController@index']);
 	Route::get('/admin/paginas/editar/{id}',['as'=>'admin.paginas.editar', 'uses'=>'Admin\PaginasController@editar']);
 	Route::put('/admin/paginas/atualizar/{id}',['as'=>'admin.paginas.atualizar', 'uses'=>'Admin\PaginasController@atualizar']);
-	
+
 
 	Route::get('/admin/imovel/tipos',['as'=>'admin.imovel.tipos', 'uses'=>'Admin\TipoController@lista']);
 	Route::get('/admin/imovel/tipos/adicionar',['as'=>'admin.imovel.tipos.adicionar', 'uses'=>'Admin\TipoController@adicionar']);

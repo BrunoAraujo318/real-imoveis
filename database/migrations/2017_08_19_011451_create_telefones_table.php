@@ -15,8 +15,10 @@ class CreateTelefonesTable extends Migration
     {
         Schema::create('telefones', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ddd')->comment('Codigo de discagem da região');
-            $table->integer('numero')->comment('Numero de telefone');
+            $table->string('numero')->comment('Numero de telefone');
+
+            $table->integer('usuario_id')->unsigned()->comment('Identificador da chave estrangeira do usuario');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

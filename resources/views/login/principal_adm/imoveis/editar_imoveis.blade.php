@@ -15,11 +15,13 @@
 		        <a class="breadcrumb black-text text-lighten-3">Editar Imóveis</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
-		<form action="{{ route('admin.imoveis.atualizar', $registro->id) }}" method="post" enctype="multipart/form-data">
+		<form action="{{ route('admin.imoveis.atualizar', $imovel->id) }}" method="post" enctype="multipart/form-data">
+			@php $estadoId = old('endereco.estado_id', $endereco->cidade->estado_id) @endphp
+			@php $cidadeId = old('endereco.cidade_id', $endereco->cidade->id) @endphp
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.imoveis._form')

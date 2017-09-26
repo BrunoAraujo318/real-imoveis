@@ -39,8 +39,11 @@ class ImovelController extends Controller
     {
     	$tipos = ImovelTipo::all();
         $estados = Estado::all();
+        $imovel = new Imovel();
+        $endereco = new Endereco();
+        $cidades = [];
 
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados'));
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco'));
     }
 
     /**
@@ -85,9 +88,8 @@ class ImovelController extends Controller
             }
 
             $this->commit();
-            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            //return redirect()->route('admin.imoveis');
-            return response(['msg' => 'Sucesso']);
+            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            return redirect()->route('admin.imoveis');
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;
@@ -116,12 +118,20 @@ class ImovelController extends Controller
      */
     public function editar($id)
     {
-        $imovel = Imovel::find($id);
+        $estados = Estado::all();
         $tipos = ImovelTipo::all();
-        $imagens = Imagem::all();
-        $enderecos = Endereco::all();
+        $endereco = new Endereco();
+        $cidades = new Cidade;
 
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens','enderecos'));
+        $imovel = Imovel::find($id);
+        if (! empty($imovel->endereco)) {
+            $endereco = $imovel->endereco[0];
+            $cidade = $endereco->cidade;
+
+            $cidades = Cidade::where('estado_id', '=', $cidade->estado_id)->get();
+        }
+
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados', 'cidades'));
     }
 
     /**
@@ -132,29 +142,52 @@ class ImovelController extends Controller
      */
     public function atualizar(Request $request, $id)
     {
-        $registro = Imovel::find($id);
-        $dados = $request->all();
-        $registro->nome = $dados['nome'];
-        $registro->descricao = $dados['descricao'];
-        $registro->categoria_servico = $dados['categoria_servico'];
-        $registro->endereco_id = $dados['endereco_id'];
-        $registro->url_video = $dados['url_video'];
-        $registro->valor = $dados['valor'];
-        $registro->qtd_dormitorio = $dados['qtd_dormitorio'];
-        $registro->cidade_id = $dados['cidade_id'];
-        $registro->tipo_id = $dados['tipo_id'];
-        $file = $request->file('imagem_id');
-        if($file){
-            $rand = rand(11111,99999);
-            $diretorio = "img/imoveis/".str_slug($dados['nome'],'_')."/";
-            $ext = $file->guessClientExtension();
-            $nomeArquivo = "_img_".$rand.".".$ext;
-            $file->move($diretorio, $nomeArquivo);
-            $registro->imagem_id = $diretorio.'/'.$nomeArquivo;
+        $this->beginTransaction();
+
+        try {
+
+            // Altera o imovel
+            $imovel = Imovel::find($id);
+            $imovel->fill($request->get('imovel'));
+
+            if ($request->hasFile('imagem')) {
+                $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
+            }
+
+            $imovel->save();
+
+            if (! empty($imovel->endereco)) {
+                $endereco = $imovel->endereco[0];
+                // endereço
+                $endereco = Endereco::find($endereco->id);
+                $endereco->fill($request->get('endereco'));
+                $endereco->save();
+
+                // Altera a relação entre o endereço e imovel
+                $imovel->endereco()->sync([$endereco->id]);
+            }
+
+            // Altera a galerias de imagens
+            if ($request->hasFile('imagens')) {
+                $imagens = $request->file('imagens');
+
+                foreach ($imagens as $index => $imagem) {
+                    $newImagem = Imagem::find($id);
+                    $newImagem->nome = $imagem->getClientOriginalName();
+                    $newImagem->imovel_id = $imovel->id;
+                    $newImagem->ordem = $index;
+                    $this->uploadImagens($newImagem, $imagem, "img/imoveis/galerias/");
+                    $newImagem->save();
+                }
+            }
+
+            $this->commit();
+            \Session::flash('mensagem', ['msg'=>'Registro atualizado com Sucesso!', 'class'=>'green white-text']);
+            return redirect()->route('admin.imoveis');
+        } catch (\Exception $e) {
+            $this->rollBack();
+            throw $e;
         }
-        $registro ->update();
-        \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
-        return redirect()->route('admin.imoveis');
     }
 
     /**
@@ -167,7 +200,7 @@ class ImovelController extends Controller
     {
         Imovel::find($id)->delete();
 
-        // TODO ao excluir o imovel antes tem que excluir as dependencias referente a ele
+        // TODO ao excluir o imovel antes tem que excluir as dependencias referente ao imovel
 
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('admin.imoveis');

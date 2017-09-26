@@ -14,15 +14,23 @@
 		        <a class="breadcrumb black-text text-lighten-3">Lista de Usuários</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
-	<div class="divider"></div>
 	<div class="row">
-		<table>
+		<div class="right">
+			<a class="btn blue" href="{{ route('admin.usuarios.adicionar') }}">Adicionar</a>
+		</div>
+	</div>
+
+	<div class="divider"></div>
+
+	<div class="row">
+		<table class="bordered striped highlight responsive-table">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Nome</th>
+					<th>Perfil</th>
 					<th>E-mail</th>
 					<th>Ação</th>
 				</tr>
@@ -32,26 +40,16 @@
 				<tr>
 					<td>{{ $usuario->id }}</td>
 					<td>{{ $usuario->nome }}</td>
+					<td>{{ $usuario->getNomesPerfis() }}</td>
 					<td>{{ $usuario->email }}</td>
 					<td>
-						<a class="btn blue" href="{{ route('admin.usuarios.editar', $usuario->id) }}">Editar</a>
-						<!-- <a class="btn green" href="{{ route('admin.usuarios.papel', $usuario->id) }}">Papéis</a> -->
-						@if($usuario->email != 'admin@mail.com')
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.usuarios.deletar', $usuario->id) }}'}">Deletar</a>
-						@else
-						<a class="btn blue disabled">Deletar</a>
-						@endif
+						<a class="btn blue" title="Editar usuário" href="{{ route('admin.usuarios.editar', $usuario->id) }}"><i class="small material-icons">mode_edit</i></a>
+						<a class="btn deep-orange darken-1" title="Deletar usuário" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.usuarios.deletar', $usuario->id) }}'}"><i class="small material-icons">delete_forever</i></a>
 					</td>
 				</tr>
 			@endforeach
 			</tbody>
 		</table>
-	</div>
-	<div class="divider"></div>
-	<div class="row">
-		<div class="right">
-			<a class="btn blue" href="{{ route('admin.usuarios.adicionar') }}">Adicionar</a>
-		</div>
 	</div>
 </div>
 @endsection

@@ -48,7 +48,7 @@ class Imovel extends Model
      */
     public function tipo()
     {
-        return $this->belongsTo('RealImoveis\Imoveis_Tipo','imoveis_tipos');
+        return $this->belongsTo(ImovelTipo::class, 'imovel_tipo_id');
     }
 
     /**
@@ -69,5 +69,18 @@ class Imovel extends Model
     public function endereco()
     {
         return $this->belongsToMany(Endereco::class, 'imoveis_enderecos', 'imovel_id', 'endereco_id');
+    }
+
+    /**
+     * Retorna o nomes das categorias de servicos do imovel.
+     *
+     * @return string
+     */
+    public function getNomeCategoria()
+    {
+        $categoria = $this->categoria_servico;
+        $categorias = ['1' => 'Venda', '2' => 'Aluguel'];
+
+        return $categorias[$categoria];
     }
 }

@@ -17,13 +17,14 @@
 		              		 <a href="{{ route('admin.imoveis') }}"><img src="{{ asset('img/icone-imoveis.png') }}"></a>
 					            <div class="card-action">
 					              <a href="{{ route('admin.imoveis') }}">Meus Imóveis</a>
-					            </div>					   
+					            </div>
 				        </div>
 		        	</div>
 		        </div>
+		        @if (Auth::user()->hasRole('admin'))
         		<div class="col s12 m3">
         			<div class="card">
-			        	<div class="card-image">     	
+			        	<div class="card-image">
 	              			<a href="{{ route('admin.usuarios') }}"><img src="{{ asset('img/icone-usuario.jpg') }}"></a>
 				            	<div class="card-action">
 				              		<a href="{{ route('admin.usuarios') }}">Usuários</a>
@@ -31,6 +32,8 @@
 			        	</div>
 		        	</div>
         		</div>
+        		@endif
+        		@if (Auth::user()->hasRole('admin'))
 	        	<div class="col s12 m3">
 	        		<div class="card">
 			        	<div class="card-image">
@@ -41,6 +44,8 @@
 			        	</div>
 	        		</div>
 	        	</div>
+	        	@endif
+	        	@if (Auth::user()->hasRole('admin'))
 		        <div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
@@ -51,6 +56,7 @@
 				        </div>
 		        	</div>
 		        </div>
+		        @endif
 		         <div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
@@ -61,26 +67,30 @@
 				        </div>
 		        	</div>
 		        </div>
+		        @if (Auth::user()->hasRole('admin'))
 		        <div class="col s12 m3">
         			<div class="card">
-			        	<div class="card-image">     	
+			        	<div class="card-image">
 	              			<a href="{{ route('admin.papel') }}"><img src="{{ asset('img/icone-perfil.png') }}"></a>
 				            	<div class="card-action">
-				              		<a href="{{ route('admin.papel') }}">Gerenciar Perfil</a>
+				              		<a href="{{ route('admin.papel') }}">Gerenciar Papéis</a>
 				            	</div>
 			        	</div>
 		        	</div>
         		</div>
+        		@endif
+        		@if (Auth::user()->hasRole('admin'))
         		<div class="col s12 m3">
 		        	<div class="card">
 				        <div class="card-image">
 		              		<a href="{{ route('admin.imovel.tipos') }}"><img src="{{ asset('img/icone-tipos.png') }}"></a>
 					            <div class="card-action">
 					              <a href="{{ route('admin.imovel.tipos') }}">Tipos de Imóveis</a>
-					            </div>			    
+					            </div>
 				        </div>
 		        	</div>
 		        </div>
+		        @endif
 	    	</div>
 	    </main>
 	</div>
