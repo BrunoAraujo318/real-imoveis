@@ -140,9 +140,47 @@ class ImovelController extends Controller
         // Atualizar endereço
 
         // Atualizar imagens
+         $this->beginTransaction();
 
-        \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
-        return redirect()->route('admin.imoveis');
+        try {
+
+            // Altera o imovel
+            $imovel = Imovel::find($id);
+
+            if ($request->hasFile('imagem')) {
+                $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
+            }
+
+            $imovel->save();
+
+            // endereço
+            $endereco = Endereco::find($id);
+            $endereco->save();
+
+            // Altera a relação entre o endereço e imovel
+            $imovel->endereco()->sync([$endereco->id]);
+
+            // Altera a galerias de imagens
+            if ($request->hasFile('imagens')) {
+                $imagens = $request->file('imagens');
+
+                foreach ($imagens as $index => $imagem) {
+                    $newImagem = Imagem::find($id);
+                    $newImagem->nome = $imagem->getClientOriginalName();
+                    $newImagem->imovel_id = $imovel->id;
+                    $newImagem->ordem = $index;
+                    $this->uploadImagens($newImagem, $imagem, "img/imoveis/galerias/");
+                    $newImagem->save();
+                }
+            }
+
+            $this->commit();
+            \Session::flash('mensagem', ['msg'=>'Registro atualizado com Sucesso!', 'class'=>'green white-text']);
+            return redirect()->route('admin.imoveis');
+        } catch (\Exception $e) {
+            $this->rollBack();
+            throw $e;
+        }
     }
 
     /**
