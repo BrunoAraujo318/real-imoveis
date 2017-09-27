@@ -59,6 +59,7 @@ class ImovelController extends Controller
 
             // Salva o imovel
             $imovel = new Imovel($request->get('imovel'));
+            $imovel->valor = $this->moedaBanco($imovel->valor);
 
             if ($request->hasFile('imagem')) {
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
@@ -149,6 +150,7 @@ class ImovelController extends Controller
             // Altera o imovel
             $imovel = Imovel::find($id);
             $imovel->fill($request->get('imovel'));
+            $imovel->valor = $this->moedaBanco($imovel->valor);
 
             if ($request->hasFile('imagem')) {
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
