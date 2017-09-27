@@ -71,5 +71,9 @@
       realImovel.iniciar();
     });
   </script>
+
+  @yield('js')
+
+
 </body>
 </html>

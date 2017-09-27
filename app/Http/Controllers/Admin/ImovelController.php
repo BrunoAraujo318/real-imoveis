@@ -41,8 +41,9 @@ class ImovelController extends Controller
         $estados = Estado::all();
         $imovel = new Imovel();
         $endereco = new Endereco();
+        $cidades = [];
 
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'imovel', 'endereco'));
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco'));
     }
 
     /**
@@ -58,6 +59,7 @@ class ImovelController extends Controller
 
             // Salva o imovel
             $imovel = new Imovel($request->get('imovel'));
+            $imovel->valor = $this->moedaBanco($imovel->valor);
 
             if ($request->hasFile('imagem')) {
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
@@ -117,12 +119,20 @@ class ImovelController extends Controller
      */
     public function editar($id)
     {
-        $imovel = Imovel::find($id);
+        $estados = Estado::all();
         $tipos = ImovelTipo::all();
         $endereco = new Endereco();
-        $estados = Estado::all();
+        $cidades = new Cidade;
 
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados'));
+        $imovel = Imovel::find($id);
+        if (! empty($imovel->endereco)) {
+            $endereco = $imovel->endereco[0];
+            $cidade = $endereco->cidade;
+
+            $cidades = Cidade::where('estado_id', '=', $cidade->estado_id)->get();
+        }
+
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados', 'cidades'));
     }
 
     /**
@@ -133,19 +143,14 @@ class ImovelController extends Controller
      */
     public function atualizar(Request $request, $id)
     {
-        // TODO refatorar
-
-        // Atualizar Imovel
-
-        // Atualizar endereço
-
-        // Atualizar imagens
-         $this->beginTransaction();
+        $this->beginTransaction();
 
         try {
 
             // Altera o imovel
             $imovel = Imovel::find($id);
+            $imovel->fill($request->get('imovel'));
+            $imovel->valor = $this->moedaBanco($imovel->valor);
 
             if ($request->hasFile('imagem')) {
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
@@ -153,12 +158,16 @@ class ImovelController extends Controller
 
             $imovel->save();
 
-            // endereço
-            $endereco = Endereco::find($id);
-            $endereco->save();
+            if (! empty($imovel->endereco)) {
+                $endereco = $imovel->endereco[0];
+                // endereço
+                $endereco = Endereco::find($endereco->id);
+                $endereco->fill($request->get('endereco'));
+                $endereco->save();
 
-            // Altera a relação entre o endereço e imovel
-            $imovel->endereco()->sync([$endereco->id]);
+                // Altera a relação entre o endereço e imovel
+                $imovel->endereco()->sync([$endereco->id]);
+            }
 
             // Altera a galerias de imagens
             if ($request->hasFile('imagens')) {

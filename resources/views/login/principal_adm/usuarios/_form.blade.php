@@ -20,7 +20,7 @@
 </div>
 
 <div class="input-field">
-	<input type="text" name="telefone" maxlength="14" class="phone_with_ddd validate" value="" />
+	<input type="text" name="telefone" maxlength="14" class="phone_with_ddd validate" />
 	<label>
 		Telefone
 	</label>
@@ -28,7 +28,7 @@
 
 <div class="input-field">
 	<select id="perfil_id" name="perfil_id">
-		<option>Selecione...</option>
+		<option value="">Selecione...</option>
 		@foreach($perfis as $perfil)
 			<option value="{{ $perfil->id }}">{{ $perfil->display_name }}</option>
 		@endforeach
@@ -53,48 +53,47 @@
 </div>
 
 <h4>Endereço</h4>
-<div class="row">
-	<div class="input-field col s6">
-		<select id="estado_id" onchange="realImovel.getCidades(this);">
-			<option>Selecione...</option>
-			@foreach($estados as $estado)
-				<option value="{{ $estado->id }}">{{ $estado->nome }}</option>
-			@endforeach
-		</select>
-		<label>Estado</label>
-	</div>
-
-	<div class="input-field col s6">
-		<select id="cidade_id" name="endereco[cidade_id]">
-			<option>Selecione...</option>
-		</select>
-		<label>Cidade</label>
-	</div>
+<div class="input-field col s6">
+	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id') }}">
+	<select id="estado_id" name="endereco[estado_id]" class="validate @if($errors->has('endereco.estado_id')) invalid @endif" onchange="realImovel.getCidades(this);">
+		<option value="">Selecione...</option>
+		@foreach($estados as $estado)
+			<option value="{{ $estado->id }}" {{ $estadoId == $estado->id ? 'selected' : '' }} >{{ $estado->nome }}</option>
+		@endforeach
+	</select>
+	<label @if($errors->has('endereco.estado_id')) data-error="{{$errors->first('endereco.estado_id')}}" @endif >Estado</label>
 </div>
-
-<div class="input-field">
-	<input type="text" name="logradouro" class="validate" value="{{ old('endereco.logradouro', $endereco->logradouro) }}">
-	<label>Logradouro</label>
+<div class="input-field col s6">
+	<select id="cidade_id" name="endereco[cidade_id]" class="validate @if($errors->has('endereco.cidade_id')) invalid @endif">
+		<option value="">Selecione...</option>
+		@foreach($cidades as $cidade)
+			<option value="{{ $cidade->id }}" {{ $cidadeId == $cidade->id ? 'selected' : '' }} >{{ $cidade->nome }}</option>
+		@endforeach
+	</select>
+	<label @if($errors->has('endereco.cidade_id')) data-error="{{$errors->first('endereco.cidade_id')}}" @endif >
+	Cidade
+	</label>
 </div>
-
-<div class="input-field">
-	<input type="text" name="numero" class="validate" value="{{ old('endereco.numero', $endereco->numero) }}">
-	<label>Número</label>
+<div class="input-field col s6">
+	<input type="text" name="endereco[logradouro]" maxlength="50" class="validate @if($errors->has('endereco.logradouro')) invalid @endif" value="{{ old('imovel.logradouro', $endereco->logradouro) }}" />
+	<label @if($errors->has('endereco.logradouro')) data-error="{{$errors->first('endereco.logradouro')}}" @endif>Logradouro</label>
 </div>
-
-<div class="input-field">
-	<input type="text" name="complemento" class="validate" value="{{ old('endereco.complemento', $endereco->complemento) }}">
+<div class="input-field col s6">
+	<input type="text" name="endereco[bairro]" maxlength="50" class="validate @if($errors->has('endereco.bairro')) invalid @endif" value="{{ old('endereco.bairro', $endereco->bairro) }}">
+	<label @if($errors->has('endereco.bairro')) data-error="{{$errors->first('endereco.bairro')}}" @endif>Bairro</label>
+</div>
+<div class="input-field col s6">
+	<input type="text" name="endereco[numero]" maxlength="6" class="validate @if($errors->has('endereco.numero')) invalid @endif" value="{{ old('endereco.numero', $endereco->numero) }}" />
+	<label @if($errors->has('endereco.numero')) data-error="{{$errors->first('endereco.numero')}}" @endif>Número</label>
+</div>
+<div class="input-field col s6">
+	<input type="text" name="endereco[cep]" class="cep validate @if($errors->has('endereco.cep')) invalid @endif" value="{{ old('endereco.cep', $endereco->cep) }}">
+	<label @if($errors->has('endereco.cep')) data-error="{{$errors->first('endereco.cep')}}" @endif>CEP</label>
+</div>
+<div class="input-field col s12">
+	<input type="text" name="endereco[complemento]" maxlength="50" class="validate" value="{{ old('endereco.complemento', $endereco->complemento) }}" />
 	<label>Complemento</label>
 </div>
 
-<div class="input-field">
-	<input type="text" name="cep" class="cep validate" value="{{ old('endereco.cep', $endereco->cep) }}">
-	<label>CEP</label>
-</div>
-
-<div class="input-field">
-	<input type="text" name="bairro" class="validate" value="{{ old('endereco.bairro', $endereco->bairro) }}">
-	<label>Bairro</label>
-</div>
 
 <br><br>

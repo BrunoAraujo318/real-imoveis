@@ -37,4 +37,14 @@ class Controller extends BaseController
     {
         DB::rollBack();
     }
+
+    /**
+     * Converte o valor da moeda para o valor do banco de dados
+     *
+     * @param $moeda
+     */
+    protected function moedaBanco($moeda = 0)
+    {
+        return str_replace(',','.', str_replace('.', '', $moeda));
+    }
 }

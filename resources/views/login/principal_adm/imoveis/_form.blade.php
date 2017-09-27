@@ -5,7 +5,7 @@
 	<label @if($errors->has('imovel.nome')) data-error="{{$errors->first('imovel.nome')}}" @endif >Título</label>
 </div>
 <div class="input-field col s12">
-	<textarea name="imovel[descricao]" class="validate materialize-textarea " value="{{ old('imovel.descricao', $imovel->descricao) }}"></textarea>
+	<textarea name="imovel[descricao]" class="validate materialize-textarea">{{ old('imovel.descricao', $imovel->descricao) }}</textarea>
 	<label>Descrição</label>
 </div>
 <div class="input-field col s6">
@@ -40,8 +40,7 @@
 
 <h4>Endereço</h4>
 <div class="input-field col s6">
-	@php $estadoId = old('endereco.estado_id', $endereco->estado_id) @endphp
-	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id', $endereco->cidade_id) }}">
+	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id') }}">
 	<select id="estado_id" name="endereco[estado_id]" class="validate @if($errors->has('endereco.estado_id')) invalid @endif" onchange="realImovel.getCidades(this);">
 		<option value="">Selecione...</option>
 		@foreach($estados as $estado)
@@ -53,8 +52,13 @@
 <div class="input-field col s6">
 	<select id="cidade_id" name="endereco[cidade_id]" class="validate @if($errors->has('endereco.cidade_id')) invalid @endif">
 		<option value="">Selecione...</option>
+		@foreach($cidades as $cidade)
+			<option value="{{ $cidade->id }}" {{ $cidadeId == $cidade->id ? 'selected' : '' }} >{{ $cidade->nome }}</option>
+		@endforeach
 	</select>
-	<label @if($errors->has('endereco.cidade_id')) data-error="{{$errors->first('endereco.cidade_id')}}" @endif >Cidade</label>
+	<label @if($errors->has('endereco.cidade_id')) data-error="{{$errors->first('endereco.cidade_id')}}" @endif >
+	Cidade
+	</label>
 </div>
 <div class="input-field col s6">
 	<input type="text" name="endereco[logradouro]" maxlength="50" class="validate @if($errors->has('endereco.logradouro')) invalid @endif" value="{{ old('imovel.logradouro', $endereco->logradouro) }}" />

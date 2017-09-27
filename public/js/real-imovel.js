@@ -10,13 +10,6 @@ var realImovel = (function () {
 		adicionarMascaras();
 		loadAjax();
 		closeLoadAjax();
-		/*
-		getCidades('#estado_id', function() {
-			var cidadeId = $('#cidade_hide_id').val();
-			$('#cidade_id').val();
-			$('select').material_select();
-		});
-		*/
 	}
 
 	/**

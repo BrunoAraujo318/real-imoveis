@@ -19,7 +19,7 @@
 	</div>
 	<div class="divider"></div>
 	<div class="row">
-		<form action="{{ route('admin.papel.atualizar', $registro->id) }}" method="post">
+		<form action="{{ route('admin.papel.atualizar', $papel->id) }}" method="post">
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.papel._form')

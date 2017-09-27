@@ -20,11 +20,25 @@
 	<div class="divider"></div>
 	<div class="row">
 		<form action="{{ route('admin.imoveis.salvar') }}" method="post" enctype="multipart/form-data">
+			@php $estadoId = old('endereco.estado_id') @endphp
+			@php $cidadeId = old('endereco.cidade_id') @endphp
 			{{ csrf_field() }}
 			@include('login.principal_adm.imoveis._form')
 			<button type="submit" class="btn blue" title="Salvar">Salvar</button>
 		</form>
 	</div>
 </div>
+
+@section('js')
+<script>
+		$(function(){
+			realImovel.getCidades('#estado_id', function() {
+				var cidadeId = $('#cidade_hide_id').val();
+				$('#cidade_id').val(cidadeId);
+				$('select').material_select();
+			});
+		});
+</script>
+@endsection
 
 @endsection
