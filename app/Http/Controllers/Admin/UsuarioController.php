@@ -78,10 +78,10 @@ class UsuarioController extends Controller
         $endereco = new Endereco();
         $usuario->nascimento = Carbon::now();
         $estados = $this->estadoModel->all();
-
+        $cidades = [];
         $perfis = $this->perfilModel->all();
 
-        return view('login.principal_adm.usuarios.adicionar_usuarios', compact('usuario', 'endereco', 'perfis', 'estados'));
+        return view('login.principal_adm.usuarios.adicionar_usuarios', compact('usuario', 'endereco', 'perfis', 'estados', 'cidades'));
     }
 
     /**
@@ -91,14 +91,26 @@ class UsuarioController extends Controller
      */
     public function salvar(UsuarioRequest $request)
     {
-        $dados = $request->all();
+        $this->beginTransaction();
 
-        $usuarios = new Usuario($dados);
-        $usuarios->password = bcrypt($dados['password']);
-        $usuarios->save();
+        try {
 
-        \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-        return redirect()->route('admin.usuarios');
+            $dados = $request->all();
+            dd($dados);
+
+            $usuarios = new Usuario($dados);
+            $usuarios->password = bcrypt($dados['password']);
+            $usuarios->save();
+
+            $this->commit();
+            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            //return redirect()->route('admin.usuarios');
+        } catch (\Exception $e) {
+            $this->rollBack();
+            throw $e;
+        }
+
+ 
     }
 
     /**

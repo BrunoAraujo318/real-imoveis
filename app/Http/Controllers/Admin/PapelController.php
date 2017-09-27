@@ -60,9 +60,9 @@ class PapelController extends Controller
      */
     public function editar($id)
     {
-    	$papeis = $this->perfilModel->find($id);
+    	$papel = $this->perfilModel->find($id);
 
-    	return view('login.principal_adm.papel.editar_papeis', compact('papeis'));
+    	return view('login.principal_adm.papel.editar_papeis', compact('papel'));
     }
 
     public function atualizar(Request $request, $id)

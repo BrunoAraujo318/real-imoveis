@@ -20,6 +20,8 @@
 	<div class="divider"></div>
 	<div class="row">
 		<form action="{{ route('admin.usuarios.salvar') }}" method="post">
+			@php $estadoId = old('endereco.estado_id') @endphp
+			@php $cidadeId = old('endereco.cidade_id') @endphp
 			{{ csrf_field() }}
 			@include('login.principal_adm.usuarios._form')
 			<button class="btn blue">Salvar</button>

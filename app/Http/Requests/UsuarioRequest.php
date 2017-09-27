@@ -24,8 +24,16 @@ class UsuarioRequest extends Request
     public function rules()
     {
         return [
-            'nome' => 'required',
-            'email' => 'required|email|unique:usuarios,email',
+            'usuario.nome' => 'required',
+            'usuario.email' => 'required|email|unique:usuarios,email',
+            'usuario.nascimento' => 'required',
+            'usuario.cpf' => 'required',
+            'endereco.estado_id' => 'required',
+            'endereco.cidade_id' => 'required',
+            'endereco.logradouro' => 'required',
+            'endereco.bairro' => 'required',
+            'endereco.numero' => 'required',
+            'endereco.cep' => 'required',
         ];
     }
 }

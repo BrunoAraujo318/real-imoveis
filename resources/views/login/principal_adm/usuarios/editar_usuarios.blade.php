@@ -20,6 +20,8 @@
 	<div class="divider"></div>
 	<div class="row">
 		<form action="{{ route('admin.usuarios.atualizar', $usuario->id) }}" method="post">
+			@php $estadoId = old('endereco.estado_id', $endereco->cidade->estado_id) @endphp
+			@php $cidadeId = old('endereco.cidade_id', $endereco->cidade->id) @endphp
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.usuarios._form')
