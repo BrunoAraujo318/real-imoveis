@@ -174,7 +174,7 @@ class ImovelController extends Controller
                 $imagens = $request->file('imagens');
 
                 foreach ($imagens as $index => $imagem) {
-                    $newImagem = Imagem::find($id);
+                    $newImagem = new Imagem();
                     $newImagem->nome = $imagem->getClientOriginalName();
                     $newImagem->imovel_id = $imovel->id;
                     $newImagem->ordem = $index;

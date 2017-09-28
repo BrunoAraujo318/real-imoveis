@@ -86,7 +86,7 @@
 	<div class="file-field input-field col m6 s12">
 		<div class="btn">
 		<span>Imagem</span>
-			<input type="file" name="imovel[imagem]">
+			<input type="file" name="imagem">
 		</div>
 		<div class="file-path-wrapper">
 			<input type="text" class="file-path validade">

@@ -58,7 +58,7 @@ class Imovel extends Model
      */
     public function imagens()
     {
-        return $this->haMany('RealImoveis\Imagen','imagens');
+        return $this->hasMany(Imagem::class);
     }
 
     /**

@@ -30,7 +30,6 @@
 					<th>Tipo Imovel</th>
 					<th>Categoria e Serviços</th>
 					<th>Valor</th>
-					<th>Imagem</th>
 					<th>Ação</th>
 				</tr>
 			</thead>
@@ -41,7 +40,6 @@
 					<td>{{ $imovel->tipo->nome }}</td>
 					<td>{{ $imovel->getNomeCategoria() }}</td>
 					<td>R$ {{ number_format($imovel->valor,2,",",".") }}</td>
-					<td>R$ {{ $imovel->imagem }}</td>
 					<td>
 						<a class="btn blue" title="Editar imovel" href="{{ route('admin.imoveis.editar', $imovel->id) }}"><i class="small material-icons">mode_edit</i></a>
 						<a class="btn deep-orange darken-1" title="Deletar imovel" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imoveis.deletar', $imovel->id) }}'}"><i class="small material-icons">delete_forever</i></a>
