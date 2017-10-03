@@ -19,12 +19,15 @@ class ImovelController extends Controller
     {
     	$imovel = Imovel::find($id);
     	$endereco = new Endereco();
+    	$galeria = [];
 
     	if (! empty($imovel->endereco)) {
     		$endereco = $imovel->endereco[0];
     	}
 
-    	$galeria = $imovel->imagens()->orderBy('ordem')->get();
+    	if (! empty($imovel->imagens)) {
+    		$galeria = $imovel->imagens()->orderBy('ordem')->get();
+    	}
 
     	$direcaoImagem = ['center-align','left-align', 'rigth-align'];
 
