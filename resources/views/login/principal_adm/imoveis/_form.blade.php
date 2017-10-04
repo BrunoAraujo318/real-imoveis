@@ -34,6 +34,18 @@
 	<label>Dormitorios (Ex: 3)</label>
 </div>
 <div class="input-field col s12">
+	<input type="text" name="imovel[qtd_cozinha]" class="validate" value="{{ old('imovel.qtd_cozinha', $imovel->qtd_cozinha) }}" />
+	<label>Cozinha (Ex: 1)</label>
+</div>
+<div class="input-field col s12">
+	<input type="text" name="imovel[qtd_banheiro]" class="validate" value="{{ old('imovel.qtd_banheiro', $imovel->qtd_banheiro) }}" />
+	<label>Banheiros (Ex: 4)</label>
+</div>
+<div class="input-field col s12">
+	<input type="text" name="imovel[qtd_garagem]" class="validate" value="{{ old('imovel.qtd_garagem', $imovel->qtd_garagem) }}" />
+	<label>Garagem (Ex: 2)</label>
+</div>
+<div class="input-field col s12">
 	<input type="text" name="imovel[url_video]" class="validate" value="{{ old('imovel.url_video', $imovel->url_video) }}" />
 	<label>URL do Vídeo</label>
 </div>
@@ -93,7 +105,7 @@
 		</div>
 	</div>
 	<div class="col m6 s12">
-		<img width="120" src="" id="imag-principal">
+		<img width="120" src="{{ $imovel->imagem }}" id="imag-principal">
 	</div>
 </div>
 

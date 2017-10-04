@@ -22,10 +22,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="row" align="center">
-                <button onclick="sliderPrev()" class="btn blue">Anterior</button>
-                <button onclick="sliderNext()" class="btn blue">Próximo</button>
-            </div>
         @else
             <img class="responsive-img" src="{{ asset($imovel->imagem) }}">
         @endif
@@ -35,16 +31,19 @@
             <blockquote>
                 {{ $imovel->descricao }}
             </blockquote>
-            <p><b>Código:</b> {{ $imovel->id }}</p>
-            <p><b>Condomínio:</b> {{ $imovel->getNomeCategoria() }}</p>
+            <p><b><i class="tiny material-icons">home</i> Código:</b> {{ $imovel->id }}</p>
+            <p><b>Categoria:</b> {{ $imovel->getNomeCategoria() }}</p>
             <p><b>Tipo:</b> {{ $imovel->tipo->nome }}</p>
             <p><b>Endereço:</b> {{ $endereco->logradouro }}</p>
             <p><b>Cep:</b> {{ $endereco->cep }}</p>
             <p><b>Cidade:</b> {{ $endereco->cidade->nome }}</p>
             <p><b>Valor:</b> R$ {{ number_format($imovel->valor,2,",",".") }}</p>
-             <p><b>Dormitórios:</b> {{ $imovel->qtd_dormitorios}}</p>
-            <a class="btn deep-orange darken-1" href="#">Contato</a>
-    	</div>  
+            <p><b><i class="tiny material-icons">hotel</i> Dormitório:</b> {{ $imovel->qtd_dormitorio }}</p>
+            <p><b>Banheiro:</b> {{ $imovel->qtd_banheiro }}</p>
+            <p><b><i class="tiny material-icons">restaurant_menu</i> Cozinha:</b> {{ $imovel->qtd_cozinha }}</p>
+            <p><b><i class="tiny material-icons">drive_eta</i> Garagem:</b> {{ $imovel->qtd_garagem }}</p>
+            <a class="btn deep-orange darken-1" href="#">Contrato</a>
+    	</div>
     </div>
     <div class="row section">
         <div class="col s12 m8">
