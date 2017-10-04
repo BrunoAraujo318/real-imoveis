@@ -6,7 +6,7 @@
 </div>
 
 <div class="input-field">
-	<input type="text" name="usuario[nascimento]" maxlength="10" class="date validate @if($errors->has('usuario.nascimento')) invalid @endif" value="{{old('usuario.nascimento', $usuario->nascimento->format('d/m/Y'))}}">
+	<input type="text" name="usuario[nascimento]" maxlength="10" class="date validate @if($errors->has('usuario.nascimento')) invalid @endif" value="{{old('usuario.nascimento', $usuario->nascimento)}}">
 	<label @if($errors->has('usuario.nascimento')) data-error="{{$errors->first('usuario.nascimento')}}" @endif>
 		Nascimento
 	</label>

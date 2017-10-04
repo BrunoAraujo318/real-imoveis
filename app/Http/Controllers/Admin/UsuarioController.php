@@ -10,6 +10,7 @@ use \Carbon\Carbon;
 use RealImoveis\Models\Usuario;
 use RealImoveis\Models\Perfis;
 use RealImoveis\Models\Estado;
+use RealImoveis\Models\Cidade;
 use RealImoveis\Models\Endereco;
 
 class UsuarioController extends Controller
@@ -95,22 +96,34 @@ class UsuarioController extends Controller
 
         try {
 
-            $dados = $request->all();
-            dd($dados);
+            $usuarioRequest = $request->get('usuario');
 
-            $usuarios = new Usuario($dados);
-            $usuarios->password = bcrypt($dados['password']);
-            $usuarios->save();
+            $usuario = new Usuario($usuarioRequest);
+            $usuario->password = bcrypt($usuarioRequest['password']);
+            $usuario->save();
+
+            // endereço
+            $endereco = new Endereco($request->get('endereco'));
+            $endereco->save();
+
+            // salvar a relação entre o endereço e imovel
+            $usuario->endereco()->sync([$endereco->id]);
+
+            // salva o perfil do usuario
+            $usuario->roles()->attach([2]);
+
+            // salva o telefone do usuario
+            $telefone = ['numero' => $request->telefone];
+            $usuario->telefone()->create($telefone);
 
             $this->commit();
-            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            //return redirect()->route('admin.usuarios');
+
+            \Session::flash('mensagem', ['msg' => 'Registro criado com Sucesso!', 'class' => 'green white-text']);
+            return redirect()->route('admin.usuarios');
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;
         }
-
- 
     }
 
     /**
@@ -123,13 +136,19 @@ class UsuarioController extends Controller
         $perfis = $this->perfilModel->all();
         $estados = $this->estadoModel->all();
         $usuario = $this->usuarioModel->find($id);
-        $endereco = new Endereco();
 
         if (! $usuario->endereco->isEmpty()) {
             $endereco = $usuario->endereco;
         }
 
-        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'perfis', 'usuario', 'endereco'));
+        if (! empty($usuario->endereco)) {
+            $endereco = $usuario->endereco[0];
+            $cidade = $endereco->cidade;
+
+            $cidades = Cidade::where('estado_id', '=', $cidade->estado_id)->get();
+        }
+
+        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'cidades', 'perfis', 'usuario', 'endereco'));
     }
 
     /**
