@@ -44,7 +44,9 @@
 					<td>{{ $usuario->email }}</td>
 					<td>
 						<a class="btn blue" title="Editar usuário" href="{{ route('admin.usuarios.editar', $usuario->id) }}"><i class="small material-icons">mode_edit</i></a>
+						@if(! $usuario->hasRole('admin'))
 						<a class="btn deep-orange darken-1" title="Deletar usuário" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.usuarios.deletar', $usuario->id) }}'}"><i class="small material-icons">delete_forever</i></a>
+						@endif
 					</td>
 				</tr>
 			@endforeach

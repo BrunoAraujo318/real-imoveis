@@ -32,11 +32,19 @@ class Usuario extends Authenticatable
     protected $dates = ['nascimento'];
 
     /**
+     * Return Birth formated pt_br
+     */
+    public function getNascimentoAttribute()
+    {
+        return $this->attributes['nascimento'] = Carbon::createFromFormat('Y-m-d', $this->attributes['nascimento'])->format('d/m/Y');
+    }
+
+    /**
      * Retorna so telefones referente ao usuario.
      */
     public function telefone()
     {
-    	return $this->hasMany('RealImoveis\Telefone','telefones');
+    	return $this->hasMany(Telefone::class);
     }
 
     /**

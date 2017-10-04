@@ -11,7 +11,5 @@ class Slide extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'nome', 'descricao', 'imagem', 'ordem'
-    ];
+    protected $fillable = ['nome', 'descricao', 'imagem', 'ordem'];
 }

@@ -15,7 +15,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Adicionar Usuários</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -28,5 +28,17 @@
 		</form>
 	</div>
 </div>
+
+@section('js')
+<script>
+		$(function(){
+			realImovel.getCidades('#estado_id', function() {
+				var cidadeId = $('#cidade_hide_id').val();
+				$('#cidade_id').val(cidadeId);
+				$('select').material_select();
+			});
+		});
+</script>
+@endsection
 
 @endsection
