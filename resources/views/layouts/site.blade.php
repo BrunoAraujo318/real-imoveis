@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8">    
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ isset($seo['titulo']) ? $seo['titulo'] : config('seo.titulo') }}</title>
@@ -18,7 +18,16 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('lib/materialize/dist/css/materialize.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}">
+
+    <script type="text/javascript">
+    var getPath = function (url) {
+      url = url || '';
+
+      return "{{ asset('') }}"+url;
+    }
+    </script>
+
 </head>
 <body id="app-layout">
   <header>
@@ -52,7 +61,7 @@
             <li><a class="grey-text text-lighten-3" href="{{ route('site.sobre') }}">Sobre</a></li>
             <li><a class="grey-text text-lighten-3" href="{{ route('site.contato') }}">Contato</a></li>
             <li><a class="grey-text text-lighten-3" href="{{ route('login') }}">Login</a></li>
-            
+
           </ul>
         </div>
       </div>
@@ -64,11 +73,19 @@
       </div>
     </div>
   </footer>
-            
+
 
   <script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
+  <script src="{{asset('lib/jquery-mask/jquery.mask.min.js')}}"></script>
+  <script src="{{asset('lib/jquery-loading-overlay/src/loadingoverlay.min.js')}}"></script>
   <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
-
   <script src="{{asset('js/init.js')}}"></script>
+  <script src="{{asset('js/real-imovel.js')}}"></script>
+  <script>
+    // executando quando a tela terminar de carregar
+    $(function(){
+      realImovel.iniciar();
+    });
+  </script>
 </body>
 </html>

@@ -7,27 +7,43 @@
 				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 2 ? 'selected' : ''}} value="2">Aluguel</option>
 				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 3 ? 'selected' : ''}} value="3">Venda</option>
 			</select>
-			<label>Preços</label>
+			<label>Categoria ou Serviço</label>
 		</div>
-		<div class="input-field col s6 m4">
-			<select name="tipo_id">
-				<option {{ isset($busca['tipo_id']) && $busca['tipo_id'] == 'todos' ? 'selected' : ''}} value="todos">Todos os Tipos</option>
-				@foreach($tipos as $tipo)
-				<option {{ isset($busca['tipo_id']) && $busca['tipo_id'] == $tipo->id ? 'selected' : ''}} value="{{$tipo->id}}">{{$tipo->titulo}}</option>
+		@php
+		$estadoId = "";
+		$cidadeId = "";
+		$imovelTipoId = "";
+		@endphp
+		<div class="input-field col s4">
+			<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id') }}">
+			<select id="estado_id" name="endereco[estado_id]" class="validate @if($errors->has('endereco.estado_id')) invalid @endif" onchange="realImovel.getCidades(this);">
+				<option value="">Todos os Estados</option>
+				@foreach($estados as $estado)
+					<option value="{{ $estado->id }}" {{ $estadoId == $estado->id ? 'selected' : '' }} >{{ $estado->nome }}</option>
 				@endforeach
 			</select>
-			<label>Tipo</label>
+			<label @if($errors->has('endereco.estado_id')) data-error="{{$errors->first('endereco.estado_id')}}" @endif >Estado</label>
 		</div>
-		<div class="input-field col s6 m4">
-			<select name="cidade_id">
-				<option {{ isset($busca['cidade_id']) && $busca['cidade_id'] == 'todas' ? 'selected' : ''}} value="todas">Todas as Cidade</option>
+		<div class="input-field col s4">
+			<select id="cidade_id" name="endereco[cidade_id]" class="validate @if($errors->has('endereco.cidade_id')) invalid @endif">
+				<option value="">Todas as Cidades</option>
 				@foreach($cidades as $cidade)
-				<option {{ isset($busca['cidade_id']) && $busca['cidade_id'] == $cidade->id ? 'selected' : ''}} value="{{$cidade->id}}">{{$cidade->nome}}</option>
+					<option value="{{ $cidade->id }}" {{ $cidadeId == $cidade->id ? 'selected' : '' }} >{{ $cidade->nome }}</option>
 				@endforeach
 			</select>
-			<label>Cidade</label>
+			<label @if($errors->has('endereco.cidade_id')) data-error="{{$errors->first('endereco.cidade_id')}}" @endif >Cidade</label>
 		</div>
-		<div class="input-field col s12 m4">
+		<div class="input-field col s4">
+			@php $imovelTipoId = old('imovel.imovel_tipo_id') @endphp
+			<select name="imovel[imovel_tipo_id]">
+			<option value="">Todos os Tipos</option>
+			@foreach($tipos as $tipo)
+				<option value="{{ $tipo->id }}" {{ $imovelTipoId == $tipo->id ? 'selected' : '' }} >{{ $tipo->nome }}</option>
+			@endforeach
+			</select>
+			<label>Tipo de Imóvel</label>
+		</div>
+		<div class="input-field col s12 m3">
 			<select name="valor">
 				<option {{ isset($busca['valor']) && $busca['valor'] == 0 ? 'selected' : ''}} value="0">Todos os Valores</option>
 				<option {{ isset($busca['valor']) && $busca['valor'] == 1 ? 'selected' : ''}} value="1">Até R$ 500,00</option>
@@ -47,10 +63,6 @@
 				<option {{ isset($busca['qtd_dormitorio']) && $busca['qtd_dormitorio'] == 4 ? 'selected' : ''}} value="4">Mais</option>
 			</select>
 			<label>Dormitórios</label>
-		</div>
-		<div class="input-field col s12 m3">
-			<input class="validate" type="text" name="bairro" value="{{ isset($busca['bairro']) ? $busca['bairro'] : ''}} ">
-			<label>Bairros</label>
 		</div>
 		<div class="input-field col s12 m2">
 			<button class="btn deep-orange darken-1 right">Filtrar</button>

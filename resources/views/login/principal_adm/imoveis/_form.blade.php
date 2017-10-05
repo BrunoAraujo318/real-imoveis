@@ -1,6 +1,6 @@
 <h4>Dados do imovel</h4>
 <div class="input-field col s12">
-	<input type="text" name="imovel[nome]" maxlength="80" value="{{old('imovel.nome', $imovel->nome)}}"
+	<input type="text" name="imovel[nome]" maxlength="40" value="{{old('imovel.nome', $imovel->nome)}}"
 		   class="validate @if($errors->has('imovel.nome')) invalid @endif">
 	<label @if($errors->has('imovel.nome')) data-error="{{$errors->first('imovel.nome')}}" @endif >Título</label>
 </div>
@@ -26,30 +26,29 @@
 	<label>Tipo de Imóvel</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="imovel[valor]" class="money validate @if($errors->has('imovel.valor')) invalid @endif " value="{{ old('imovel.valor', $imovel->valor) }}" />
+	<input type="text" maxlength="15" name="imovel[valor]" class="money validate @if($errors->has('imovel.valor')) invalid @endif " value="{{ old('imovel.valor', $imovel->valor) }}" />
 	<label @if($errors->has('imovel.valor')) data-error="{{$errors->first('imovel.valor')}}" @endif >Valor (Ex: 345,90)</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="imovel[qtd_dormitorio]" class="validate" value="{{ old('imovel.qtd_dormitorio', $imovel->qtd_dormitorio) }}" />
+	<input type="number" maxlength="3" name="imovel[qtd_dormitorio]" class="validate" value="{{ old('imovel.qtd_dormitorio', $imovel->qtd_dormitorio) }}" />
 	<label>Dormitorios (Ex: 3)</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="imovel[qtd_cozinha]" class="validate" value="{{ old('imovel.qtd_cozinha', $imovel->qtd_cozinha) }}" />
+	<input type="number" maxlength="3" name="imovel[qtd_cozinha]" class="validate" value="{{ old('imovel.qtd_cozinha', $imovel->qtd_cozinha) }}" />
 	<label>Cozinha (Ex: 1)</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="imovel[qtd_banheiro]" class="validate" value="{{ old('imovel.qtd_banheiro', $imovel->qtd_banheiro) }}" />
+	<input type="number" maxlength="3" name="imovel[qtd_banheiro]" class="validate" value="{{ old('imovel.qtd_banheiro', $imovel->qtd_banheiro) }}" />
 	<label>Banheiros (Ex: 4)</label>
 </div>
 <div class="input-field col s12">
-	<input type="text" name="imovel[qtd_garagem]" class="validate" value="{{ old('imovel.qtd_garagem', $imovel->qtd_garagem) }}" />
+	<input type="number" maxlength="3" name="imovel[qtd_garagem]" class="validate" value="{{ old('imovel.qtd_garagem', $imovel->qtd_garagem) }}" />
 	<label>Garagem (Ex: 2)</label>
 </div>
 <div class="input-field col s12">
 	<input type="text" name="imovel[url_video]" class="validate" value="{{ old('imovel.url_video', $imovel->url_video) }}" />
 	<label>URL do Vídeo</label>
 </div>
-
 <h4>Endereço</h4>
 <div class="input-field col s6">
 	<input type="hidden" id="cidade_hide_id" value="{{ old('endereco.cidade_id') }}">
@@ -81,7 +80,7 @@
 	<label @if($errors->has('endereco.bairro')) data-error="{{$errors->first('endereco.bairro')}}" @endif>Bairro</label>
 </div>
 <div class="input-field col s6">
-	<input type="text" name="endereco[numero]" maxlength="6" class="validate @if($errors->has('endereco.numero')) invalid @endif" value="{{ old('endereco.numero', $endereco->numero) }}" />
+	<input type="number" name="endereco[numero]" maxlength="6" class="validate @if($errors->has('endereco.numero')) invalid @endif" value="{{ old('endereco.numero', $endereco->numero) }}" />
 	<label @if($errors->has('endereco.numero')) data-error="{{$errors->first('endereco.numero')}}" @endif>Número</label>
 </div>
 <div class="input-field col s6">
@@ -95,7 +94,7 @@
 
 <h4>Imagem</h4>
 <div class="row">
-	<div class="file-field input-field col m6 s12">
+	<div class="file-field input-field col m6 s6">
 		<div class="btn">
 		<span>Imagem</span>
 			<input type="file" name="imagem">
@@ -105,7 +104,7 @@
 		</div>
 	</div>
 	<div class="col m6 s12">
-		<img width="120" src="{{ $imovel->imagem }}" id="imag-principal">
+		<img width="300" src="{{ asset($imovel->imagem) }}" id="imag-principal">
 	</div>
 </div>
 
@@ -119,4 +118,12 @@
 			<input type="text" class="file-path validade">
 		</div>
 	</div>
+</div>
+
+<div class="row">
+	@foreach($galerias as $galeria)
+	<div class="col m4 s4">
+		<img width="300" src="{{ asset($galeria->imagem) }}">
+	</div>
+	@endforeach
 </div>

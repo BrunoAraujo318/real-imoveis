@@ -78,6 +78,18 @@ var realImovel = (function () {
 		// mascara de dinheiro
 		$('.money').mask("#.##0,00", {reverse: true});
 
+		// mascara de dormitório
+		$('.qtd_dormitorio').mask('000');
+
+		// mascara de banheiro
+		$('.qtd_banheiro').mask('000');
+
+		// mascara de cozinha
+		$('.qtd_cozinha').mask('000');
+
+		// mascara de garagem
+		$('.qtd_garagem').mask('000');
+
 	}
 
 	/**
