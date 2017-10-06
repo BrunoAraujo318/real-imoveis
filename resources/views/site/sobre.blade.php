@@ -8,19 +8,15 @@
     </div>
     <div class="row section">
     	<div class="col s12 m6">
-    		<img class="responsive-img" src="{{ asset('img/modelo_img_home.jpg') }}">
+    		<img class="responsive-img" src="{{ asset($pagina->imagem) }}">
     	</div>
     	<div class="col s12 m6">
-    		<h4>Real Imóveis</h4>
+    		<h4>{{ $pagina->titulo }}</h4>
     		<blockquote>
-    			Ajudando a aproximar clientes 
+    			{{ $pagina->descricao }}
     		</blockquote>
             <div align="left">
-        		<p>Para locadores e locatários que desejam gerenciar as informações em relação ao seu aluguel. 
-                O Real Imóveis é um software como serviço que permite realizar o cadastro de imóveis disponibilizados 
-                para aluguel, possui recursos de busca de imóveis disponíveis, assinatura do contrato de locação do 
-                imóvel, além de possibilitar realizar o pagamento do aluguel de forma online. O diferencial do nosso 
-                produto é o custo benefício, além de facilitar o controle do aluguel.</p>
+        		<p> {{ $pagina->texto }} </p>
             </div>
     	</div>
     </div>

@@ -11,10 +11,10 @@
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a class="breadcrumb">Páginas</a>
+		        <a class="breadcrumb black-text text-lighten-3">Páginas</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">

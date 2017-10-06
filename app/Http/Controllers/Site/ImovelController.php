@@ -18,7 +18,7 @@ class ImovelController extends Controller
     public function index($id)
     {
     	$imovel = Imovel::find($id);
-    	$endereco = new Endereco();
+        $endereco = new Endereco();
     	$galeria = [];
 
     	if (! empty($imovel->endereco)) {

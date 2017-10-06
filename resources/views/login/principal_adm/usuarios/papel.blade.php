@@ -15,7 +15,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Tipos de Papéis</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="row">
 		<form action="{{ route('admin.usuarios.papel.salvar', $usuario->id) }}" method="post">
@@ -29,7 +29,7 @@
 		</div>
 		<div class="right">
 			<button class="btn blue">Adicionar</button>
-		</div>	
+		</div>
 		</form>
 	</div>
 	<div class="divider"></div>
@@ -48,7 +48,7 @@
 					<td>{{ $papel->nome }}</td>
 					<td>{{ $papel->descricao }}</td>
 					<td>
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Remover esse Papel?')){ window.location.href = '{{ route('admin.usuarios.papel.remover', [$usuario->id, $papel->id]) }}'}">Remover</a>
+						<a id="button" class="btn" href="javascript: if(confirm('Remover esse Papel?')){ window.location.href = '{{ route('admin.usuarios.papel.remover', [$usuario->id, $papel->id]) }}'}">Remover</a>
 					</td>
 				</tr>
 			@endforeach

@@ -15,14 +15,14 @@
 		        <a class="breadcrumb black-text text-lighten-3">Adicionar Tipos</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
 		<form action="{{ route('admin.imovel.tipos.salvar') }}" method="post">
 			{{ csrf_field() }}
 			@include('login.principal_adm.tipos_imovel._form')
-			<button class="btn blue">Salvar</button>
+			<button id="button" class="btn">Salvar</button>
 		</form>
 	</div>
 </div>

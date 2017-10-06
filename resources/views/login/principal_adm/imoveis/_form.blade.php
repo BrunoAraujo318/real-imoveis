@@ -1,6 +1,7 @@
-<h4>Dados do imovel</h4>
+<h4>Dados do imóvel</h4>
+
 <div class="input-field col s12">
-	<input type="text" name="imovel[nome]" maxlength="40" value="{{old('imovel.nome', $imovel->nome)}}"
+	<input type="text" name="imovel[nome]" maxlength="25" value="{{old('imovel.nome', $imovel->nome)}}"
 		   class="validate @if($errors->has('imovel.nome')) invalid @endif">
 	<label @if($errors->has('imovel.nome')) data-error="{{$errors->first('imovel.nome')}}" @endif >Título</label>
 </div>
@@ -94,36 +95,26 @@
 
 <h4>Imagem</h4>
 <div class="row">
-	<div class="file-field input-field col m6 s6">
-		<div class="btn">
-		<span>Imagem</span>
-			<input type="file" name="imagem">
-		</div>
-		<div class="file-path-wrapper">
-			<input type="text" class="file-path validade">
-		</div>
-	</div>
 	<div class="col m6 s12">
 		<img width="300" src="{{ asset($imovel->imagem) }}" id="imag-principal">
 	</div>
-</div>
-
-<div class="row">
 	<div class="file-field input-field col m12 s12">
 		<div class="btn">
-		<span>Upload de Imagens</span>
-			<input type="file" multiple name="imagens[]">
-		</div>
-		<div class="file-path-wrapper">
-			<input type="text" class="file-path validade">
+		<span>Imagem</span>
+			<input type="file" name="imagem" onchange="realImovel.arquivo.readURL(this, '#imag-principal');">
 		</div>
 	</div>
 </div>
-
-<div class="row">
+<div  class="row">
 	@foreach($galerias as $galeria)
 	<div class="col m4 s4">
 		<img width="300" src="{{ asset($galeria->imagem) }}">
 	</div>
 	@endforeach
+	<div class="file-field input-field col m12 s12">
+		<div class="btn">
+		<span>Upload de Imagens</span>
+			<input type="file" multiple name="imagens[]">
+		</div>
+	</div>
 </div>

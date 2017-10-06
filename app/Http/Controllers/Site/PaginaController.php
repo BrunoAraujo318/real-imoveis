@@ -27,7 +27,7 @@ class PaginaController extends Controller
      */
     public function contato()
     {
-    	$pagina = Pagina::where('tipo','=','contato')->first();
+    	$pagina = Pagina::where('tipo','=','Contato')->first();
 
     	return view('site.contato', compact('pagina'));
     }
@@ -39,7 +39,7 @@ class PaginaController extends Controller
      */
     public function sobre()
     {
-    	$pagina = Pagina::where('tipo','=','sobre')->first();
+    	$pagina = Pagina::where('tipo','=','Sobre')->first();
 
     	return view('site.sobre', compact('pagina'));
     }
@@ -52,7 +52,7 @@ class PaginaController extends Controller
      */
     public function enviarContato(Request $request)
     {
-    	$pagina = Pagina::where('tipo', '=', 'contato')->first();
+    	$pagina = Pagina::where('tipo', '=', 'Contato')->first();
         $email = $pagina->email;
 
         \Mail::send('emails.contato', ['request'=>$request], function($m) use ($request, $email){

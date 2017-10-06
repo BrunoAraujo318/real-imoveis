@@ -24,7 +24,7 @@
 			@php $cidadeId = old('endereco.cidade_id') @endphp
 			{{ csrf_field() }}
 			@include('login.principal_adm.usuarios._form')
-			<button class="btn blue">Salvar</button>
+			<button id="button" class="btn">Salvar</button>
 		</form>
 	</div>
 </div>

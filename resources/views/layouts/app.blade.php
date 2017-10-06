@@ -65,6 +65,7 @@
   <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
   <script src="{{asset('js/init.js')}}"></script>
   <script src="{{asset('js/real-imovel.js')}}"></script>
+  <script src="{{asset('js/arquivo.js')}}"></script>
   <script>
     // executando quando a tela terminar de carregar
     $(function(){

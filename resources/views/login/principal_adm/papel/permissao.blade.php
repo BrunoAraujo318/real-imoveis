@@ -46,7 +46,7 @@
 					<td>{{ $value->nome }}</td>
 					<td>{{ $value->descricao }}</td>
 					<td>		
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Remover esse Permissão?')){ window.location.href = '{{ route('admin.papel.permissao.remover', [$papel->id,$value->id]) }}'}">Remover</a>
+						<a id="button"class="btn" href="javascript: if(confirm('Remover esse Permissão?')){ window.location.href = '{{ route('admin.papel.permissao.remover', [$papel->id,$value->id]) }}'}">Remover</a>
 					</td>
 				</tr>
 			@endforeach

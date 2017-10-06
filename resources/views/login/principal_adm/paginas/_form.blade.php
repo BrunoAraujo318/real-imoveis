@@ -6,25 +6,23 @@
 	<input type="text" name="descricao" class="validate" value="{{ isset($pagina->descricao) ? $pagina->descricao : '' }}">
 	<label>Descrição</label>
 </div>
-@if(isset($pagina->email))
 <div class="input-field">
-	<input type="email" name="email" class="validate" value="{{ isset($pagina->email) ? $pagina->email : '' }}">
-	<label>E-mail</label>
+	<textarea type="text" name="texto" class="materialize-textarea">{{ old('texto', $pagina->texto) }}</textarea>
+	<label>Texto</label>
 </div>
-
+<h4>Imagem</h4>
 <div class="row">
-	<div class="file-field input-field col m6 s12">
-		<div class="btn">
-			<input type="file" name="imagem">
-		</div>
-		<div class="file-path wrapper">
-			<input type="text" class="file-path validade">
-		</div>
-	</div>
 	<div class="col m6 s12">
 		@if(isset($pagina->imagem))
-			<img src="{{ asset($pagina->imagem) }}">
+			<img width="300" src="{{ asset($pagina->imagem) }}" id="imag-principal">
 		@endif
 	</div>
 </div>
-@endif
+<div class="row">
+	<div class="file-field input-field col m6 s12">
+		<div class="btn">
+			<span>Escolher Imagem</span>
+			<input type="file" name="imagem" onchange="realImovel.arquivo.readURL(this, '#imag-principal');">
+		</div>
+	</div>
+</div>

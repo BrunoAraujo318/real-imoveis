@@ -3,7 +3,6 @@
 		<div class="input-field col s12 m4">
 			<select name="valor">
 				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 0 ? 'selected' : ''}} value="0">Todas as Categorias e Serviços</option>
-				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 1 ? 'selected' : ''}} value="1">Compra</option>
 				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 2 ? 'selected' : ''}} value="2">Aluguel</option>
 				<option {{ isset($busca['categoria_servico']) && $busca['categoria_servico'] == 3 ? 'selected' : ''}} value="3">Venda</option>
 			</select>
@@ -65,7 +64,7 @@
 			<label>Dormitórios</label>
 		</div>
 		<div class="input-field col s12 m2">
-			<button class="btn deep-orange darken-1 right">Filtrar</button>
+			<button id="button" class="btn">Filtrar</button>
 		</div>
 	</form>
 </div>

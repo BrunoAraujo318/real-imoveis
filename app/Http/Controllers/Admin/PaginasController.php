@@ -29,7 +29,7 @@ class PaginasController extends Controller
 
     /**
      * Renderiza a interface de edição.
-     * 
+     *
      * @param  integer $id
      */
     public function editar($id)
@@ -41,21 +41,15 @@ class PaginasController extends Controller
 
     public function atualizar(Request $request, $id){
         $dados = $request-> all();
-        
+
         $pagina = $this->paginaModel->find($id);
         $pagina->titulo = trim($dados['titulo']);
         $pagina->descricao = trim($dados['descricao']);
-        if(isset($dados['email'])){
-            $pagina->email = trim($dados['email']);
-        }
-        if(isset($dados['mapa']) && trim($dados['mapa']) != ''){
-            $pagina->mapa = trim($dados['mapa']);
-        } else{
-            $pagina->mapa = null;
-        }
+        $pagina->texto = trim($dados['texto']);
 
         $file = $request->file('imagem');
         if($file){
+            dd("Bruno");
             $rand = rand(11111,99999);
             $diretorio = "img/paginas/".$id."/";
             $ext = $file->guessClientExtension();
@@ -63,6 +57,8 @@ class PaginasController extends Controller
             $file->move($diretorio, $nomeArquivo);
             $pagina->imagem = $diretorio.'/'.$nomeArquivo;
         }
+
+        dd($pagina);
 
         $pagina->update();
 
