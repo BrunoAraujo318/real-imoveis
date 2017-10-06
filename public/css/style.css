@@ -32,12 +32,14 @@
   }
 
   #cadastrar{
-    color: #FFD700 !important;
+    color: #FF8C00!important;
     font-weight: 900;
   }
 
   #button{
-    color: #191970;
+    color: #363636;
+    background-color: #EEB422 !important;
+    font-weight: 700;
   }
 
   #fonte a{

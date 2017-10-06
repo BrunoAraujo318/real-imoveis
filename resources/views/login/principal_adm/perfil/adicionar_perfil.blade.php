@@ -10,7 +10,7 @@
 		<form action="{{ route('admin.perfil.salvar') }}" method="post">
 			{{ csrf_field() }}
 			@include('login.principal_adm.perfil._form')
-			<button class="btn blue">Salvar</button>
+			<button id="button" class="btn">Salvar</button>
 		</form>
 	</div>
 </div>

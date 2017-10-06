@@ -8,7 +8,7 @@
     </div>
     <div class="row section">
         <div class="col s12 m7">
-            <img class="responsive-img" src="{{ asset('img/modelo_detalhe_2.jpg') }}">
+            <img class="responsive-img" src="{{ asset($pagina->imagem) }}">
         </div>
         <div class="col s12 m5">
             <h4>{{ $pagina->titulo }}</h4>
@@ -29,7 +29,7 @@
                     <textarea name="mensagem" class="materialize-textarea"></textarea>
                     <label>Mensagem</label>
                 </div>
-                <button class="btn blue">Enviar</button>            
+                <button id="button" class="btn">Enviar</button>
             </form>
         </div>
     </div>

@@ -42,8 +42,9 @@ class ImovelController extends Controller
         $imovel = new Imovel();
         $endereco = new Endereco();
         $cidades = [];
+        $galerias = [];
 
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco'));
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco', 'galerias'));
     }
 
     /**
@@ -106,7 +107,8 @@ class ImovelController extends Controller
     {
         $rand = date('Ymdhis');
         $ext = $imagem->guessClientExtension();
-        $nomeArquivo = "_img_".$rand.".".$ext;
+        $nomeOriginal = $imagem->getClientOriginalName();
+        $nomeArquivo = "_img_".$nomeOriginal."_".$rand.".".$ext;
         $imagem->move($destino, $nomeArquivo);
         $registro->imagem = $destino.$nomeArquivo;
     }
@@ -123,6 +125,7 @@ class ImovelController extends Controller
         $tipos = ImovelTipo::all();
         $endereco = new Endereco();
         $cidades = new Cidade;
+        $galerias = [];
 
         $imovel = Imovel::find($id);
         if (! empty($imovel->endereco)) {
@@ -132,7 +135,11 @@ class ImovelController extends Controller
             $cidades = Cidade::where('estado_id', '=', $cidade->estado_id)->get();
         }
 
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados', 'cidades'));
+        if (! empty($imovel->imagens)) {
+             $galerias = $imovel->imagens;
+        }
+
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados', 'cidades', 'galerias'));
     }
 
     /**

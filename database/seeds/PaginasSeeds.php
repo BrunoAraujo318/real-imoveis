@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Seeder; 
+use Illuminate\Database\Seeder;
 
 class PaginasSeeds extends Seeder
 {
@@ -13,20 +13,18 @@ class PaginasSeeds extends Seeder
     {
         DB::table('paginas')->insert([
             [
-                'titulo' => 'O Imóvel',
-                'descricao' => 'Descrição sobre o imóvel',
+                'titulo' => 'Real Imóveis',
+                'descricao' => 'Ajudando a aproximar clientes',
                 'imagem' => 'img/modelo_detalhe_1.jpg',
-                'email' => 'bruno_brito318@hotmail.com',
-                'mapa' => "mapa",
-                'tipo' => 'sobre'
+                'tipo' => 'Sobre',
+                'texto' => 'texto'
             ],
             [
                 'titulo' => 'Real Imóveis',
-                'descricao' => 'Descrição',
-                'email' => 'bruno_brito318@hotmail.com',
+                'descricao' => 'Fale Conosco',
                 'imagem' => 'img/modelo_detalhe_1.jpg',
-                'mapa' => "mapa",
-                'tipo' => 'contato'
+                'tipo' => 'Contato',
+                'texto' => ''
             ]
         ]);
     }

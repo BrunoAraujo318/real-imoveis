@@ -15,7 +15,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Editar Tipos</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -23,7 +23,7 @@
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.tipos_imovel._form')
-			<button class="btn blue">Atualizar</button>
+			<button id="button" class="btn">Atualizar</button>
 		</form>
 	</div>
 </div>

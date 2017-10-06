@@ -24,7 +24,7 @@
 			@php $cidadeId = old('endereco.cidade_id') @endphp
 			{{ csrf_field() }}
 			@include('login.principal_adm.imoveis._form')
-			<button type="submit" class="btn blue" title="Salvar">Salvar</button>
+			<button id="button" type="submit" class="btn" title="Salvar">Salvar</button>
 		</form>
 	</div>
 </div>
