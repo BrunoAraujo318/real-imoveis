@@ -136,6 +136,7 @@ class UsuarioController extends Controller
         $perfis = $this->perfilModel->all();
         $estados = $this->estadoModel->all();
         $usuario = $this->usuarioModel->find($id);
+        $endereco = new Endereco();
 
         if (! $usuario->endereco->isEmpty()) {
             $endereco = $usuario->endereco;
