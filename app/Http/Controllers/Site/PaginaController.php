@@ -8,21 +8,10 @@ use RealImoveis\Models\Pagina;
 
 class PaginaController extends Controller
 {
-    /**
-     * Renderizar a interface de sobre dos Imoveis.
-     * 
-     * @return view
-     */
-    public function sobreImovel()
-    {
-    	$pagina = null; //Pagina::where('tipo','=','imovel')->first();
-
-    	return view('site.imovel', compact('pagina'));
-    }
 
     /**
      * Renderiza a interface de Contato.
-     * 
+     *
      * @return view
      */
     public function contato()
@@ -31,10 +20,10 @@ class PaginaController extends Controller
 
     	return view('site.contato', compact('pagina'));
     }
-    
+
     /**
      * Renderiza a interface de Sobre.
-     * 
+     *
      * @return view
      */
     public function sobre()
@@ -46,7 +35,7 @@ class PaginaController extends Controller
 
     /**
      * Envia o e-mail para contato.
-     * 
+     *
      * @param  Request $request
      * @return view
      */

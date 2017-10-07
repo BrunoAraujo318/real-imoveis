@@ -16,7 +16,7 @@
     			{{ $pagina->descricao }}
     		</blockquote>
             <div align="left">
-        		<p> {{ $pagina->texto }} </p>
+        		<p> {{ $pagina->texto }}</p>
             </div>
     	</div>
     </div>
