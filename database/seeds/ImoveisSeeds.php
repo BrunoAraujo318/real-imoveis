@@ -106,13 +106,15 @@ class ImoveisSeeds extends Seeder
         ];
 
         DB::table('imoveis')->insert($imoveis);
-
-                // salva os dados da vinculação do endereco com o imóvel
+        $enderecosImoveis = [];
+        // salva os dados da vinculação do endereco com o imóvel
         for ($i = 1; $i <= 7; $i ++) {
             $enderecosImoveis[] = [
                 'imovel_id' => $i,
-                'endereco_id' => $i
+                'endereco_id' => 7
             ];
         }
+
+        DB::table('imoveis_enderecos')->insert($enderecosImoveis);
     }
 }
