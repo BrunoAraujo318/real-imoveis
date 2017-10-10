@@ -15,7 +15,8 @@
   }
 
   .pagination li.active{
-    background-color: #424242;
+    background-color: #FFFFFF !important;
+    text-decoration: underline !important;
   }
 
   footer{

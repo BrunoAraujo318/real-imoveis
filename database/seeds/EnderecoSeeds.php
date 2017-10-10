@@ -16,7 +16,7 @@ class EnderecoSeeds extends Seeder
         $enderecosUsuarios = [];
         $enderecosImoveis = [];
 
-        for ($i = 1; $i <= 6; $i ++) {
+        for ($i = 1; $i <= 7; $i ++) {
             $enderecos[] = [
                 'cidade_id' => 898,
                 'logradouro' => 'Rua RA 4',
