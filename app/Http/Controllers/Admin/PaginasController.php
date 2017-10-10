@@ -49,7 +49,6 @@ class PaginasController extends Controller
 
         $file = $request->file('imagem');
         if($file){
-            dd("Bruno");
             $rand = rand(11111,99999);
             $diretorio = "img/paginas/".$id."/";
             $ext = $file->guessClientExtension();
@@ -57,8 +56,6 @@ class PaginasController extends Controller
             $file->move($diretorio, $nomeArquivo);
             $pagina->imagem = $diretorio.'/'.$nomeArquivo;
         }
-
-        dd($pagina);
 
         $pagina->update();
 

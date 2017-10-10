@@ -23,7 +23,7 @@ class CreateImoveisTable extends Migration
             $table->integer('qtd_cozinha')->comment('Numero de cozinhas dispostas pelo imóvel');
             $table->integer('qtd_garagem')->comment('Numero de garagens dispostos pelo imóvel');
             $table->integer('qtd_visualicoes')->comment('Numero de Visualições recebidas pelo anuncio');
-            $table->string('url_video')->comment('Local onde sera inserida a url de um video do youtube');
+            $table->string('url_video')->comment('Local onde sera inserida a url de um video do youtube')->nullable();;
             $table->integer('categoria_servico')->comment('Categoria do serviço prestado pelo anunciante(Compra\Venda\aluguel etc...)');
             $table->string('imagem')->comment('Imagem principal do imovel');
 

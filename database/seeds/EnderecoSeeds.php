@@ -14,6 +14,7 @@ class EnderecoSeeds extends Seeder
 
         $enderecos = [];
         $enderecosUsuarios = [];
+        $enderecosImoveis = [];
 
         for ($i = 1; $i <= 6; $i ++) {
             $enderecos[] = [

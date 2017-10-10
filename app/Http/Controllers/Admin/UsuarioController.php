@@ -12,6 +12,7 @@ use RealImoveis\Models\Perfis;
 use RealImoveis\Models\Estado;
 use RealImoveis\Models\Cidade;
 use RealImoveis\Models\Endereco;
+use RealImoveis\Models\Telefone;
 
 class UsuarioController extends Controller
 {
@@ -77,7 +78,6 @@ class UsuarioController extends Controller
     {
         $usuario = new Usuario();
         $endereco = new Endereco();
-        $usuario->nascimento = Carbon::now();
         $estados = $this->estadoModel->all();
         $cidades = [];
         $perfis = $this->perfilModel->all();
@@ -149,7 +149,13 @@ class UsuarioController extends Controller
             $cidades = Cidade::where('estado_id', '=', $cidade->estado_id)->get();
         }
 
-        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'cidades', 'perfis', 'usuario', 'endereco'));
+        $telefone = new Telefone();
+
+        if (! empty($usuario->telefone)) {
+            $telefone = $usuario->telefone[0];
+        }
+
+        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'cidades', 'perfis', 'usuario', 'endereco', 'telefone'));
     }
 
     /**
@@ -160,30 +166,34 @@ class UsuarioController extends Controller
      */
     public function atualizar(Request $request, $id)
     {
-        $usuario = $this->usuarioModel->find($id);
-        $dados = $request->all();
+        $this->beginTransaction();
 
-        if(isset($dados['password']) && strlen($dados['password']) > 5 ){
-            $dados['password'] = bcrypt($dados['password']);
-        } else {
-            unset($dados['password']);
+        try {
+
+            // TODO ....
+
+            $usuario = $this->usuarioModel->find($id);
+            $usuario ->update($dados);
+
+            \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
+
+            return redirect()->route('admin.usuarios');
+
+        } catch (\Exception $e) {
+            $this->rollBack();
+            throw $e;
         }
-
-        $usuario ->update($dados);
-        \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
-
-        return redirect()->route('admin.usuarios');
     }
 
     /**
      * Remove um usuario, conforme $id informado.
-     * 
+     *
      * @param $id
      */
     public function deletar($id)
     {
         $this->usuarioModel->find($id)->delete();
-        
+
         \Session::flash('mensagem',['msg'=>'Registro deletado com sucesso!','class'=>'green white-text']);
         return redirect()->route('admin.usuarios');
     }

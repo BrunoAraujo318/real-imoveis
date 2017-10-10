@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	$imoveis = Imovel::orderBy('id','desc')->paginate(10);
+    	$imoveis = Imovel::orderBy('id','desc')->paginate(4);
     	$slides = Slide::orderBy('ordem')->get();
     	$direcaoImagem = ['center-align', 'left-align', 'rigth-align'];
     	$paginacao = true;

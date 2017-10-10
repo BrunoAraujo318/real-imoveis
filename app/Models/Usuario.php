@@ -25,21 +25,6 @@ class Usuario extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['nascimento'];
-
-    /**
-     * Return Birth formated pt_br
-     */
-    public function getNascimentoAttribute()
-    {
-        return $this->attributes['nascimento'] = Carbon::createFromFormat('Y-m-d', $this->attributes['nascimento'])->format('d/m/Y');
-    }
-
-    /**
      * Retorna so telefones referente ao usuario.
      */
     public function telefone()

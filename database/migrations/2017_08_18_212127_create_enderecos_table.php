@@ -21,7 +21,7 @@ class CreateEnderecosTable extends Migration
 
             $table->string('logradouro')->comment('definir(praça\rua\parque)');
             $table->integer('numero')->comment('Numero residencial');
-            $table->string('complemento')->comment('informação complementar do endereço');
+            $table->string('complemento')->comment('informação complementar do endereço')->nullable();;
             $table->string('cep')->comment('Codigo de endereço postal');
             $table->string('bairro')->comment('Nome do bairro');
             $table->integer('longitude')->comment('Posição referente a longitude');
