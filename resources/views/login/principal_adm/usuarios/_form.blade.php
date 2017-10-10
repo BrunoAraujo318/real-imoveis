@@ -27,10 +27,11 @@
 </div>
 
 <div class="input-field">
+	@php $perfilId = old('perfil_id') @endphp
 	<select id="perfil_id" name="perfil_id">
 		<option value="">Selecione...</option>
 		@foreach($perfis as $perfil)
-			<option value="{{ $perfil->id }}">{{ $perfil->display_name }}</option>
+			<option value="{{ $perfil->id }}" {{ $perfilId == $perfil->id ? 'selected' : '' }} >{{ $perfil->display_name }}</option>
 		@endforeach
 	</select>
 	<label>Perfil</label>

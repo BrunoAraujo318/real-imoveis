@@ -70,7 +70,6 @@ class UsuarioController extends Controller
         return view('login.principal_adm.usuarios.lista_usuarios', compact('usuarios'));
     }
 
-
     /**
      * Renderiza a interface de cadastro de usuario.
      */
@@ -142,6 +141,8 @@ class UsuarioController extends Controller
             $endereco = $usuario->endereco;
         }
 
+        $perfil = new Perfis();
+
         if (! empty($usuario->endereco)) {
             $endereco = $usuario->endereco[0];
             $cidade = $endereco->cidade;
@@ -151,11 +152,7 @@ class UsuarioController extends Controller
 
         $telefone = new Telefone();
 
-        if (! empty($usuario->telefone)) {
-            $telefone = $usuario->telefone[0];
-        }
-
-        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'cidades', 'perfis', 'usuario', 'endereco', 'telefone'));
+        return view('login.principal_adm.usuarios.editar_usuarios', compact('estados', 'cidades', 'perfis', 'usuario', 'endereco', 'telefone', 'perfil'));
     }
 
     /**
@@ -173,8 +170,21 @@ class UsuarioController extends Controller
             // TODO ....
 
             $usuario = $this->usuarioModel->find($id);
-            $usuario ->update($dados);
+            $usuario->fill($request->get('usuario'));
+            $usuario ->save();
 
+            if (! empty($usuario->endereco)) {
+                $endereco = $usuario->endereco[0];
+                // endereço
+                $endereco = Endereco::find($endereco->id);
+                $endereco->fill($request->get('endereco'));
+                $endereco->save();
+
+                // Altera a relação entre o endereço e usuario
+                $usuario->endereco()->sync([$endereco->id]);
+            }
+
+            $this->commit();
             \Session::flash('mensagem',['msg'=>'Registro atualizado com sucesso!','class'=>'green white-text']);
 
             return redirect()->route('admin.usuarios');
