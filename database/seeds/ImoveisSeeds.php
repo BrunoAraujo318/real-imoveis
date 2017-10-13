@@ -61,7 +61,7 @@ class ImoveisSeeds extends Seeder
                 'qtd_garagem' => '1',
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '1',
-                'imagem' => 'img/Casa01/figura1.JPG',
+                'imagem' => 'img/Casa01/figura1.jpg',
                 'imovel_tipo_id' => '3'
             ],
             [

@@ -13,6 +13,14 @@ use RealImoveis\Models\Estado;
 class HomeController extends Controller
 {
     /**
+     * Inicializa dependencia do controller.
+     */
+    public function __construct()
+    {
+        $this->imovelModel = new Imovel();
+    }
+
+    /**
      * Renderizar a interface da home.
      *
      * @return view
@@ -25,16 +33,20 @@ class HomeController extends Controller
     	$paginacao = true;
     	$tipos = ImovelTipo::orderBy('nome')->get();
         $cidades = [];
-    	$estados = Estado::orderBy('nome')->get();
+        $estados = Estado::orderBy('nome')->get();
+        $imovelModel = new Imovel();
+        $filtro = [];
 
         return view('site.home', compact(
             'imoveis',
             'slides',
             'direcaoImagem',
             'paginacao',
+            'imovelModel',
             'tipos',
             'cidades',
-            'estados'
+            'estados',
+            'filtro'
         ));
     }
 
@@ -49,17 +61,27 @@ class HomeController extends Controller
     	$filtro = $request->all();
         $tipos = ImovelTipo::orderBy('nome')->get();
     	$estados = Estado::orderBy('nome')->get();
+<<<<<<< HEAD
     	$cidades = Cidade::orderBy('nome')->get();
     	$imoveis = Imovel::orderBy('id', 'desc')->paginate(4);
         $paginacao = true;
+=======
+        $cidades = [];
+
+        $imoveis = $this->imovelModel->getImoveisFiltro((object) $filtro);
+        $imovelModel = new Imovel();
+        $paginacao = null;
+>>>>>>> ff4195dbd937d267cf0c9cd3c5b39ad569b22438
 
         return view('site.busca', compact(
             'filtro',
             'imoveis',
+            'imovelModel',
             'paginacao',
             'tipos',
             'cidades',
-            'estados'
+            'estados',
+            'filtro'
         ));
     }
 }
