@@ -50,11 +50,11 @@ class HomeController extends Controller
         $tipos = ImovelTipo::orderBy('nome')->get();
     	$estados = Estado::orderBy('nome')->get();
     	$cidades = Cidade::orderBy('nome')->get();
-    	$imoveis = Imovel::orderBy('id', 'desc')->get();
-        $paginacao = null;
+    	$imoveis = Imovel::orderBy('id', 'desc')->paginate(4);
+        $paginacao = true;
 
         return view('site.busca', compact(
-            'busca',
+            'filtro',
             'imoveis',
             'paginacao',
             'tipos',

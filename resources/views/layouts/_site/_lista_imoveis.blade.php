@@ -17,8 +17,8 @@
 				@else
 					<p><b class="deep-orange-text darkon-1">ALUGA-SE</b></p>
 				@endif
-				<p><b>{{ $imovel->titulo }}</b></p>
-				<p><b>{{ $imovel->descricao }}</b></p>
+				<p><b>{{ $imovel->nome }}</b></p>
+				<p>{{ $imovel->descricao }}</p>
 				<p><b>R$ {{ number_format($imovel->valor,2,",",".") }}</b></p>
 			</div>
 			<div class="card-action">
