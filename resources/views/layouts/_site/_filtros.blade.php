@@ -15,7 +15,7 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 				<option {{ $categoriaServico == 1 ? 'selected' : ''}} value="1">Venda</option>
 				<option {{ $categoriaServico == 2 ? 'selected' : ''}} value="2">Aluguel</option>
 			</select>
-			<label>Categoria ou Serviço ({{ $categoriaServico }})</label>
+			<label>Categoria ou Serviço {{ $categoriaServico }}</label>
 		</div>
 		<div class="input-field col s4">
 			<input type="hidden" id="cidade_hide" value="{{ $cidadeId }}">
@@ -52,7 +52,14 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 				<option {{ $valor == 2 ? 'selected' : ''}} value="2">De R$500,00 até R$1.000,00</option>
 				<option {{ $valor == 3 ? 'selected' : ''}} value="3">De R$1.000,00 até R$1.500,00</option>
 				<option {{ $valor == 4 ? 'selected' : ''}} value="4">De R$1.500,00 até R$2.000,00</option>
-				<option {{ $valor == 5 ? 'selected' : ''}} value="5">Acima de R$2.000,00</option>
+				<option {{ $valor == 5 ? 'selected' : ''}} value="5">De R$2.000,00 até R$3.000,00</option>
+				<option {{ $valor == 6 ? 'selected' : ''}} value="6">De R$3.000,00 até R$50.000,00</option>
+				<option {{ $valor == 7 ? 'selected' : ''}} value="7">De R$50.000,00 até R$100.000,00</option>
+				<option {{ $valor == 8 ? 'selected' : ''}} value="8">De R$100.000,00 até R$300.000,00</option>
+				<option {{ $valor == 9 ? 'selected' : ''}} value="9">De R$300.000,00 até R$500.000,00</option>
+				<option {{ $valor == 10 ? 'selected' : ''}} value="10">De R$500.000,00 até R$700.000,00</option>
+				<option {{ $valor == 11 ? 'selected' : ''}} value="11">De R$700.000,00 até R$1.000.000,00</option>
+				<option {{ $valor == 12 ? 'selected' : ''}} value="12">Acima de R$1.000.000,00</option>
 			</select>
 			<label>Preços</label>
 		</div>
@@ -62,7 +69,8 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 				<option {{ $qtdDormitorio == 1 ? 'selected' : ''}} value="1">1</option>
 				<option {{ $qtdDormitorio == 2 ? 'selected' : ''}} value="2">2</option>
 				<option {{ $qtdDormitorio == 3 ? 'selected' : ''}} value="3">3</option>
-				<option {{ $qtdDormitorio == 4 ? 'selected' : ''}} value="4">Mais</option>
+				<option {{ $qtdDormitorio == 4 ? 'selected' : ''}} value="4">4</option>
+				<option {{ $qtdDormitorio == 5 ? 'selected' : ''}} value="5">Mais</option>
 			</select>
 			<label>Dormitórios</label>
 		</div>

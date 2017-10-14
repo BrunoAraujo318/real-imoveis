@@ -61,17 +61,10 @@ class HomeController extends Controller
     	$filtro = $request->all();
         $tipos = ImovelTipo::orderBy('nome')->get();
     	$estados = Estado::orderBy('nome')->get();
-<<<<<<< HEAD
-    	$cidades = Cidade::orderBy('nome')->get();
-    	$imoveis = Imovel::orderBy('id', 'desc')->paginate(4);
-        $paginacao = true;
-=======
         $cidades = [];
-
         $imoveis = $this->imovelModel->getImoveisFiltro((object) $filtro);
         $imovelModel = new Imovel();
         $paginacao = null;
->>>>>>> ff4195dbd937d267cf0c9cd3c5b39ad569b22438
 
         return view('site.busca', compact(
             'filtro',
