@@ -143,7 +143,8 @@ class Imovel extends Model
         }
 
         if (! empty($filtro->valor)) {
-            $imoveis->whereBetween('imoveis.valor', '=', $filtro->valor);
+            $imoveis->whereBetween('imoveis.valor', [$filtro->valor,'>=','0']);
+            $imoveis->whereBetween('imoveis.valor', [$filtro->valor,'<=','500']);
         }
 
         if (! empty($filtro->qtd_dormitorio)) {
