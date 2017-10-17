@@ -14,13 +14,13 @@
 				</a>
 			</div>
 			<div class="card-content">
-				<p><b class="deep-orange-text darkon-1">{{ $imovelModel->getNomeCategoriaFormatada($imovel->categoria_servico) }}</b></p>
+				<p><b class="amber-text accent-3">{{ $imovelModel->getNomeCategoriaFormatada($imovel->categoria_servico) }}</b></p>
 				<p><b>{{ $imovel->nome }}</b></p>
-				<p><b>{{ $imovel->descricao }}</b></p>
+				<p>Descrição: {{ $imovel->descricao }}</p>
 				<p><b>R$ {{ number_format($imovel->valor, 2, ", ", ".") }}</b></p>
 			</div>
 			<div class="card-action">
-				<a href="{{ route('site.imovel', [$imovel->id, str_slug($imovel->nome, '_') ]) }}">Ver mais...</a>
+				<a href="{{ route('site.imovel', [$imovel->id, str_slug($imovel->nome, '_') ]) }}" class="amber-text accent-3">Ver mais...</a>
 			</div>
 		</div>
 	</div>
