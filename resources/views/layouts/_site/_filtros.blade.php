@@ -9,15 +9,7 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 
 <div class="row">
 	<form action="{{ route('site.busca') }}">
-		<div class="input-field col s12 m4">
-			<select name="categoria_servico">
-				<option {{ $categoriaServico == '' ? 'selected' : ''}} value="">Todas as Categorias e Serviços</option>
-				<option {{ $categoriaServico == 1 ? 'selected' : ''}} value="1">Venda</option>
-				<option {{ $categoriaServico == 2 ? 'selected' : ''}} value="2">Aluguel</option>
-			</select>
-			<label>Categoria ou Serviço {{ $categoriaServico }}</label>
-		</div>
-		<div class="input-field col s4">
+		<div class="input-field col s6 m4">
 			<input type="hidden" id="cidade_hide" value="{{ $cidadeId }}">
 			<select id="estado_id" name="estado" class="validate" onchange="realImovel.getCidades(this);">
 				<option value="">Todos os Estados</option>
@@ -27,7 +19,7 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 			</select>
 			<label>Estado</label>
 		</div>
-		<div class="input-field col s4">
+		<div class="input-field col s6 m4">
 			<select id="cidade_id" name="cidade" class="validate">
 				<option value="">Todas as Cidades</option>
 				@foreach($cidades as $cidade)
@@ -36,7 +28,15 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 			</select>
 			<label>Cidade</label>
 		</div>
-		<div class="input-field col s4">
+		<div class="input-field col s6 m4">
+			<select name="categoria_servico">
+				<option {{ $categoriaServico == '' ? 'selected' : ''}} value="">Todas as Categorias e Serviços</option>
+				<option {{ $categoriaServico == 1 ? 'selected' : ''}} value="1">Venda</option>
+				<option {{ $categoriaServico == 2 ? 'selected' : ''}} value="2">Aluguel</option>
+			</select>
+			<label>Categoria ou Serviço {{ $categoriaServico }}</label>
+		</div>
+		<div class="input-field col s6 m3">
 			<select name="imovel_tipo">
 			<option value="">Todos os Tipos</option>
 			@foreach($tipos as $tipo)
@@ -45,7 +45,7 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 			</select>
 			<label>Tipo de Imóvel</label>
 		</div>
-		<div class="input-field col s12 m3">
+		<div class="input-field col s6 m3">
 			<select name="valor">
 				<option {{ $valor == 0 ? 'selected' : ''}} value="0">Todos os Valores</option>
 				<option {{ $valor == 1 ? 'selected' : ''}} value="1">Até R$ 500,00</option>
@@ -63,7 +63,7 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 			</select>
 			<label>Preços</label>
 		</div>
-		<div class="input-field col s6 m3">
+		<div class="input-field col s6 m4">
 			<select name="qtd_dormitorio">
 				<option {{ $qtdDormitorio == 0 ? 'selected' : ''}} value="0">Independente da Quantidade</option>
 				<option {{ $qtdDormitorio == 1 ? 'selected' : ''}} value="1">1</option>
