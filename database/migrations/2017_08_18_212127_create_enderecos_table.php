@@ -20,8 +20,8 @@ class CreateEnderecosTable extends Migration
             $table->foreign('cidade_id')->references('id')->on('cidades')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('logradouro')->comment('definir(praça\rua\parque)');
-            $table->integer('numero')->comment('Numero residencial');
-            $table->string('complemento')->comment('informação complementar do endereço')->nullable();;
+            $table->integer('numero')->nullable()->comment('Numero residencial');
+            $table->string('complemento')->comment('informação complementar do endereço')->nullable();
             $table->string('cep')->comment('Codigo de endereço postal');
             $table->string('bairro')->comment('Nome do bairro');
             $table->integer('longitude')->comment('Posição referente a longitude');
