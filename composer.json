@@ -42,8 +42,7 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize",
-            "php artisan migrate --seed "
+            "php artisan optimize"
         ]
     },
     "config": {
