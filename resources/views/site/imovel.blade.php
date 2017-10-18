@@ -48,7 +48,7 @@
             <p><b>Código:</b> {{ $imovel->id }}</p>
             <p><b>Categoria ou Serviço:</b> {{ $imovel->getNomeCategoria() }}</p>
             <p><b>Tipo:</b> {{ $imovel->tipo->nome }}</p>
-            <p><b><i class="tiny material-icons">home</i> Endereço:</b> {{ $endereco->logradouro }}, nº {{ $endereco->numero }}. {{ $endereco->complemento }}</p>
+            <p><b>Endereço:</b> {{ $endereco->logradouro }}, nº {{ $endereco->numero }}. {{ $endereco->complemento }}</p>
             <p><b>Cep:</b> {{ $endereco->cep }}</p>
             <p><b>Cidade:</b> {{ $endereco->cidade->nome }}</p>
             <p><b>Estado:</b> {{ $endereco->cidade->estado->nome }}</p>
