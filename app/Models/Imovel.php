@@ -143,14 +143,22 @@ class Imovel extends Model
         }
 
         if (! empty($filtro->valor)) {
+            if ($filtro->valor == 1) {
+                $imoveis->where('imoveis.valor', '<=', 500);
+            }
+
+            if ($filtro->valor == 1) {
+                // TODO ...
+            }
+
             $imoveis->where('imoveis.valor', '<=', $filtro->valor);
             //$imoveis->whereBetween('imoveis.valor', ['1000', '2000']);
         }
 
         if (! empty($filtro->qtd_dormitorio)) {
-            if($filtro->qtd_dormitorio == 5){
+            if ($filtro->qtd_dormitorio == 5) {
                 $imoveis->where('imoveis.qtd_dormitorio', '>=', '5');
-            }else {
+            } else {
                 $imoveis->where('imoveis.qtd_dormitorio', '=', $filtro->qtd_dormitorio);
             }
         }

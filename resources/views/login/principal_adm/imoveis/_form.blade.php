@@ -30,19 +30,19 @@
 	<input type="text" maxlength="15" name="imovel[valor]" class="money validate @if($errors->has('imovel.valor')) invalid @endif " value="{{ old('imovel.valor', $imovel->valor) }}" />
 	<label @if($errors->has('imovel.valor')) data-error="{{$errors->first('imovel.valor')}}" @endif >Valor (Ex: 345,90)</label>
 </div>
-<div class="input-field col s12">
+<div class="input-field col s3">
 	<input type="number" maxlength="3" name="imovel[qtd_dormitorio]" class="validate" value="{{ old('imovel.qtd_dormitorio', $imovel->qtd_dormitorio) }}" />
 	<label>Dormitorios (Ex: 3)</label>
 </div>
-<div class="input-field col s12">
+<div class="input-field col s3">
 	<input type="number" maxlength="3" name="imovel[qtd_cozinha]" class="validate" value="{{ old('imovel.qtd_cozinha', $imovel->qtd_cozinha) }}" />
 	<label>Cozinha (Ex: 1)</label>
 </div>
-<div class="input-field col s12">
+<div class="input-field col s3">
 	<input type="number" maxlength="3" name="imovel[qtd_banheiro]" class="validate" value="{{ old('imovel.qtd_banheiro', $imovel->qtd_banheiro) }}" />
 	<label>Banheiros (Ex: 4)</label>
 </div>
-<div class="input-field col s12">
+<div class="input-field col s3">
 	<input type="number" maxlength="3" name="imovel[qtd_garagem]" class="validate" value="{{ old('imovel.qtd_garagem', $imovel->qtd_garagem) }}" />
 	<label>Garagem (Ex: 2)</label>
 </div>
