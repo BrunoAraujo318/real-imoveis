@@ -11,6 +11,7 @@ use RealImoveis\Models\Cidade;
 use RealImoveis\Models\Estado;
 use RealImoveis\Models\Endereco;
 use RealImoveis\Models\Imagem;
+use Auth;
 
 class ImovelController extends Controller
 {
@@ -27,9 +28,17 @@ class ImovelController extends Controller
      */
     public function lista()
     {
-       $imoveis = $this->imovel->all();
 
-       return view('login.principal_adm.imoveis.lista_imoveis', compact('imoveis'));
+        $imoveis = [];
+
+        // verifica se o cara logad e usuario comum
+        if (Auth::user()->hasRole('usuario')) {
+            $imoveis = $this->imovel->where('usuario_id', '=', Auth::user()->id)->get();
+        } else {
+            $imoveis = $this->imovel->all();
+        }
+
+        return view('login.principal_adm.imoveis.lista_imoveis', compact('imoveis'));
     }
 
     /**

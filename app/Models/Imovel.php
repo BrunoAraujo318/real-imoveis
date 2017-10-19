@@ -147,12 +147,52 @@ class Imovel extends Model
                 $imoveis->where('imoveis.valor', '<=', 500);
             }
 
-            if ($filtro->valor == 1) {
-                // TODO ...
+            if ($filtro->valor == 2) {
+                $imoveis->whereBetween('imoveis.valor', [500, 1000]);
             }
 
-            $imoveis->where('imoveis.valor', '<=', $filtro->valor);
-            //$imoveis->whereBetween('imoveis.valor', ['1000', '2000']);
+            if ($filtro->valor == 3) {
+                $imoveis->whereBetween('imoveis.valor', [1000, 1500]);
+            }
+
+            if ($filtro->valor == 4) {
+                $imoveis->whereBetween('imoveis.valor', [1500, 2000]);
+            }
+
+            if ($filtro->valor == 5) {
+                $imoveis->whereBetween('imoveis.valor', [2000, 2500]);
+            }
+
+            if ($filtro->valor == 6) {
+                $imoveis->whereBetween('imoveis.valor', [2500, 3000]);
+            }
+            if ($filtro->valor == 7) {
+                $imoveis->whereBetween('imoveis.valor', [100000, 300000]);
+            }
+
+            if ($filtro->valor == 8) {
+                $imoveis->whereBetween('imoveis.valor', [300000, 500000]);
+            }
+
+            if ($filtro->valor == 9) {
+                $imoveis->whereBetween('imoveis.valor', [500000, 700000]);
+            }
+
+            if ($filtro->valor == 10) {
+                $imoveis->whereBetween('imoveis.valor', [700000, 900000]);
+            }
+
+            if ($filtro->valor == 11) {
+                $imoveis->whereBetween('imoveis.valor', [900000, 1100000]);
+            }
+
+            if ($filtro->valor == 12) {
+                $imoveis->whereBetween('imoveis.valor', [1100000, 1300000]);
+            }
+
+            if ($filtro->valor == 13) {
+                $imoveis->where('imoveis.valor', '>=', 1300000);
+            }
         }
 
         if (! empty($filtro->qtd_dormitorio)) {

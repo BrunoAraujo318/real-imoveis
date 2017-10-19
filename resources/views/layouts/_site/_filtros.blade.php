@@ -34,7 +34,7 @@ $categoriaServico = isset($filtro['categoria_servico']) ? $filtro['categoria_ser
 				<option {{ $categoriaServico == 1 ? 'selected' : ''}} value="1">Venda</option>
 				<option {{ $categoriaServico == 2 ? 'selected' : ''}} value="2">Aluguel</option>
 			</select>
-			<label>Categoria ou Serviço {{ $categoriaServico }}</label>
+			<label>Categoria ou Serviço</label>
 		</div>
 		<div class="input-field col s6 m3">
 			<select name="imovel_tipo">

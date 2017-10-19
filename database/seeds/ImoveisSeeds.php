@@ -23,7 +23,7 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '1',
                 'imagem' => 'img/modelo_detalhe_4.jpg',
-                'imovel_tipo_id' => '1'
+                'imovel_tipo_id' => '1',
             ],
             [
     			'nome' => 'Apartamento Luxo',
