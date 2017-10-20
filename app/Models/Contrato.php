@@ -18,7 +18,9 @@ class Contrato extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'titulo', 'descricao', 'imagem'
+    ];
 
     /**
      * Indicates if the model should be timestamped.

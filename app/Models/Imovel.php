@@ -142,7 +142,8 @@ class Imovel extends Model
             $imoveis->where('imoveis.imovel_tipo_id', '=', $filtro->imovel_tipo);
         }
 
-        if (! empty($filtro->valor)) {
+        if (! empty($filtro->valor))
+        {
             if ($filtro->valor == 1) {
                 $imoveis->where('imoveis.valor', '<=', 500);
             }
@@ -195,7 +196,8 @@ class Imovel extends Model
             }
         }
 
-        if (! empty($filtro->qtd_dormitorio)) {
+        if (! empty($filtro->qtd_dormitorio))
+        {
             if ($filtro->qtd_dormitorio == 5) {
                 $imoveis->where('imoveis.qtd_dormitorio', '>=', '5');
             } else {
