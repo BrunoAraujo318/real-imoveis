@@ -17,8 +17,8 @@ Sistema de gerenciamento de imoveis ...
 
 ## Tarefas para relacionar o usuario com o imovel
 
-* Adicionar coluna de usuario na migration de imovel.
-* ajustar as seeds dos imoveis adicionando usuario ao imovel.
-* Adicionar campo na interface de imoveis quando o usuario for administrador, lista de todos os usuarios.
-* listar para os usuarios logado apenas os imoveis vinculados a ele.
-
+OK - * Adicionar coluna de usuario na migration de imovel.
+OK - * ajustar as seeds dos imoveis adicionando usuario ao imovel.
+Ok - * Adicionar campo na interface de imoveis quando o usuario for administrador, lista de todos os usuarios.
+OK - * listar para os usuarios logado apenas os imoveis vinculados a ele.
+* Salvar Usuário selecionado

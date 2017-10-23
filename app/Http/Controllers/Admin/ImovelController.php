@@ -11,6 +11,7 @@ use RealImoveis\Models\Cidade;
 use RealImoveis\Models\Estado;
 use RealImoveis\Models\Endereco;
 use RealImoveis\Models\Imagem;
+use RealImoveis\Models\Usuario;
 use Auth;
 
 class ImovelController extends Controller
@@ -53,7 +54,14 @@ class ImovelController extends Controller
         $cidades = [];
         $galerias = [];
 
-    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco', 'galerias'));
+        $usuarios = [];
+
+        if (Auth::user()->hasRole('admin')) {
+            $usuarios = Usuario::all();
+
+        }
+
+    	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco', 'usuarios', 'galerias'));
     }
 
     /**
@@ -136,6 +144,13 @@ class ImovelController extends Controller
         $cidades = new Cidade;
         $galerias = [];
 
+         $usuarios = [];
+
+        if (Auth::user()->hasRole('admin')) {
+            $usuarios = Usuario::all();
+
+        }
+
         $imovel = Imovel::find($id);
         if (! empty($imovel->endereco)) {
             $endereco = $imovel->endereco[0];
@@ -148,7 +163,7 @@ class ImovelController extends Controller
              $galerias = $imovel->imagens;
         }
 
-        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados', 'cidades', 'galerias'));
+        return view('login.principal_adm.imoveis.editar_imoveis', compact('imovel', 'tipos', 'imagens', 'endereco', 'estados', 'cidades', 'usuarios', 'galerias'));
     }
 
     /**

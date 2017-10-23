@@ -1,10 +1,31 @@
 <h4>Dados do imóvel</h4>
-
+@if (Auth::user()->hasRole('usuario'))
 <div class="input-field col s12">
 	<input type="text" name="imovel[nome]" maxlength="25" value="{{old('imovel.nome', $imovel->nome)}}"
 		   class="validate @if($errors->has('imovel.nome')) invalid @endif">
 	<label @if($errors->has('imovel.nome')) data-error="{{$errors->first('imovel.nome')}}" @endif >Título</label>
 </div>
+@endif
+
+@if (Auth::user()->hasRole('admin'))
+<div class="input-field col s6">
+	<input type="text" name="imovel[nome]" maxlength="25" value="{{old('imovel.nome', $imovel->nome)}}"
+		   class="validate @if($errors->has('imovel.nome')) invalid @endif">
+	<label @if($errors->has('imovel.nome')) data-error="{{$errors->first('imovel.nome')}}" @endif >Título</label>
+</div>
+<div class="input-field col s6">
+	@php $usuarioId = old('imovel.usuario_id', $imovel->usuario_id) @endphp
+	<select name="imovel[imovel_tipo_id]">
+		<option value="">Selecione...</option>
+	@foreach($usuarios as $usuario)
+		<option value="{{ $usuario->id }}" {{ $usuarioId == $usuario->id ? 'selected' : '' }} >{{ $usuario->nome }}</option>
+	@endforeach
+	</select>
+	<label>Usuarios</label>
+</div>
+@endif
+
+
 <div class="input-field col s12">
 	<textarea name="imovel[descricao]" class="validate materialize-textarea">{{ old('imovel.descricao', $imovel->descricao) }}</textarea>
 	<label>Descrição</label>

@@ -24,6 +24,7 @@ class ImoveisSeeds extends Seeder
                 'categoria_servico' => '1',
                 'imagem' => 'img/modelo_detalhe_4.jpg',
                 'imovel_tipo_id' => '1',
+                'usuario_id' => 6
             ],
             [
     			'nome' => 'Apartamento Luxo',
@@ -36,7 +37,8 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '1',
                 'imagem' => 'img/imgtipo1.jpg',
-                'imovel_tipo_id' => '2'
+                'imovel_tipo_id' => '2',
+                'usuario_id' => 6
             ],
             [
                 'nome' => 'Jardim Flor de Liz',
@@ -49,7 +51,8 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '2',
                 'imagem' => 'img/Casa05/figura01.JPG',
-                'imovel_tipo_id' => '2'
+                'imovel_tipo_id' => '2',
+                'usuario_id' => 5
             ],
 			[
     			'nome' => 'Jardim dos Ipês',
@@ -62,7 +65,8 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '1',
                 'imagem' => 'img/Casa01/figura1.jpg',
-                'imovel_tipo_id' => '3'
+                'imovel_tipo_id' => '3',
+                'usuario_id' => 4
             ],
             [
     			'nome' => 'Setor Summerville',
@@ -75,7 +79,8 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '1',
                 'imagem' => 'img/Casa10/figura01.JPG',
-                'imovel_tipo_id' => '1'
+                'imovel_tipo_id' => '1',
+                'usuario_id' => 3
             ],
             [
     			'nome' => 'Bairro Batista',
@@ -88,7 +93,8 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '1',
                 'imagem' => 'img/Casa07/figura01.JPG',
-                'imovel_tipo_id' => '1'
+                'imovel_tipo_id' => '1',
+                'usuario_id' => 2
             ],
             [
                 'nome' => 'Jundiaí Industrial',
@@ -101,7 +107,8 @@ class ImoveisSeeds extends Seeder
                 'qtd_visualicoes' => '0',
                 'categoria_servico' => '2',
                 'imagem' => 'img/Casa06/figura01.JPG',
-                'imovel_tipo_id' => '3'
+                'imovel_tipo_id' => '3',
+                'usuario_id' => 1
             ],
         ];
 

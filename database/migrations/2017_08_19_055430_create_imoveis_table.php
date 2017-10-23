@@ -27,6 +27,10 @@ class CreateImoveisTable extends Migration
             $table->integer('categoria_servico')->comment('Categoria do serviço prestado pelo anunciante(Compra\Venda\aluguel etc...)');
             $table->string('imagem')->comment('Imagem principal do imovel');
 
+            $table->integer('usuario_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do usuario');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
+            
+
             $table->integer('imovel_tipo_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do imovel');
             $table->foreign('imovel_tipo_id')->references('id')->on('imoveis_tipos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
