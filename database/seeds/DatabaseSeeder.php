@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SlideSeeds::class);
         $this->call(ImoveisTiposSeeds::class);
         $this->call(ImoveisSeeds::class);
+        $this->call(ContratoSeeds::class);
     }
 }
