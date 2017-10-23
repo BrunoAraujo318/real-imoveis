@@ -32,7 +32,7 @@
 					<td>{{ $contrato->titulo }}</td>
 					<td>{{ $contrato->descricao }}</td>
 					<td>
-						<a href="{{ asset($contrato->url) }}" target="_blank">Download</a>
+						<a href="{{ asset($contrato->url) }}">Download</a>
 					</td>
 				</tr>
 			@endforeach
