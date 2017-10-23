@@ -8,7 +8,7 @@
           <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
           <li><a href="{{ route('site.contato') }}">Contato</a></li>
           <li><a href="{{ route('login') }}">Login</a></li>
-          <li><a id="cadastrar" class="btn" href="{{ route('principal.cadastro') }}">Cadastrar-se</a></li>
+          <li><a id="cadastrar" href="{{ route('principal.cadastro') }}">Cadastrar-se</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="{{ route('site.home') }}"><i class="material-icons">home</i></a></li>
