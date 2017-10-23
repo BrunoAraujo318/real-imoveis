@@ -4,7 +4,7 @@
           <a href="{{ route('admin.principal') }}" class="brand-logo">Real Imóveis</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a target="_blanck" href="{{ route('site.home') }}"><i class="material-icons">home</i></a></li>
+            <li><a  target="_blanck" href="{{ route('site.home') }}"><i class="material-icons">home</i></a></li>
             @if(Auth::guest())
               <li><a href="{{ route('login') }}">Login</a></li>
             @else

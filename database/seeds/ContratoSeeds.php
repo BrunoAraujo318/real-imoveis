@@ -13,19 +13,19 @@ class ContratoSeeds extends Seeder
     {
         DB::table('contratos')->insert([
             [
-                'titulo' => '',
-                'descricao' => '',
-                'url' => '',
+                'titulo' => 'Título1',
+                'descricao' => 'Descrição1',
+                'url' => 'Contrato1.docx',
             ],
             [
-                'titulo' => '',
-                'descricao' => '',
-                'url' => '',
+                'titulo' => 'Título2',
+                'descricao' => 'Descrição2',
+                'url' => 'Contrato2.docx',
             ],
                         [
-                'titulo' => '',
-                'descricao' => '',
-                'url' => '',
+                'titulo' => 'Título3',
+                'descricao' => 'Descrição3',
+                'url' => 'Contrato3.docx',
             ]
         ]);
     }
