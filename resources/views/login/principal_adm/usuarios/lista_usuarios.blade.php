@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<div class="right">
-			<a class="btn blue" href="{{ route('admin.usuarios.adicionar') }}">Adicionar</a>
+			<a id="button" class="btn" href="{{ route('admin.usuarios.adicionar') }}">Adicionar</a>
 		</div>
 	</div>
 

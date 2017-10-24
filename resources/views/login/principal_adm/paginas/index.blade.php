@@ -34,7 +34,7 @@
 					<td>{{ $pagina->descricao }}</td>
 					<td>{{ $pagina->tipo }}</td>
 					<td>
-						<a class="btn blue" href="{{ route('admin.paginas.editar', $pagina->id) }}">Editar</a>
+						<a class="btn blue" title="Editar Página" href="{{ route('admin.paginas.editar', $pagina->id) }}"><i class="small material-icons">mode_edit</i></a>
 					</td>
 				</tr>
 			@endforeach

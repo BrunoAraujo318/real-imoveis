@@ -28,7 +28,7 @@
 			</select>
 		</div>
 		<div class="right">
-			<button class="btn blue">Adicionar</button>
+			<button id="button" class="btn blue">Adicionar</button>
 		</div>
 		</form>
 	</div>
@@ -48,7 +48,7 @@
 					<td>{{ $papel->nome }}</td>
 					<td>{{ $papel->descricao }}</td>
 					<td>
-						<a id="button" class="btn" href="javascript: if(confirm('Remover esse Papel?')){ window.location.href = '{{ route('admin.usuarios.papel.remover', [$usuario->id, $papel->id]) }}'}">Remover</a>
+						<a class="btn deep-orange darken-1" title="Remover" href="javascript: if(confirm('Remover esse Papel?')){ window.location.href = '{{ route('admin.usuarios.papel.remover', [$usuario->id, $papel->id]) }}'}"><i class="small material-icons">delete_forever</i></a>
 					</td>
 				</tr>
 			@endforeach

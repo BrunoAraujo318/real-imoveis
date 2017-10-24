@@ -14,7 +14,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Tipos de Imóveis</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -30,8 +30,8 @@
 				<tr>
 					<td>{{ $tipo->nome }}</td>
 					<td>
-						<a class="btn blue" href="{{ route('admin.imovel.tipos.editar', $tipo->id) }}">Editar</a>
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imovel.tipos.deletar', $tipo->id) }}'}">Deletar</a>
+						<a class="btn blue" title="Editar Tipo de Imóvel" href="{{ route('admin.imovel.tipos.editar', $tipo->id) }}"><i class="small material-icons">mode_edit</i></a>
+						<a class="btn deep-orange darken-1" title="Deletar Tipo de Imóvel" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imovel.tipos.deletar', $tipo->id) }}'}"><i class="small material-icons">delete_forever</i></a>
 					</td>
 				</tr>
 			@endforeach
@@ -41,7 +41,7 @@
 	<div class="divider"></div>
 	<div class="row">
 		<div class="right">
-			<a class="btn blue" href="{{ route('admin.imovel.tipos.adicionar') }}">Adicionar Tipos</a>
+			<a id="button" class="btn blue" href="{{ route('admin.imovel.tipos.adicionar') }}">Adicionar Tipos</a>
 		</div>
 	</div>
 </div>

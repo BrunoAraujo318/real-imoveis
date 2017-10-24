@@ -14,7 +14,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Papéis</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -33,15 +33,15 @@
 					<td>{{ $papel->description }}</td>
 					<td>
 						@if($papel->name != 'admin')
-						<a class="btn blue" href="{{ route('admin.papel.editar', $papel->id) }}">Editar</a>
+						<a class="btn blue" title="Editar Papel" href="{{ route('admin.papel.editar', $papel->id) }}"><i class="small material-icons">mode_edit</i></a>
 						@else
-						<a class="btn blue disabled">Editar</a>
+						<a class="btn blue disabled" title="Editar Papel"><i class="small material-icons">mode_edit</i></a>
 						@endif
-						<a class="btn blue" href="{{ route('admin.papel.permissao', $papel->id) }}">Permissão</a>
+						<a class="btn blue" title="Permissão" href="{{ route('admin.papel.permissao', $papel->id) }}">Permissão</a>
 						@if($papel->name != 'admin')
-						<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.papel.deletar', $papel->id) }}'}">Deletar</a>
+						<a class="btn deep-orange darken-1" title="Deletar Papel" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.papel.deletar', $papel->id) }}'}">Deletar</a>
 						@else
-						<a class="btn blue disabled">Deletar</a>
+						<a class="btn blue disabled" title="Deletar Papel"><i class="small material-icons">delete_forever</i></a>
 						@endif
 					</td>
 				</tr>
@@ -52,7 +52,7 @@
 	<div class="divider"></div>
 	<div class="row">
 		<div class="right">
-			<a class="btn blue" href="{{ route('admin.papel.adicionar') }}">Adicionar</a>
+			<a id="button" class="btn blue" href="{{ route('admin.papel.adicionar') }}">Adicionar</a>
 		</div>
 	</div>
 </div>

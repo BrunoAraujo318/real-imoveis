@@ -15,7 +15,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Permissões</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -45,8 +45,8 @@
 				<tr>
 					<td>{{ $value->nome }}</td>
 					<td>{{ $value->descricao }}</td>
-					<td>		
-						<a id="button"class="btn" href="javascript: if(confirm('Remover esse Permissão?')){ window.location.href = '{{ route('admin.papel.permissao.remover', [$papel->id,$value->id]) }}'}">Remover</a>
+					<td>
+						<a class="btn deep-orange darken-1" title="Remover" href="javascript: if(confirm('Remover esse Permissão?')){ window.location.href = '{{ route('admin.papel.permissao.remover', [$papel->id,$value->id]) }}'}"><i class="small material-icons">delete_forever</i></a>
 					</td>
 				</tr>
 			@endforeach

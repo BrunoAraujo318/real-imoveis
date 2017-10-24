@@ -14,7 +14,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Lista de Slides</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -22,9 +22,9 @@
 				<thead>
 					<tr>
 						<th>Ordem</th>
-						<th>Título</th>					
+						<th>Título</th>
 						<th>Descrição</th>
-						<th>Imagem</th>				
+						<th>Imagem</th>
 						<th>Ação</th>
 					</tr>
 				</thead>
@@ -36,8 +36,8 @@
 						<td>{{ $registro->descricao }}</td>
 						<td><img width="100" src="{{asset($registro->imagem)}}"></td>
 						<td>
-							<a class="btn blue" href="{{ route('admin.slides.editar', $registro->id) }}">Editar</a>
-							<a class="btn deep-orange darken-1" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.slides.deletar', $registro->id) }}'}">Deletar</a>
+							<a class="btn blue" title="Editar Slide" href="{{ route('admin.slides.editar', $registro->id) }}"><i class="small material-icons">mode_edit</i></a>
+							<a class="btn deep-orange darken-1" title="Deletar Slide" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.slides.deletar', $registro->id) }}'}"><i class="small material-icons">delete_forever</i></a>
 						</td>
 					</tr>
 				@endforeach
@@ -47,7 +47,7 @@
 	<div class="divider"></div>
 	<div class="row">
 		<div class="right">
-			<a class="btn blue" href="{{ route('admin.slides.adicionar') }}">Adicionar</a>
+			<a id="button" class="btn blue" href="{{ route('admin.slides.adicionar') }}">Adicionar</a>
 		</div>
 	</div>
 </div>

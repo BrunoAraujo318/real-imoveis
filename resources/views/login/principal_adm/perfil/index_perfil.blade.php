@@ -14,7 +14,7 @@
 		        <a class="breadcrumb black-text text-lighten-3">Perfil</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -33,7 +33,7 @@
 					<td>{{ Auth::user()->nome }}</td>
 					<td>{{ Auth::user()->email }}</td>
 					<td>
-						<a class="btn blue" href="{{ route('admin.perfil.editar', Auth::user()->id) }}">Editar Perfil</a>
+						<a class="btn blue" title="Editar Perfil" href="{{ route('admin.perfil.editar', Auth::user()->id) }}"><i class="small material-icons">mode_edit</i></a>
 					</td>
 				</tr>
 			</tbody>
