@@ -22,7 +22,9 @@
 		<form action="{{ route('admin.papel.salvar') }}" method="post">
 			{{ csrf_field() }}
 			@include('login.principal_adm.papel._form')
-			<button id="button" class="btn">Salvar</button>
+			<div class="center">
+				<button id="button" class="btn">Salvar</button>
+			</div>
 		</form>
 	</div>
 </div>

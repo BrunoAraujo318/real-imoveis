@@ -57,16 +57,6 @@
 		        	</div>
 		        </div>
 		        @endif
-		         <div class="col s6 m3">
-		        	<div class="card">
-				        <div class="card-image">
-		              		<a href="{{ route('admin.contratos') }}"><img src="{{ asset('img/icon-contratos.png') }}"></a>
-					            <div class="card-action">
-					              <a href="{{ route('admin.contratos') }}">Gerar Contato</a>
-					            </div>
-				        </div>
-		        	</div>
-		        </div>
 		        @if (Auth::user()->hasRole('admin'))
 		        <div class="col s6 m3">
         			<div class="card">

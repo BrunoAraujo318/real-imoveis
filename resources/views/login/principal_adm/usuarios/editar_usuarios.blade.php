@@ -11,7 +11,7 @@
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a href="{{ route('admin.usuarios') }}" class="breadcrumb black-text text-lighten-3">Lista de Usuários</a>
+		        <a href="{{ route('admin.usuarios') }}" class="breadcrumb black-text text-lighten-3">Usuários</a>
 		        <a class="breadcrumb black-text text-lighten-3">Editar Usuários</a>
 		      </div>
 		    </div>
@@ -25,7 +25,9 @@
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.usuarios._form')
-			<button id="button" class="btn">Atualizar</button>
+			<div class="center">
+				<button id="button" class="btn">Atualizar</button>
+			</div>
 		</form>
 	</div>
 </div>

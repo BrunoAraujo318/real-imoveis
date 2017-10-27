@@ -7,26 +7,28 @@
     	<div class="divider"></div>
     </div>
     <div class="row section">
-    	<div class="col s12 m12">
-        @if($imovel->imagens()->count())
-    		<div class="row">
-                <div class="slider">
-                    <ul class="slides">
-                    <li><img src="{{ asset($imovel->imagem) }}"></li>
-                    @foreach($galeria as $imagem)
-                        <li>
-                            <img src="{{ asset($imagem->imagem) }}">
-                            <div class="caption {{ $direcaoImagem[rand(0,2)] }}">
-                            </div>
-                        </li>
-                    @endforeach
-                    </ul>
+        <div class="center">
+        	<div class="col s12 m12">
+            @if($imovel->imagens()->count())
+        		<div class="row">
+                    <div class="slider">
+                        <ul class="slides">
+                        <li><img src="{{ asset($imovel->imagem) }}"></li>
+                        @foreach($galeria as $imagem)
+                            <li>
+                                <img src="{{ asset($imagem->imagem) }}">
+                                <div class="caption {{ $direcaoImagem[rand(0,2)] }}">
+                                </div>
+                            </li>
+                        @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        @else
-            <img class="responsive-img" src="{{ asset($imovel->imagem) }}">
-        @endif
-    	</div>
+            @else
+                <img class="responsive-img" src="{{ asset($imovel->imagem) }}">
+            @endif
+        	</div>
+        </div>
     	<div class="col s12 m12">
             <h5>{{ $imovel->nome }}</h5>
             <blockquote>
@@ -52,8 +54,10 @@
             <p><b>Cep:</b> {{ $endereco->cep }}</p>
             <p><b>Cidade:</b> {{ $endereco->cidade->nome }}</p>
             <p><b>Estado:</b> {{ $endereco->cidade->estado->nome }}</p>
-            <a id="button" class="btn" href="#">Contrato</a>
     	</div>
+        <div class="col s12 m12" align="center">
+            <a id="button" class="btn" href="#"> Download Contrato</a>
+        </div>
     </div>
     <div class="row section">
         <div class="col s12 m8">

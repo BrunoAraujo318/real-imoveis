@@ -24,7 +24,7 @@ class TipoController extends Controller
     /**
      * Listagem de tipos.
      */
-    public function listaAdm()
+    public function index()
     {
        $tipos = $this->tipoModel->all();
 
@@ -34,17 +34,17 @@ class TipoController extends Controller
     /**
      * Renderiza a interface de tipos.
      */
-    public function adicionarAdm()
+    public function adicionar()
     {
     	return view('login.principal_adm.tipos_imovel.adicionar_tipos');
     }
 
     /**
      * Salva os dados do tipo do imovel.
-     * 
+     *
      * @param  Request $request
      */
-    public function salvarAdm(Request $request)
+    public function salvar(Request $request)
     {
         $dados = $request->all();
         $tipo = new ImovelTipo($dados);
@@ -59,7 +59,7 @@ class TipoController extends Controller
      * Renderiza a interface para edição de tipos
      * @param $id
      */
-    public function editarAdm($id)
+    public function editar($id)
     {
         $tipo = $this->tipoModel->find($id);
 
@@ -71,7 +71,7 @@ class TipoController extends Controller
      * @param Request $request
      * @param $id
      */
-    public function atualizarAdm(Request $request, $id)
+    public function atualizar(Request $request, $id)
     {
         $tipo = $this->tipoModel->find($id);
         $tipo->fill($request->all());
@@ -87,7 +87,7 @@ class TipoController extends Controller
      * 
      * @param $id
      */
-    public function deletarAdm($id)
+    public function deletar($id)
     {
         if(Imovel::where('tipo_id','=',$id)->count()){
 

@@ -16,6 +16,11 @@
 		    </div>
 	  	</nav>
 	</div>
+	<div class="row">
+		<div class="right">
+			<a id="button" class="btn" href="{{ route('admin.imovel.tipos.adicionar') }}">Adicionar Tipos</a>
+		</div>
+	</div>
 	<div class="divider"></div>
 	<div class="row">
 		<table>
@@ -39,10 +44,5 @@
 		</table>
 	</div>
 	<div class="divider"></div>
-	<div class="row">
-		<div class="right">
-			<a id="button" class="btn blue" href="{{ route('admin.imovel.tipos.adicionar') }}">Adicionar Tipos</a>
-		</div>
-	</div>
 </div>
 @endsection
