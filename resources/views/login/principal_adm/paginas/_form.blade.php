@@ -20,7 +20,7 @@
 </div>
 <div class="row">
 	<div class="file-field input-field col m6 s12">
-		<div class="btn">
+		<div id="button_upload" class="btn">
 			<span>Escolher Imagem</span>
 			<input type="file" name="imagem" onchange="realImovel.arquivo.readURL(this, '#imag-principal');">
 		</div>

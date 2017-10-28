@@ -11,7 +11,7 @@
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a href="{{ route('admin.imovel.tipos') }}" class="breadcrumb black-text text-lighten-3">Lista de Tipos</a>
+		        <a href="{{ route('admin.imovel.tipos') }}" class="breadcrumb black-text text-lighten-3">Tipos de Imóveis</a>
 		        <a class="breadcrumb black-text text-lighten-3">Adicionar Tipos</a>
 		      </div>
 		    </div>
@@ -22,7 +22,9 @@
 		<form action="{{ route('admin.imovel.tipos.salvar') }}" method="post">
 			{{ csrf_field() }}
 			@include('login.principal_adm.tipos_imovel._form')
-			<button id="button" class="btn">Salvar</button>
+			<div class="center">
+				<button id="button" class="btn">Salvar</button>
+			</div>
 		</form>
 	</div>
 </div>

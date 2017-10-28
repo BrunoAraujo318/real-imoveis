@@ -67,14 +67,14 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::post('/admin/usuarios/papel/salvar/{id}',['as'=>'admin.usuarios.papel.salvar', 'uses'=>'Admin\UsuarioController@salvarPapel']);
 	Route::get('/admin/usuarios/papel/remover/{id}', ['as'=>'admin.usuarios.papel.remover', 'uses'=>'Admin\UsuarioController@removerPapel']);
 
-	Route::get('/admin/contratos',['as'=>'admin.contratos', 'uses'=>'Admin\ContratoController@index']);
+	Route::get('/admin/contratos/imovel/{id}',['as'=>'admin.contratos', 'uses'=>'Admin\ContratoController@index']);
 
 	Route::get('/admin/paginas',['as'=>'admin.paginas', 'uses'=>'Admin\PaginasController@index']);
 	Route::get('/admin/paginas/editar/{id}',['as'=>'admin.paginas.editar', 'uses'=>'Admin\PaginasController@editar']);
 	Route::put('/admin/paginas/atualizar/{id}',['as'=>'admin.paginas.atualizar', 'uses'=>'Admin\PaginasController@atualizar']);
 
 
-	Route::get('/admin/imovel/tipos',['as'=>'admin.imovel.tipos', 'uses'=>'Admin\TipoController@lista']);
+	Route::get('/admin/imovel/tipos',['as'=>'admin.imovel.tipos', 'uses'=>'Admin\TipoController@index']);
 	Route::get('/admin/imovel/tipos/adicionar',['as'=>'admin.imovel.tipos.adicionar', 'uses'=>'Admin\TipoController@adicionar']);
 	Route::post('/admin/imovel/tipos/salvar',['as'=>'admin.imovel.tipos.salvar', 'uses'=>'Admin\TipoController@salvar']);
 	Route::get('/admin/imovel/tipos/editar/{id}',['as'=>'admin.imovel.tipos.editar', 'uses'=>'Admin\TipoController@editar']);

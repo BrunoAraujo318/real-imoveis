@@ -119,8 +119,8 @@
 		<img width="300" src="{{ asset($imovel->imagem) }}" id="imag-principal">
 	</div>
 	<div class="file-field input-field col m12 s12">
-		<div class="btn">
-		<span>Imagem</span>
+		<div id="button_upload" class="btn">
+		<span>Escolher Imagem</span>
 			<input type="file" name="imagem" onchange="realImovel.arquivo.readURL(this, '#imag-principal');">
 		</div>
 	</div>
@@ -132,7 +132,7 @@
 	</div>
 	@endforeach
 	<div class="file-field input-field col m12 s12">
-		<div class="btn">
+		<div id="button_upload" class="btn">
 		<span>Upload de Imagens</span>
 			<input type="file" multiple name="imagens[]">
 		</div>

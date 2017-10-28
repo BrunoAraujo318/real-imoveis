@@ -11,11 +11,11 @@
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a href="{{ route('admin.slides') }}" class="breadcrumb black-text text-lighten-3">Lista de Slides</a>
+		        <a href="{{ route('admin.slides') }}" class="breadcrumb black-text text-lighten-3">Slide</a>
 		        <a class="breadcrumb black-text text-lighten-3">Editar Slide</a>
 		      </div>
 		    </div>
-	  	</nav>   
+	  	</nav>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -23,7 +23,9 @@
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.slides._form')
-			<button id="button" class="btn">Atualizar</button>
+			<div class="center">
+				<button id="button" class="btn">Atualizar</button>
+			</div>
 		</form>
 	</div>
 </div>

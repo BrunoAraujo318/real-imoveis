@@ -5,16 +5,21 @@
 @section('content')
 
 <div class="container">
-	<h3 class="center">Lista de Slides</h3>
+	<h3 class="center">Slide</h3>
 	<div class="row">
 		<nav>
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a class="breadcrumb black-text text-lighten-3">Lista de Slides</a>
+		        <a class="breadcrumb black-text text-lighten-3">Slide</a>
 		      </div>
 		    </div>
 	  	</nav>
+	</div>
+	<div class="row">
+		<div class="right">
+			<a id="button" class="btn" href="{{ route('admin.slides.adicionar') }}">Adicionar no Slide</a>
+		</div>
 	</div>
 	<div class="divider"></div>
 	<div class="row">
@@ -45,10 +50,5 @@
 			</table>
 	</div>
 	<div class="divider"></div>
-	<div class="row">
-		<div class="right">
-			<a id="button" class="btn blue" href="{{ route('admin.slides.adicionar') }}">Adicionar</a>
-		</div>
-	</div>
 </div>
 @endsection
