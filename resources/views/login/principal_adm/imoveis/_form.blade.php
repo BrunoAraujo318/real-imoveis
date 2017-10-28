@@ -15,16 +15,15 @@
 </div>
 <div class="input-field col s6">
 	@php $usuarioId = old('imovel.usuario_id', $imovel->usuario_id) @endphp
-	<select name="imovel[imovel_tipo_id]">
+	<select name="imovel[usuario_id]" class="validate @if($errors->has('imovel.usuario_id')) invalid @endif">
 		<option value="">Selecione...</option>
-	@foreach($usuarios as $usuario)
-		<option value="{{ $usuario->id }}" {{ $usuarioId == $usuario->id ? 'selected' : '' }} >{{ $usuario->nome }}</option>
-	@endforeach
+		@foreach($usuarios as $usuario)
+			<option value="{{ $usuario->id }}" {{ $usuarioId == $usuario->id ? 'selected' : '' }} >{{ $usuario->nome }}</option>
+		@endforeach
 	</select>
-	<label>Usuarios</label>
+	<label @if($errors->has('imovel.usuario_id')) data-error="{{$errors->first('imovel.usuario_id')}}" @endif >Usuarios</label>
 </div>
 @endif
-
 
 <div class="input-field col s12">
 	<textarea name="imovel[descricao]" class="validate materialize-textarea">{{ old('imovel.descricao', $imovel->descricao) }}</textarea>
