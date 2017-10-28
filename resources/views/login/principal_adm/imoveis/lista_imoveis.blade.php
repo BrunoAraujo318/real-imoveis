@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<div class="right">
-			<a id="button" class="btn blue" href="{{ route('admin.imoveis.adicionar') }}">Adicionar Imóveis</a>
+			<a id="button" class="btn" href="{{ route('admin.imoveis.adicionar') }}">Adicionar Imóveis</a>
 		</div>
 	</div>
 	<div class="divider"></div>
@@ -48,7 +48,7 @@
 					<td>R$ {{ number_format($imovel->valor,2,",",".") }}</td>
 					<td>
 						<a class="btn blue" title="Editar Imóvel" href="{{ route('admin.imoveis.editar', $imovel->id) }}"><i class="small material-icons">mode_edit</i></a>
-						<a class="btn green" title="Gerar Contrato" href="{{ route('admin.contratos') }}"><i class="material-icons">add</i></a>
+						<a class="btn green" title="Gerar Contrato" href="{{ route('admin.contratos', $imovel->id) }}"><i class="material-icons">add</i></a>
 						<a class="btn deep-orange darken-1" title="Deletar Imóvel" href="javascript: if(confirm('Deletar esse Regritro?')){ window.location.href = '{{ route('admin.imoveis.deletar', $imovel->id) }}'}"><i class="small material-icons">delete_forever</i></a>
 					</td>
 				</tr>

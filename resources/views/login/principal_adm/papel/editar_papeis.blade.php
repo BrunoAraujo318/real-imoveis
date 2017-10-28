@@ -23,7 +23,9 @@
 			{{ csrf_field() }}
 			<input type="hidden" name="_method" value="put">
 			@include('login.principal_adm.papel._form')
-			<button id="button" class="btn">Atualizar</button>
+			<div class="center">
+				<button id="button" class="btn">Atualizar</button>
+			</div>
 		</form>
 	</div>
 </div>

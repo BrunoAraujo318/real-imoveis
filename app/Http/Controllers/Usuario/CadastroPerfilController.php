@@ -70,8 +70,8 @@ class CadastroPerfilController extends Controller
 
     public function editar($id)
     {
-        $registro = Usuario::find($id);
-        return view('login.principal_adm.perfil.editar_perfil', compact('registro'));
+        $usuario = Usuario::find($id);
+        return view('login.principal_adm.perfil.editar_perfil', compact('usuario'));
     }
 
     public function atualizar(Request $request, $id)

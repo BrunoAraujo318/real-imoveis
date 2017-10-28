@@ -5,20 +5,20 @@
 @section('content')
 
 <div class="container">
-	<h3 class="center">Lista de Usuários</h3>
+	<h3 class="center">Usuários</h3>
 	<div class="row">
 		<nav>
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a class="breadcrumb black-text text-lighten-3">Lista de Usuários</a>
+		        <a class="breadcrumb black-text text-lighten-3">Usuários</a>
 		      </div>
 		    </div>
 	  	</nav>
 	</div>
 	<div class="row">
 		<div class="right">
-			<a id="button" class="btn" href="{{ route('admin.usuarios.adicionar') }}">Adicionar</a>
+			<a id="button" class="btn" href="{{ route('admin.usuarios.adicionar') }}">Adicionar Usuário</a>
 		</div>
 	</div>
 

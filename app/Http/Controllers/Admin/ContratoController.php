@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use RealImoveis\Http\Requests;
 use RealImoveis\Http\Controllers\Controller;
 use RealImoveis\Models\Contrato;
+use RealImoveis\Models\Imovel;
 
 class ContratoController extends Controller
 {
@@ -16,48 +17,20 @@ class ContratoController extends Controller
     public function __construct()
     {
         $this->contrato = new Contrato();
+        $this->imovel = new Imovel();
     }
 
     /**
      * Lista os Contratos.
      */
-    public function index()
+    public function index($id = 0)
     {
        $contratos = $this->contrato->all();
+       $imovel = $this->imovel->find($id);
 
-       return view('login.principal_adm.contratos.index', compact('contratos'));
+       return view('login.principal_adm.imoveis.contratos', compact('contratos', 'imovel'));
     }
 
-    /**
-     * Salvar Contrato
-     *
-     * @param Request $request
-     */
-    public function salvar(ContratoRequest $request)
-    {
-        $this->beginTransaction();
-
-        try {
-
-            // Salva o contrato
-            $contrato = new Contrato($request->all());
-
-            if ($request->hasFile('contrato')) {
-                $this->uploadContrato($contrato, $request->file('contrato'), "doc/contratos/");
-            }
-
-            $contrato->save();
-
-            $this->commit();
-
-            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            return redirect()->route('admin.contratos');
-        } catch (\Exception $e) {
-            $this->rollBack();
-            throw $e;
-        }
-
-    }
      /**
      *
      *

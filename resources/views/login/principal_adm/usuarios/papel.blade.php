@@ -28,7 +28,7 @@
 			</select>
 		</div>
 		<div class="right">
-			<button id="button" class="btn blue">Adicionar</button>
+			<button id="button" class="btn">Adicionar</button>
 		</div>
 		</form>
 	</div>

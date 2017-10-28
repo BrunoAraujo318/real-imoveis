@@ -11,7 +11,7 @@
 		    <div class="nav-wrapper #e0e0e0 grey lighten-2">
 		      <div class="col s12">
 		        <a href="{{ route('admin.principal') }}" class="breadcrumb black-text text-lighten-3">Início</a>
-		        <a href="{{ route('admin.usuarios') }}" class="breadcrumb black-text text-lighten-3">Lista de Usuários</a>
+		        <a href="{{ route('admin.usuarios') }}" class="breadcrumb black-text text-lighten-3">Usuários</a>
 		        <a class="breadcrumb black-text text-lighten-3">Adicionar Usuários</a>
 		      </div>
 		    </div>
@@ -24,7 +24,9 @@
 			@php $cidadeId = old('endereco.cidade_id') @endphp
 			{{ csrf_field() }}
 			@include('login.principal_adm.usuarios._form')
-			<button id="button" class="btn">Salvar</button>
+			<div class="center">
+				<button id="button" class="btn">Salvar</button>
+			</div>
 		</form>
 	</div>
 </div>
