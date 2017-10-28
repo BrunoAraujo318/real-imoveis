@@ -34,8 +34,8 @@ class ContratoController extends Controller
      /**
      *
      *
-     * @param integer $id
-     * @return view
+     * @param
+     * @return
      */
     private function uploadContrato($contrato, $file, $destino)
     {

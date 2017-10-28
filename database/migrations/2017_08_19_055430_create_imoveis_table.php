@@ -23,15 +23,13 @@ class CreateImoveisTable extends Migration
             $table->integer('qtd_cozinha')->comment('Numero de cozinhas dispostas pelo imóvel');
             $table->integer('qtd_garagem')->comment('Numero de garagens dispostos pelo imóvel');
             $table->integer('qtd_visualicoes')->comment('Numero de Visualições recebidas pelo anuncio');
-            $table->string('url_video')->comment('Local onde sera inserida a url de um video do youtube')->nullable();;
+            $table->string('url_video')->comment('Local onde sera inserida a url de um video do youtube')->nullable();
+            $table->string('url_contrato')->comment('Contrato editado')->nullable();
             $table->integer('categoria_servico')->comment('Categoria do serviço prestado pelo anunciante(Compra\Venda\aluguel etc...)');
             $table->string('imagem')->comment('Imagem principal do imovel');
 
             $table->integer('usuario_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do usuario');
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
-
-            $table->integer('contrato_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do contrato')->nullable();
-            $table->foreign('contrato_id')->references('id')->on('contratos')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('imovel_tipo_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do imovel');
             $table->foreign('imovel_tipo_id')->references('id')->on('imoveis_tipos')->onUpdate('cascade')->onDelete('cascade');
