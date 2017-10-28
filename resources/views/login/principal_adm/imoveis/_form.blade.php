@@ -15,7 +15,7 @@
 </div>
 <div class="input-field col s6">
 	@php $usuarioId = old('imovel.usuario_id', $imovel->usuario_id) @endphp
-	<select name="imovel[imovel_tipo_id]">
+	<select name="imovel[usuario_id]">
 		<option value="">Selecione...</option>
 	@foreach($usuarios as $usuario)
 		<option value="{{ $usuario->id }}" {{ $usuarioId == $usuario->id ? 'selected' : '' }} >{{ $usuario->nome }}</option>

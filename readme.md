@@ -22,3 +22,6 @@ OK - * ajustar as seeds dos imoveis adicionando usuario ao imovel.
 Ok - * Adicionar campo na interface de imoveis quando o usuario for administrador, lista de todos os usuarios.
 OK - * listar para os usuarios logado apenas os imoveis vinculados a ele.
 * Salvar Usuário selecionado
+   - Request
+   - Salvar
+   - Alterar

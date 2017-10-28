@@ -83,6 +83,10 @@ class ImovelController extends Controller
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
             }
 
+            if (Auth::user()->hasRole('usuario')) {
+                $imovel->usuario_id = Auth::user()->id; 
+            }
+
             $imovel->save();
 
             // endereço
@@ -185,6 +189,10 @@ class ImovelController extends Controller
 
             if ($request->hasFile('imagem')) {
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
+            }
+
+            if (Auth::user()->hasRole('usuario')) {
+                $imovel->usuario_id = Auth::user()->id; 
             }
 
             $imovel->save();

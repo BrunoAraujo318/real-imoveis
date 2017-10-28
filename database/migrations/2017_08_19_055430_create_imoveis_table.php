@@ -30,8 +30,8 @@ class CreateImoveisTable extends Migration
             $table->integer('usuario_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do usuario');
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->integer('contrato_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do contrato');
-            $table->foreign('contrato_id')->references('id')->on('contratos')->onUpdate('cascade')->onDelete('cascade')->nullable();;
+            $table->integer('contrato_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do contrato')->nullable();
+            $table->foreign('contrato_id')->references('id')->on('contratos')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('imovel_tipo_id')->unsigned()->comment('Identificador da chave estrangeira do tipo do imovel');
             $table->foreign('imovel_tipo_id')->references('id')->on('imoveis_tipos')->onUpdate('cascade')->onDelete('cascade');
