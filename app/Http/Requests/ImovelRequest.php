@@ -2,6 +2,7 @@
 
 namespace RealImoveis\Http\Requests;
 
+use Auth;
 use RealImoveis\Http\Requests\Request;
 
 class ImovelRequest extends Request
@@ -23,7 +24,7 @@ class ImovelRequest extends Request
      */
     public function rules()
     {
-        return [
+        $rules = [
             'imovel.nome' => 'required',
             'imovel.valor' => 'required',
             'endereco.estado_id' => 'required',
@@ -33,6 +34,12 @@ class ImovelRequest extends Request
             'endereco.numero' => 'required',
             'endereco.cep' => 'required',
         ];
+
+        if (Auth::user()->hasRole('admin')) {
+            $rules['imovel.usuario_id'] = 'required';
+        }
+
+        return $rules;
     }
 
     /**
@@ -45,6 +52,7 @@ class ImovelRequest extends Request
         return [
             'imovel.nome.required' => 'O campo título é obrigatório.',
             'imovel.valor.required' => 'O campo valor é obrigatório.',
+            'imovel.usuario_id.required' => 'O campo usuário é obrigatório.',
             'endereco.estado_id.required' => 'O campo estado é obrigatório.',
             'endereco.cidade_id.required' => 'O campo cidade é obrigatório.',
             'endereco.logradouro.required' => 'O campo logradouro é obrigatório.',

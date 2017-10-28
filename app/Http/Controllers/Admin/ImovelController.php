@@ -29,7 +29,6 @@ class ImovelController extends Controller
      */
     public function lista()
     {
-
         $imoveis = [];
 
         // verifica se o cara logad e usuario comum
@@ -58,7 +57,6 @@ class ImovelController extends Controller
 
         if (Auth::user()->hasRole('admin')) {
             $usuarios = Usuario::all();
-
         }
 
     	return view('login.principal_adm.imoveis.adicionar_imoveis', compact('tipos', 'estados', 'cidades', 'imovel', 'endereco', 'usuarios', 'galerias'));
@@ -107,8 +105,8 @@ class ImovelController extends Controller
             }
 
             $this->commit();
-            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            return redirect()->route('admin.imoveis');
+            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            //return redirect()->route('admin.imoveis');
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;

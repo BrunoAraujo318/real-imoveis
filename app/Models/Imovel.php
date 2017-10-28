@@ -19,7 +19,7 @@ class Imovel extends Model
      *
      * @var array
      */
-    protected $fillable = ['nome', 'descricao', 'valor', 'qtd_dormitorio', 'qtd_banheiro', 'qtd_cozinha', 'qtd_garagem', 'qtd_visualicoes', 'url_video', 'categoria_servico', 'imovel_tipo_id','usuario_id'];
+    protected $fillable = ['nome', 'descricao', 'valor', 'qtd_dormitorio', 'qtd_banheiro', 'qtd_cozinha', 'qtd_garagem', 'qtd_visualicoes', 'url_video', 'categoria_servico', 'imovel_tipo_id', 'usuario_id'];
 
     /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
