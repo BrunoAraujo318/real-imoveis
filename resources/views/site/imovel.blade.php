@@ -56,7 +56,7 @@
             <p><b>Estado:</b> {{ $endereco->cidade->estado->nome }}</p>
     	</div>
         <div class="col s12 m12" align="center">
-            <a id="button" class="btn" href="#">Download Contrato</a>
+            <a id="button" class="btn" href="{{ asset($imovel->url_contrato) }}">Download Contrato</a>
         </div>
     </div>
     <div class="row section">
