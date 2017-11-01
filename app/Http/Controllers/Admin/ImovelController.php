@@ -81,6 +81,10 @@ class ImovelController extends Controller
                 $this->uploadImagens($imovel, $request->file('imagem'), "img/imoveis/");
             }
 
+            if ($request->hasFile('url_contrato')) {
+                $this->uploadContrato($imovel, $request->file('url_contrato'), "img/contrato/");
+            }
+
             if (Auth::user()->hasRole('usuario')) {
                 $imovel->usuario_id = Auth::user()->id;
             }
@@ -109,8 +113,8 @@ class ImovelController extends Controller
             }
 
             $this->commit();
-            //\Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
-            //return redirect()->route('admin.imoveis');
+            \Session::flash('mensagem', ['msg'=>'Registro criado com Sucesso!', 'class'=>'green white-text']);
+            return redirect()->route('admin.imoveis');
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;
@@ -130,6 +134,22 @@ class ImovelController extends Controller
         $nomeArquivo = "_img_".$nomeOriginal."_".$rand.".".$ext;
         $imagem->move($destino, $nomeArquivo);
         $registro->imagem = $destino.$nomeArquivo;
+    }
+
+     /**
+     * Realiza upload de acordo com parametros informados
+     *
+     * @param
+     * @return
+     */
+    private function uploadContrato($contrato, $file, $destino)
+    {
+        $rand = date('Ymdhis');
+        $ext = $file->guessClientExtension();
+        $nomeOriginal = $file->getClientOriginalName();
+        $nomeContrato = $this->removeAcentos($rand.".".$ext);
+        $file->move($destino, $nomecontrato);
+        $contrato->url = $destino.$nomeContrato;
     }
 
     /**

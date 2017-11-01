@@ -31,19 +31,4 @@ class ContratoController extends Controller
        return view('login.principal_adm.imoveis.contratos', compact('contratos', 'imovel'));
     }
 
-     /**
-     *
-     *
-     * @param
-     * @return
-     */
-    private function uploadContrato($contrato, $file, $destino)
-    {
-        $rand = date('Ymdhis');
-        $ext = $file->guessClientExtension();
-        $nomeOriginal = $file->getClientOriginalName();
-        $nomeContrato = $this->removeAcentos($rand.".".$ext);
-        $file->move($destino, $nomecontrato);
-        $contrato->url = $destino.$nomeContrato;
-    }
 }

@@ -64,7 +64,7 @@
 				<div class="file-field input-field">
 					<div id="button_upload" class="btn">
 						<span>Upload de Contrato</span>
-						<input type="file" multiple name="url_contrato[]">
+						<input type="file" name="url_contrato">
 					</div>
 				</div>
 			</div>
