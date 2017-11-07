@@ -149,7 +149,35 @@ class ImovelController extends Controller
         $nomeOriginal = $file->getClientOriginalName();
         $nomeContrato = $this->removeAcentos($rand.".".$ext);
         $file->move($destino, $nomecontrato);
-        $contrato->url = $destino.$nomeContrato;
+        $contrato->url_contrato = $destino.$nomeContrato;
+    }
+
+    /**
+     * Atualiza os dados do contrato.
+     *
+     * @param $imovelId
+     */
+    public function atualizarContrato(Request $request, $imovelId)
+    {
+        $this->beginTransaction();
+
+        try {
+
+            // TODO atualizar o registro ...
+            $imovel = Imovel::find($imovelId);
+
+            // TODO upload ...
+            if ($request->hasFile('arquivo')) {
+                $this->uploadContrato($imovel, $request->file('arquivo'), "contratos/imoveis/");
+            }
+
+            $imovel->save();
+
+            $this->commit();
+        } catch (\Exception $e) {
+            $this->rollBack();
+            throw $e;
+        }
     }
 
     /**
