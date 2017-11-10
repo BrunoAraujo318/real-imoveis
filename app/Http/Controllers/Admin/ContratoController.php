@@ -31,4 +31,11 @@ class ContratoController extends Controller
        return view('login.principal_adm.imoveis.contratos', compact('contratos', 'imovel'));
     }
 
+    /**
+     * Salvar os Contratos.
+     */
+    public function salvar()
+    {
+        // TODO ...
+    }
 }

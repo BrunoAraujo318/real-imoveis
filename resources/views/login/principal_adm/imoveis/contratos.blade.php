@@ -64,7 +64,7 @@
 				<div class="file-field input-field">
 					<div id="button_upload" class="btn">
 						<span>Upload de Contrato</span>
-						<input type="file" name="url_contrato">
+						<input type="file" name="url_contrato" id="arquivo" onchange="realImovel.contrato.salvar();" />
 					</div>
 				</div>
 			</div>
@@ -97,4 +97,9 @@
 	</div>
 	<div class="divider"></div>
 </div>
+
+@section('js')
+<script src="{{asset('js/contrato.js')}}"></script>
+@endsection
+
 @endsection
