@@ -40,7 +40,7 @@
 			@foreach($imoveis as $imovel)
 				<tr>
 					@if(Auth::user()->hasRole('admin'))
-						<td> </td>
+						<td>{{ $imovel->usuario->nome }}</td>
 					@endif
 					<td>{{ $imovel->nome }}</td>
 					<td>{{ $imovel->tipo->nome }}</td>

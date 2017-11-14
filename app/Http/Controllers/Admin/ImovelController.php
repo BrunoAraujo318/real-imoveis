@@ -148,7 +148,7 @@ class ImovelController extends Controller
         $ext = $file->guessClientExtension();
         $nomeOriginal = $file->getClientOriginalName();
         $nomeContrato = $this->removeAcentos($rand.".".$ext);
-        $file->move($destino, $nomecontrato);
+        $file->move($destino, $nomeContrato);
         $contrato->url_contrato = $destino.$nomeContrato;
     }
 
@@ -157,16 +157,13 @@ class ImovelController extends Controller
      *
      * @param $imovelId
      */
-    public function atualizarContrato(Request $request, $imovelId)
+    public function atualizarContrato(Request $request)
     {
         $this->beginTransaction();
 
         try {
+            $imovel = Imovel::find($request->get('imovel_id'));
 
-            // TODO atualizar o registro ...
-            $imovel = Imovel::find($imovelId);
-
-            // TODO upload ...
             if ($request->hasFile('arquivo')) {
                 $this->uploadContrato($imovel, $request->file('arquivo'), "contratos/imoveis/");
             }
@@ -174,6 +171,8 @@ class ImovelController extends Controller
             $imovel->save();
 
             $this->commit();
+
+            return ['msg' => 'Contrato anexado com sucesso.'];
         } catch (\Exception $e) {
             $this->rollBack();
             throw $e;

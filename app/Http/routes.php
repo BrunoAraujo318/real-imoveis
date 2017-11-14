@@ -81,7 +81,7 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::put('/admin/imovel/tipos/atualizar/{id}',['as'=>'admin.imovel.tipos.atualizar', 'uses'=>'Admin\TipoController@atualizar']);
 	Route::get('/admin/imovel/tipos/deletar/{id}', ['as'=>'admin.imovel.tipos.deletar', 'uses'=>'Admin\TipoController@deletar']);
 
-	Route::post('/admin/imovel/contrato/salvar',['as' => 'admin.imovel.contrato.salvar', 'uses' => 'Admin\ContratoController@salvar']);
+	Route::post('/admin/imovel/contrato/salvar',['as' => 'admin.imovel.contrato.salvar', 'uses' => 'Admin\ImovelController@atualizarContrato']);
 
 	Route::get('/admin/imoveis',['as'=>'admin.imoveis', 'uses'=>'Admin\ImovelController@lista']);
 	Route::get('/admin/imoveis/adicionar',['as'=>'admin.imoveis.adicionar', 'uses'=>'Admin\ImovelController@adicionar']);

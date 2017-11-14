@@ -22,6 +22,16 @@ class Imovel extends Model
     protected $fillable = ['nome', 'descricao', 'valor', 'qtd_dormitorio', 'qtd_banheiro', 'qtd_cozinha', 'qtd_garagem', 'qtd_visualicoes', 'url_video', 'url_contrato', 'categoria_servico', 'imovel_tipo_id', 'usuario_id'];
 
     /**
+     * Retorna o usuario do imovel.
+     *
+     * @return Usuario
+     */
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
+
+    /**
      * Retorna o Imovel relacionado com o Tipo de Imovel.
      *
      * @return Imovel
